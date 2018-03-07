@@ -53,6 +53,10 @@ class RealmHelper {
 		return realm.object(ofType: type, forPrimaryKey: primaryKey)
 	}
 	
+	func getObject(by primaryKey: UUID, type: Object.Type) -> Object? {
+		return realm.object(ofType: type, forPrimaryKey: primaryKey)
+	}
+	
 	func getObjects(type: Object.Type) -> Results<Object> {
 		return realm.objects(type)
 	}
