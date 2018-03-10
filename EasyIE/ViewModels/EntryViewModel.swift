@@ -14,7 +14,7 @@ class EntryViewModel: NSObject {
 	private var entries = [Entry]()
 	
 	func loadDummyEntries(completion: @escaping () -> Void) {
-		let path = Bundle.main.path(forResource: "MOCK_DATA", ofType: "json")
+		let path = Bundle.main.path(forResource: "MOCK_DATA_BIG", ofType: "json")
 		let url = URL(fileURLWithPath: path!)
 		if let data = try? Data(contentsOf: url) {
 			if let entries = try? JSONDecoder().decode([Entry].self, from: data) {
@@ -26,7 +26,9 @@ class EntryViewModel: NSObject {
 	}
 	
 	func loadEntries() {
-		entries = EntryDB.getAll()
+		entries = EntryDB.getAll().sorted(by: { (e0, e1) -> Bool in
+			e0.date < e1.date
+		})
 		if entries.isEmpty {
 			loadDummyEntries {
 				print("\(self.entries.count) entries loaded from json")
@@ -52,7 +54,4 @@ class EntryViewModel: NSObject {
 		return dateFormatter.string(from: entries[index].date)
 	}
 	
-	func determineEntryImageAtIndex(_ index: Int) -> UIImage {
-		return getEntryAmountAtIndex(index) > 0 ? UIImage(named: "income") ?? UIImage() : UIImage(named: "expense") ?? UIImage()
-	}
 }

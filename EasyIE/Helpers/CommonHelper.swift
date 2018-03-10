@@ -36,7 +36,7 @@ fileprivate extension UIStoryboard {
 // MARK: App View Controllers
 extension UIStoryboard {
 	class func loadViewController() -> UIViewController {
-		return load(from: DeviceType.isIPad ? .mainIPad : .main, identifier: "ViewController")
+		return load(from: DeviceType.isIPad ? .mainIPad : .main, identifier: "EntryViewController")
 	}
 }
 

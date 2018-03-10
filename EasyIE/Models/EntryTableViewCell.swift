@@ -10,7 +10,6 @@ import UIKit
 
 class EntryTableViewCell: UITableViewCell {
 	
-	@IBOutlet weak var cellImageView: UIImageView!
 	@IBOutlet weak var detailLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var amountLabel: UILabel!
