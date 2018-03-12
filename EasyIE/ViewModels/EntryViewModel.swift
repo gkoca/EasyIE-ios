@@ -11,18 +11,23 @@ import UIKit
 
 class EntryViewModel: NSObject {
 	
-	private var entries = [Entry]()
+	private var entries = Entries()
 	
 	func loadDummyEntries(completion: @escaping () -> Void) {
-		let path = Bundle.main.path(forResource: "MOCK_DATA_BIG", ofType: "json")
+		let path = Bundle.main.path(forResource: "MOCK_DATA_20", ofType: "json")
 		let url = URL(fileURLWithPath: path!)
-		if let data = try? Data(contentsOf: url) {
-			if let entries = try? JSONDecoder().decode([Entry].self, from: data) {
-				EntryDB.insert(entries)
-				self.entries = entries
-				completion()
-			}
+		if let entries = try? Array<Entry>(fromURL: url) {
+							EntryDB.insert(entries)
+							self.entries = entries
+							completion()
 		}
+//		if let data = try? Data(contentsOf: url) {
+//			if let entries = try? JSONDecoder().decode([Entry].self, from: data) {
+//				EntryDB.insert(entries)
+//				self.entries = entries
+//				completion()
+//			}
+//		}
 	}
 	
 	func loadEntries() {
@@ -40,8 +45,8 @@ class EntryViewModel: NSObject {
 		return entries.count
 	}
 	
-	func getEntryDetailAtIndex(_ index: Int) -> String {
-		return entries[index].detail
+	func getEntryTagsAtIndex(_ index: Int) -> [Tag] {
+		return entries[index].tags.map({ $0 })
 	}
 	
 	func getEntryAmountAtIndex(_ index: Int) -> Double {
@@ -50,7 +55,7 @@ class EntryViewModel: NSObject {
 	
 	func getEntryDateStringAtIndex(_ index: Int) -> String {
 		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "dd/mm/yyyy"
+		dateFormatter.dateFormat = "dd/MM/yyyy"
 		return dateFormatter.string(from: entries[index].date)
 	}
 	

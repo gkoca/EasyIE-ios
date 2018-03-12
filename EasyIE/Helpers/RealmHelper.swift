@@ -14,9 +14,22 @@ class RealmHelper {
 	let realm = try! Realm(configuration: getConfiguration())
 	
 	private static func getConfiguration() -> Realm.Configuration {
-		var config = Realm.Configuration()
-		config.deleteRealmIfMigrationNeeded = true
-		return config
+		let documentDirectory = try! FileManager.default.url(
+			for: .documentDirectory,
+			in: .userDomainMask,
+			appropriateFor: nil,
+			create: false
+		)
+		let fileURL = documentDirectory.appendingPathComponent("easyie.realm")
+		print("Create realm configuration with file url \(fileURL)")
+		return Realm.Configuration(fileURL: fileURL, readOnly: false, schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
+		
+//		var config2 = Realm.Configuration(
+//			fileUrl: Utilities.getDocumentsDirectory().stringByAppendingPathComponent("easyie.realm"),
+//			readOnly: false)
+		
+//		var config = Realm.Configuration()
+//		config.deleteRealmIfMigrationNeeded = true
 	}
 	
 	func update(block:(()->())) {

@@ -8,6 +8,14 @@
 
 import UIKit
 
+class Utilities {
+	static func getDocumentsDirectory() -> URL {
+		let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
+		let documentsDirectory = paths[0]
+		return documentsDirectory
+	}
+}
+
 fileprivate struct DeviceType {
 	static let isIPad = UIDevice.current.model == "iPad"
 }
@@ -40,6 +48,7 @@ extension UIStoryboard {
 	}
 }
 
+// MARK: UIColor
 extension UIColor {
 	
 	convenience init(red: Int, green: Int, blue: Int) {
@@ -71,3 +80,11 @@ extension UIColor {
 	}
 }
 
+// MARK: Array
+// usage : objectsArray = objectsArray.filterDuplicate{ ($0.name,$0.age) }
+extension Array {
+	func filterDuplicate<T>(_ keyValue:(Element)->T) -> [Element] {
+		var uniqueKeys = Set<String>()
+		return filter{uniqueKeys.insert("\(keyValue($0))").inserted}
+	}
+}

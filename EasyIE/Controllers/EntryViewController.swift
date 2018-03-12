@@ -17,7 +17,7 @@ class EntryViewController: UIViewController {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view, typically from a nib.
 		tableView.rowHeight = UITableViewAutomaticDimension
-		tableView.estimatedRowHeight = 100.0
+		tableView.estimatedRowHeight = 90.0
 //		tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
 		
 		entryViewModel.loadEntries()
@@ -46,7 +46,14 @@ extension EntryViewController: UITableViewDelegate, UITableViewDataSource {
 		let amount = entryViewModel.getEntryAmountAtIndex(indexPath.row)
 		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
 		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
-		cell.detailLabel.text = entryViewModel.getEntryDetailAtIndex(indexPath.row)
+//		cell.detailLabel.text = entryViewModel.getEntryDetailAtIndex(indexPath.row)
+		var tags = ""
+		for tag in entryViewModel.getEntryTagsAtIndex(indexPath.row) {
+			tags += tag.value
+			tags += " | "
+		}
+		tags.removeLast(3)
+		cell.detailLabel.text = tags
 		cell.dateLabel.text = entryViewModel.getEntryDateStringAtIndex(indexPath.row)
 //		cell.transform = CGAffineTransform(rotationAngle: CGFloat.pi);
 		return cell

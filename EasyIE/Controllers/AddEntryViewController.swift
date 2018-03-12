@@ -9,12 +9,11 @@
 import Eureka
 
 class AddEntryViewController: FormViewController {
-	let dummyTags = [EntryTag(id: 0, value: "maaş"),EntryTag(id: 1, value: "iphone"),EntryTag(id: 2, value: "ipad"),EntryTag(id: 3, value: "macbook")]
+	
+	let tags = TagDB.getAllSTags()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		
-//		let dummyTags = [EntryTag(id: 0, value: "maaş"),EntryTag(id: 1, value: "iphone"),EntryTag(id: 2, value: "ipad"),EntryTag(id: 3, value: "macbook")]
 		
 		form +++ Section("Entry Type")
 			<<< SegmentedRow<String>("Segments") { $0.title = ""; $0.value = "Income"; $0.options = ["Income", "Expense"]}.cellSetup({ (cell, _) in
@@ -46,7 +45,7 @@ class AddEntryViewController: FormViewController {
 			}
 			
 			
-			
+			//item.title.folding(options: .diacriticInsensitive, locale: Locale.current).contains(searchStr.uppercased())
 			+++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete],
 								   header: "TAGS",
 								   footer: ".Insert multivaluedOption adds the 'Add New Tag' button row as last cell.") {
@@ -59,23 +58,16 @@ class AddEntryViewController: FormViewController {
 										}
 									}
 									$0.multivaluedRowToInsertAt = { index in
-										return SuggestionTableRow<EntryTag>  {
+										return SuggestionAccessoryRow<STag>  {
 											$0.filterFunction = { [unowned self] text in
-												self.dummyTags.filter({ $0.value.lowercased().contains(text.lowercased()) })
+												self.tags.filter({ $0.value.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current).contains(text.lowercased().folding(options: .diacriticInsensitive, locale: Locale.current)) })
 											}
 											$0.placeholder = "Tag Name"
 										}
 									}
-//									$0 <<< TextRow() {
-//										$0.placeholder = "Tag Name"
-//									}
 		}
 		
-		//			+++ Section("Detail")
-		//			<<< TextAreaRow() {
-		//				$0.placeholder = "TextAreaRow"
-		//				$0.textAreaHeight = .dynamic(initialTextViewHeight: 110)
-		//		}
+		rowKeyboardSpacing = 50.0
 		
 	}
 	

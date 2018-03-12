@@ -14,7 +14,7 @@ class EntryDB {
 	static func getBy(id: String) -> Entry? {
 		return RealmHelper.helper.getObject(by: id, type: Entry.self) as? Entry
 	}
-
+	
 	static func getAll() -> [Entry] {
 		let entries = Array(RealmHelper.helper.getObjects(type: Entry.self)) as? [Entry] ?? [Entry]()
 		return entries
@@ -22,10 +22,18 @@ class EntryDB {
 	
 	static func insert(_ entry: Entry) {
 		RealmHelper.helper.insert(entry)
+		TagDB.insert(entry.tags.map({ $0 }))
 	}
 	
 	static func insert(_ entries: [Entry]) {
-	RealmHelper.helper.insert(entries)
+		var tags = [Tag]()//entries.map({ $0.tags })
+		entries.forEach({
+			if $0.tags.count > 0 {
+				tags.append(contentsOf: $0.tags)
+			}
+		})
+		RealmHelper.helper.insert(entries)
+		TagDB.insert(tags)
 	}
 	
 	static func delete(id: String) {
