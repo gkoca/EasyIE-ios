@@ -1,5 +1,5 @@
 //
-//  EntryTableViewCell.swift
+//  ItemTableViewCell.swift
 //  EasyIE
 //
 //  Created by Gökhan KOCA on 7.03.2018.
@@ -8,10 +8,11 @@
 
 import UIKit
 
-class EntryTableViewCell: UITableViewCell {
+class ItemTableViewCell: UITableViewCell {
 	
-	@IBOutlet weak var detailLabel: UILabel!
+	@IBOutlet weak var tagsLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var amountLabel: UILabel!
 	
+	@IBOutlet weak var detailLabel: UILabel!
 }

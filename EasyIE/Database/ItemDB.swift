@@ -1,5 +1,5 @@
 //
-//  EntryDB.swift
+//  ItemDB.swift
 //  EasyIE
 //
 //  Created by Gökhan KOCA on 7.03.2018.
@@ -9,24 +9,24 @@
 import Foundation
 import RealmSwift
 
-class EntryDB {
+class ItemDB {
 	
-	static func getBy(id: String) -> Entry? {
-		return RealmHelper.helper.getObject(by: id, type: Entry.self) as? Entry
+	static func getBy(id: String) -> Item? {
+		return RealmHelper.helper.getObject(by: id, type: Item.self) as? Item
 	}
 	
-	static func getAll() -> [Entry] {
-		let entries = Array(RealmHelper.helper.getObjects(type: Entry.self)) as? [Entry] ?? [Entry]()
+	static func getAll() -> [Item] {
+		let entries = Array(RealmHelper.helper.getObjects(type: Item.self)) as? [Item] ?? [Item]()
 		return entries
 	}
 	
-	static func insert(_ entry: Entry) {
+	static func insert(_ entry: Item) {
 		RealmHelper.helper.insert(entry)
 		TagDB.insert(entry.tags.map({ $0 }))
 	}
 	
-	static func insert(_ entries: [Entry]) {
-		var tags = [Tag]()//entries.map({ $0.tags })
+	static func insert(_ entries: [Item]) {
+		var tags = [Tag]()//items.map({ $0.tags })
 		entries.forEach({
 			if $0.tags.count > 0 {
 				tags.append(contentsOf: $0.tags)
@@ -43,7 +43,7 @@ class EntryDB {
 	}
 	
 	static func clear() {
-		RealmHelper.helper.deleteAll(RealmHelper.helper.getObjects(type: Entry.self))
+		RealmHelper.helper.deleteAll(RealmHelper.helper.getObjects(type: Item.self))
 	}
 }
 

@@ -1,6 +1,5 @@
- [{"id":"bc017811-74cc-4652-ab22-bbf508a2780b","amount":861.87,"tags":[{"value":"Zulauf LLC"},
-																	   {"value":"Emard, Turcotte and Marks"}],"date":"1502875873"},
-  {"id":"2b9016b1-77c3-4a95-bf5f-dcc60cde1a6e","amount":597.8,"tags":[{"value":"Lockman, Lowe and Bradtke"},
-																	  {"value":"Walsh Group"},
-																	  {"value":"Leuschke Inc"}],"date":"1492312913"},
-  {"id":"8184ead2-a730-4365-b432-687fd69a6ad3","amount":-271.48,"tags":[{"value":"King Inc"}],"date":"1508054608"}]
+[{"id":"29064077-3820-4b4b-a75b-c6f6d7055d27","amount":72.36,"isFixed":false,"date":"1491592828","cycleType":3,"tags":[{"value":"Rutherford LLC"},
+																													   {"value":"Sawayn LLC"}]},
+ {"id":"2e4fecac-4269-4866-981d-eb51a4723d89","amount":879.18,"isFixed":false,"date":"1519022241","cycleType":4,"tags":[{"value":"Kris and Sons"}]},
+ {"id":"20eca3b0-a5cf-4607-9b3d-1429beb82923","amount":321.6,"isFixed":true,"date":"1511856121","cycleType":2,"tags":[{"value":"Koepp Inc"}]}]
+

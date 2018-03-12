@@ -1,5 +1,5 @@
 //
-//  Entry.swift
+//  Item.swift
 //  EasyIE
 //
 //  Created by Gökhan KOCA on 7.03.2018.
@@ -10,28 +10,45 @@ import Foundation
 import Realm
 import RealmSwift
 
-typealias Entries = [Entry]
+typealias Items = [Item]
 
-class Entry: Object, Codable {
+enum DateCycleType: Int {
+	case undefined = 0
+	case firstWorkDayOfMonth
+	case lastWorkDayOfMonth
+	case firstDayOfMonth
+	case lastDayOfMonth
+	case fixed
+}
+
+class Item: Object, Codable {
 	
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var amount: Double = 0.0
+	@objc dynamic var isFixed: Bool = false
+	@objc dynamic var cycleType: Int = 0
 	@objc dynamic var date: Date = Date()
+	
 	var tags = List<Tag>()
 
 	enum CodingKeys: String, CodingKey {
 		case id = "id"
 		case amount = "amount"
-		case tags = "tags"
 		case date = "date"
+		case isFixed = "isFixed"
+		case cycleType = "cycleType"
+		case tags = "tags"
 	}
 	
-	init(id: String = UUID().uuidString, amount: Double = 0.0, tags: List<Tag> = List<Tag>(), date: Date = Date()) {
+	init(id: String = UUID().uuidString, amount: Double = 0.0, date: Date = Date(), isFixed: Bool = false, cycleType: Int = DateCycleType.undefined.rawValue, tags: List<Tag> = List<Tag>()) {
 		super.init()
 		self.id = id
 		self.amount = amount
-		self.tags = tags
 		self.date = date
+		self.isFixed = isFixed
+		self.cycleType = cycleType
+		self.tags = tags
+		
 	}
 	
 	required init() {
@@ -47,18 +64,22 @@ class Entry: Object, Codable {
 		if let epoch = Double(d) {
 			date = Date(timeIntervalSince1970: epoch)
 		}
+		let isFixed = try container.decode(Bool.self, forKey: .isFixed)
+		let cycleType = try container.decode(Int.self, forKey: .cycleType)
 		let decodedTags =  try container.decode([Tag].self, forKey: .tags)
 		let t = List<Tag>()
 		t.append(objectsIn: decodedTags)
-		self.init(id: id, amount: amount, tags: t, date: date)
+		
+		self.init(id: id, amount: amount, date: date, isFixed: isFixed, cycleType: cycleType, tags: t)
 	}
 	
-	func encode(to encoder: Encoder) throws
-	{
+	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(id, forKey: .id)
 		try container.encode(amount, forKey: .amount)
 		try container.encode(date, forKey: .date)
+		try container.encode(isFixed, forKey: .isFixed)
+		try container.encode(cycleType, forKey: .cycleType)
 		try container.encode(tags.map({ $0 }), forKey: .tags)
 	}
 	
@@ -73,13 +94,15 @@ class Entry: Object, Codable {
 	override class func primaryKey() -> String? {
 		return "id"
 	}
-	
+//	override static func ignoredProperties() -> [String] {
+//		return ["isFixed", "cycleType"]
+//	}
 }
 
 class Tag: Object, Codable {
 	
 	@objc dynamic var value: String = ""
-	let entries = LinkingObjects(fromType: Entry.self, property: "tags")
+	let entries = LinkingObjects(fromType: Item.self, property: "tags")
 	
 	enum CodingKeys: String, CodingKey {
 		case value = "value"
@@ -154,12 +177,12 @@ extension STag: SuggestionValue {
 
 // MARK: Convenience initializers
 
-extension Entry {
+extension Item {
 	convenience init(data: Data) throws {
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .millisecondsSince1970
-		let me = try decoder.decode(Entry.self, from: data)
-		self.init(id: me.id, amount: me.amount, tags: me.tags, date: me.date)
+		let me = try decoder.decode(Item.self, from: data)
+		self.init(id: me.id, amount: me.amount, date: me.date, isFixed: me.isFixed, cycleType: me.cycleType, tags: me.tags)
 	}
 	
 	convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -208,9 +231,9 @@ extension Tag {
 	}
 }
 
-extension Array where Element == Entries.Element {
+extension Array where Element == Items.Element {
 	init(data: Data) throws {
-		self = try JSONDecoder().decode(Entries.self, from: data)
+		self = try JSONDecoder().decode(Items.self, from: data)
 	}
 	
 	init(_ json: String, using encoding: String.Encoding = .utf8) throws {

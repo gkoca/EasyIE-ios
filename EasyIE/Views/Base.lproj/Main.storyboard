@@ -27,12 +27,12 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuI-qT-WnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1148" y="-224"/>
+            <point key="canvasLocation" x="-1130" y="-225"/>
         </scene>
         <!--Incomes & Expenses-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="EntryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="EntryViewController" customModule="EasyIE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EntryViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="ItemViewController" customModule="EasyIE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -41,18 +41,24 @@
                                 <rect key="frame" x="0.0" y="116" width="375" height="502"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="EntryTableViewCell" rowHeight="100" id="RJk-2B-FPk" customClass="EntryTableViewCell" customModule="EasyIE" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="100"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemTableViewCell" rowHeight="208" id="RJk-2B-FPk" customClass="ItemTableViewCell" customModule="EasyIE" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="208"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="RJk-2B-FPk" id="XaC-3e-s7z">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="99.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="207.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="07/03/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COO-xL-x1o">
-                                                    <rect key="frame" x="15" y="69" width="345" height="20"/>
+                                                    <rect key="frame" x="15" y="177" width="345" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="20" id="3Jg-8I-TF8"/>
                                                     </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amazon sdfsdfsd sdf sdf sdf f dfsdf df sdf sdf df sdf  sdf sdf sdfd fd f sdf sdf sdf " lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MI0-6f-Fne">
+                                                    <rect key="frame" x="15" y="43" width="345" height="108"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <nil key="highlightedColor"/>
@@ -65,30 +71,36 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amazon sdfsdfsd sdf sdf sdf f dfsdf df sdf sdf df sdf  sdf sdf sdfd fd f sdf sdf sdf " lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MI0-6f-Fne">
-                                                    <rect key="frame" x="15" y="39" width="345" height="26"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-Uj-VUz">
+                                                    <rect key="frame" x="15" y="155" width="345" height="18"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="20" id="b38-DY-R0w"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="COO-xL-x1o" firstAttribute="top" secondItem="vSe-Uj-VUz" secondAttribute="bottom" constant="4" id="2nL-Wd-OPH"/>
                                                 <constraint firstItem="bFv-Q0-wUP" firstAttribute="trailing" secondItem="XaC-3e-s7z" secondAttribute="trailingMargin" id="Aex-zH-L4U"/>
                                                 <constraint firstItem="bFv-Q0-wUP" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="Fgu-AC-esk"/>
-                                                <constraint firstItem="COO-xL-x1o" firstAttribute="top" secondItem="MI0-6f-Fne" secondAttribute="bottom" constant="4" id="L4S-yf-g24"/>
+                                                <constraint firstItem="vSe-Uj-VUz" firstAttribute="top" secondItem="MI0-6f-Fne" secondAttribute="bottom" constant="4" id="Qfu-46-S9Q"/>
                                                 <constraint firstItem="COO-xL-x1o" firstAttribute="trailing" secondItem="XaC-3e-s7z" secondAttribute="trailingMargin" id="T1r-wX-Kd8"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vSe-Uj-VUz" secondAttribute="trailing" id="Wep-jm-cq5"/>
+                                                <constraint firstItem="vSe-Uj-VUz" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="Zq0-9E-8Rq"/>
                                                 <constraint firstItem="MI0-6f-Fne" firstAttribute="trailing" secondItem="XaC-3e-s7z" secondAttribute="trailingMargin" id="beO-M2-zjM"/>
                                                 <constraint firstItem="COO-xL-x1o" firstAttribute="bottom" secondItem="XaC-3e-s7z" secondAttribute="bottomMargin" id="bnk-6i-gOV"/>
                                                 <constraint firstItem="bFv-Q0-wUP" firstAttribute="top" secondItem="XaC-3e-s7z" secondAttribute="topMargin" id="cwm-aa-0bG"/>
                                                 <constraint firstItem="MI0-6f-Fne" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="hxD-Ob-QSm"/>
-                                                <constraint firstItem="MI0-6f-Fne" firstAttribute="top" secondItem="bFv-Q0-wUP" secondAttribute="bottom" constant="4" id="jpb-Yt-Kd8"/>
+                                                <constraint firstItem="MI0-6f-Fne" firstAttribute="top" secondItem="bFv-Q0-wUP" secondAttribute="bottom" constant="8" id="jpb-Yt-Kd8"/>
                                                 <constraint firstItem="COO-xL-x1o" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="kdt-8R-kU4"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="amountLabel" destination="bFv-Q0-wUP" id="DGI-Fh-Kg5"/>
                                             <outlet property="dateLabel" destination="COO-xL-x1o" id="kda-TH-6fB"/>
-                                            <outlet property="detailLabel" destination="MI0-6f-Fne" id="qcP-jd-om5"/>
+                                            <outlet property="detailLabel" destination="vSe-Uj-VUz" id="agM-F1-h3w"/>
+                                            <outlet property="tagsLabel" destination="MI0-6f-Fne" id="qcP-jd-om5"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -123,9 +135,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <customObject id="7Ej-2w-elV" customClass="EntryViewModel" customModule="EasyIE" customModuleProvider="target"/>
+                <customObject id="7Ej-2w-elV" customClass="ItemViewModel" customModule="EasyIE" customModuleProvider="target"/>
             </objects>
-            <point key="canvasLocation" x="-1148" y="507.79610194902551"/>
+            <point key="canvasLocation" x="-1131" y="647"/>
         </scene>
         <!--Savings & Loans-->
         <scene sceneID="W2g-T3-LtH">
@@ -142,7 +154,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Vsw-Hl-jNH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="-224"/>
+            <point key="canvasLocation" x="-398" y="-226"/>
         </scene>
         <!--Profile-->
         <scene sceneID="an1-r1-MCz">
@@ -171,7 +183,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOl-iG-UAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="508"/>
+            <point key="canvasLocation" x="420" y="647"/>
         </scene>
         <!--Profile-->
         <scene sceneID="rGf-D1-Iol">
@@ -188,7 +200,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WWe-Hp-GQx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="420" y="-224"/>
+            <point key="canvasLocation" x="420" y="-226"/>
         </scene>
         <!--Savings & Loans-->
         <scene sceneID="dIt-Lf-NfJ">
@@ -215,7 +227,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9H1-VD-mfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="508"/>
+            <point key="canvasLocation" x="-399" y="647"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IGa-tF-JwN">
@@ -231,19 +243,19 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FYT-wd-dBp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1148" y="1279"/>
+            <point key="canvasLocation" x="-1131" y="1620"/>
         </scene>
-        <!--Add Entry-->
+        <!--Add Item-->
         <scene sceneID="jG3-2e-pVf">
             <objects>
-                <viewController id="gcK-j5-T6s" customClass="AddEntryViewController" customModule="EasyIE" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gcK-j5-T6s" customClass="AddItemViewController" customModule="EasyIE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YnL-TZ-8lR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="vg7-vc-PJm"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Add Entry" largeTitleDisplayMode="never" id="k6v-40-3r9">
+                    <navigationItem key="navigationItem" title="Add Item" largeTitleDisplayMode="never" id="k6v-40-3r9">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="B04-8S-0tK">
                             <connections>
                                 <action selector="onCancelButton:" destination="gcK-j5-T6s" id="pvR-Gj-tUw"/>
@@ -254,7 +266,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="439-HN-1MQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1148" y="2074"/>
+            <point key="canvasLocation" x="-1131" y="2557"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="9p5-aG-XfZ">
@@ -273,7 +285,7 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="omz-3g-RG4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-396" y="-1068"/>
+            <point key="canvasLocation" x="-397" y="-1188"/>
         </scene>
     </scenes>
 </document>

@@ -1,5 +1,5 @@
 //
-//  EntryViewModel.swift
+//  ItemViewModel.swift
 //  EasyIE
 //
 //  Created by Gökhan KOCA on 7.03.2018.
@@ -9,54 +9,61 @@
 import Foundation
 import UIKit
 
-class EntryViewModel: NSObject {
+class ItemViewModel: NSObject {
 	
-	private var entries = Entries()
+	private var items = Items()
 	
 	func loadDummyEntries(completion: @escaping () -> Void) {
 		let path = Bundle.main.path(forResource: "MOCK_DATA_20", ofType: "json")
 		let url = URL(fileURLWithPath: path!)
-		if let entries = try? Array<Entry>(fromURL: url) {
-							EntryDB.insert(entries)
-							self.entries = entries
+		if let items = try? Array<Item>(fromURL: url) {
+							ItemDB.insert(items)
+							self.items = items
 							completion()
 		}
 //		if let data = try? Data(contentsOf: url) {
-//			if let entries = try? JSONDecoder().decode([Entry].self, from: data) {
-//				EntryDB.insert(entries)
-//				self.entries = entries
+//			if let items = try? JSONDecoder().decode([Item].self, from: data) {
+//				ItemDB.insert(items)
+//				self.items = items
 //				completion()
 //			}
 //		}
 	}
 	
 	func loadEntries() {
-		entries = EntryDB.getAll().sorted(by: { (e0, e1) -> Bool in
+		items = ItemDB.getAll().sorted(by: { (e0, e1) -> Bool in
 			e0.date < e1.date
 		})
-		if entries.isEmpty {
+		if items.isEmpty {
 			loadDummyEntries {
-				print("\(self.entries.count) entries loaded from json")
+				print("\(self.items.count) items loaded from json")
 			}
 		}
 	}
 	
 	func getNumberOfEntriesToDisplay() -> Int {
-		return entries.count
+		return items.count
 	}
 	
 	func getEntryTagsAtIndex(_ index: Int) -> [Tag] {
-		return entries[index].tags.map({ $0 })
+		return items[index].tags.map({ $0 })
 	}
 	
 	func getEntryAmountAtIndex(_ index: Int) -> Double {
-		return entries[index].amount
+		return items[index].amount
 	}
 	
 	func getEntryDateStringAtIndex(_ index: Int) -> String {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "dd/MM/yyyy"
-		return dateFormatter.string(from: entries[index].date)
+		return dateFormatter.string(from: items[index].date)
 	}
 	
+	func getEntryIsFixedAtIndex(_ index: Int) -> Bool {
+		return items[index].isFixed
+	}
+	
+	func getEntryCycleTypeAtIndex(_ index: Int) -> DateCycleType {
+		return DateCycleType(rawValue: items[index].cycleType)!
+	}
 }
