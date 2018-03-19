@@ -26,7 +26,7 @@ class ItemViewController: UIViewController {
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		let indexPath = IndexPath(item: entryViewModel.getNumberOfEntriesToDisplay() - 1, section: 0)
-		tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+//		tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
 	}
 	
 	override func didReceiveMemoryWarning() {
@@ -73,8 +73,11 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 			case .lastWorkDayOfMonth:
 				cell.detailLabel.text = "Fixed : Last Work Day Of Month"
 				break
-			case .fixed:
-				cell.detailLabel.text = "Fixed : Date"
+			case .fixedDayOfMonth:
+				cell.detailLabel.text = "Fixed : Day of month"
+				break
+			case .fixedDayOfWeek:
+				cell.detailLabel.text = "Fixed : Day of week"
 				break
 			}
 		} else {

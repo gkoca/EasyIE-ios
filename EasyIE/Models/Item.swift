@@ -12,13 +12,23 @@ import RealmSwift
 
 typealias Items = [Item]
 
+/*
+["First Day Of Month",
+"Last Day Of Month",
+"First Work Day Of Month",
+"Last Work Day Of Month",
+"Day of month",
+"Day of week" ]
+*/
+
 enum DateCycleType: Int {
 	case undefined = 0
-	case firstWorkDayOfMonth
-	case lastWorkDayOfMonth
 	case firstDayOfMonth
 	case lastDayOfMonth
-	case fixed
+	case firstWorkDayOfMonth
+	case lastWorkDayOfMonth
+	case fixedDayOfMonth
+	case fixedDayOfWeek
 }
 
 class Item: Object, Codable {
@@ -27,6 +37,7 @@ class Item: Object, Codable {
 	@objc dynamic var amount: Double = 0.0
 	@objc dynamic var isFixed: Bool = false
 	@objc dynamic var cycleType: Int = 0
+	@objc dynamic var cycleValue: Int = 0
 	@objc dynamic var date: Date = Date()
 	
 	var tags = List<Tag>()
@@ -37,16 +48,18 @@ class Item: Object, Codable {
 		case date = "date"
 		case isFixed = "isFixed"
 		case cycleType = "cycleType"
+		case cycleValue = "cycleValue"
 		case tags = "tags"
 	}
 	
-	init(id: String = UUID().uuidString, amount: Double = 0.0, date: Date = Date(), isFixed: Bool = false, cycleType: Int = DateCycleType.undefined.rawValue, tags: List<Tag> = List<Tag>()) {
+	init(id: String = UUID().uuidString, amount: Double = 0.0, date: Date = Date(), isFixed: Bool = false, cycleType: Int = DateCycleType.undefined.rawValue, cycleValue: Int = 0, tags: List<Tag> = List<Tag>()) {
 		super.init()
 		self.id = id
 		self.amount = amount
 		self.date = date
 		self.isFixed = isFixed
 		self.cycleType = cycleType
+		self.cycleValue = cycleValue
 		self.tags = tags
 		
 	}
@@ -66,11 +79,12 @@ class Item: Object, Codable {
 		}
 		let isFixed = try container.decode(Bool.self, forKey: .isFixed)
 		let cycleType = try container.decode(Int.self, forKey: .cycleType)
+		let cycleValue = try container.decode(Int.self, forKey: .cycleValue)
 		let decodedTags =  try container.decode([Tag].self, forKey: .tags)
 		let t = List<Tag>()
 		t.append(objectsIn: decodedTags)
 		
-		self.init(id: id, amount: amount, date: date, isFixed: isFixed, cycleType: cycleType, tags: t)
+		self.init(id: id, amount: amount, date: date, isFixed: isFixed, cycleType: cycleType, cycleValue: cycleValue, tags: t)
 	}
 	
 	func encode(to encoder: Encoder) throws {
@@ -80,6 +94,7 @@ class Item: Object, Codable {
 		try container.encode(date, forKey: .date)
 		try container.encode(isFixed, forKey: .isFixed)
 		try container.encode(cycleType, forKey: .cycleType)
+		try container.encode(cycleValue, forKey: .cycleValue)
 		try container.encode(tags.map({ $0 }), forKey: .tags)
 	}
 	
@@ -182,7 +197,7 @@ extension Item {
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .millisecondsSince1970
 		let me = try decoder.decode(Item.self, from: data)
-		self.init(id: me.id, amount: me.amount, date: me.date, isFixed: me.isFixed, cycleType: me.cycleType, tags: me.tags)
+		self.init(id: me.id, amount: me.amount, date: me.date, isFixed: me.isFixed, cycleType: me.cycleType, cycleValue: me.cycleValue, tags: me.tags)
 	}
 	
 	convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {

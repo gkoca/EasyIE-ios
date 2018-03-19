@@ -1,5 +1,5 @@
-[{"id":"29064077-3820-4b4b-a75b-c6f6d7055d27","amount":72.36,"isFixed":false,"date":"1491592828","cycleType":3,"tags":[{"value":"Rutherford LLC"},
+[{"id":"29064077-3820-4b4b-a75b-c6f6d7055d27","amount":72.36,"isFixed":false,"date":"1491592828","cycleType":3,"cycleValue":3,"tags":[{"value":"Rutherford LLC"},
 																													   {"value":"Sawayn LLC"}]},
- {"id":"2e4fecac-4269-4866-981d-eb51a4723d89","amount":879.18,"isFixed":false,"date":"1519022241","cycleType":4,"tags":[{"value":"Kris and Sons"}]},
- {"id":"20eca3b0-a5cf-4607-9b3d-1429beb82923","amount":321.6,"isFixed":true,"date":"1511856121","cycleType":2,"tags":[{"value":"Koepp Inc"}]}]
+ {"id":"2e4fecac-4269-4866-981d-eb51a4723d89","amount":879.18,"isFixed":false,"date":"1519022241","cycleType":4,"cycleValue":3,"tags":[{"value":"Kris and Sons"}]},
+ {"id":"20eca3b0-a5cf-4607-9b3d-1429beb82923","amount":321.6,"isFixed":true,"date":"1511856121","cycleType":2,"cycleValue":3,"tags":[{"value":"Koepp Inc"}]}]
 

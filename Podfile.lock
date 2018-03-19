@@ -1,20 +1,26 @@
 PODS:
-  - Eureka (4.0.1)
-  - Realm (3.1.1):
-    - Realm/Headers (= 3.1.1)
-  - Realm/Headers (3.1.1)
-  - RealmSwift (3.1.1):
-    - Realm (= 3.1.1)
+  - Eureka (4.1.1)
+  - Realm (3.2.0):
+    - Realm/Headers (= 3.2.0)
+  - Realm/Headers (3.2.0)
+  - RealmSwift (3.2.0):
+    - Realm (= 3.2.0)
+  - SearchTextField (1.2.0)
+  - SwifterSwift/SwiftStdlib (4.2.0)
 
 DEPENDENCIES:
   - Eureka
   - RealmSwift
+  - SearchTextField
+  - SwifterSwift/SwiftStdlib
 
 SPEC CHECKSUMS:
-  Eureka: c8bd5cc07143b6f66268c208d28a246c99b41955
-  Realm: 42d1c38a5b1bbcc828b48a7ce702cb86fc68adf4
-  RealmSwift: d31937ca6a6ee54acde64ec839523c0a3c04924b
+  Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
+  Realm: ae552b9b9eca3a12374a589fa842f220e286a80a
+  RealmSwift: 05727129547dcab3fe828bd87bc30be903736b9c
+  SearchTextField: a5bb7e4c33affadb115afdbe8100d84ef10a8024
+  SwifterSwift: 1d101dcfb0c3123226900f3b4d220d57fb60d546
 
-PODFILE CHECKSUM: db7856852e2994fd3929e3d7759d95fb4fe906b1
+PODFILE CHECKSUM: b33964a03876329c31b7247028f6c586b59081e8
 
 COCOAPODS: 1.4.0

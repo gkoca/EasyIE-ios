@@ -205,29 +205,41 @@
         <!--Savings & Loans-->
         <scene sceneID="dIt-Lf-NfJ">
             <objects>
-                <viewController id="kcZ-tT-2RA" sceneMemberID="viewController">
+                <viewController id="kcZ-tT-2RA" customClass="FutureViewController" customModule="EasyIE" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZFL-MI-Gaj">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="VAo-al-d0r">
-                                <rect key="frame" x="127" y="410" width="121" height="28"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <segments>
-                                    <segment title="First"/>
-                                    <segment title="Second"/>
-                                </segments>
-                            </segmentedControl>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-xf-bal">
+                                <rect key="frame" x="50" y="132" width="275" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="G0x-O1-Pu3"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="kcZ-tT-2RA" id="O1a-sp-CCD"/>
+                                </connections>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YZB-eg-mrz" firstAttribute="trailing" secondItem="OH1-xf-bal" secondAttribute="trailing" constant="50" id="Huh-61-aPc"/>
+                            <constraint firstItem="OH1-xf-bal" firstAttribute="leading" secondItem="YZB-eg-mrz" secondAttribute="leading" constant="50" id="uFO-Hq-y6k"/>
+                            <constraint firstItem="OH1-xf-bal" firstAttribute="top" secondItem="YZB-eg-mrz" secondAttribute="top" constant="16" id="uZH-bh-doq"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="YZB-eg-mrz"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Item 1" id="e73-qq-K48"/>
                     <navigationItem key="navigationItem" title="Savings &amp; Loans" id="Qx3-GQ-EYR"/>
+                    <connections>
+                        <outlet property="textField" destination="OH1-xf-bal" id="lQN-ti-wxd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9H1-VD-mfb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-399" y="647"/>
+            <point key="canvasLocation" x="-399.19999999999999" y="646.32683658170924"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="IGa-tF-JwN">
@@ -261,7 +273,11 @@
                                 <action selector="onCancelButton:" destination="gcK-j5-T6s" id="pvR-Gj-tUw"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="jbZ-la-ihk"/>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="jbZ-la-ihk">
+                            <connections>
+                                <action selector="onDoneButton:" destination="gcK-j5-T6s" id="2x4-RI-P4V"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="439-HN-1MQ" userLabel="First Responder" sceneMemberID="firstResponder"/>

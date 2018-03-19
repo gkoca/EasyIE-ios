@@ -22,18 +22,18 @@ class ItemDB {
 	
 	static func insert(_ entry: Item) {
 		RealmHelper.helper.insert(entry)
-		TagDB.insert(entry.tags.map({ $0 }))
+//		TagDB.insert(entry.tags.map({ $0 }))
 	}
 	
 	static func insert(_ entries: [Item]) {
-		var tags = [Tag]()//items.map({ $0.tags })
-		entries.forEach({
-			if $0.tags.count > 0 {
-				tags.append(contentsOf: $0.tags)
-			}
-		})
+//		var tags = [Tag]()//items.map({ $0.tags })
+//		entries.forEach({
+//			if $0.tags.count > 0 {
+//				tags.append(contentsOf: $0.tags)
+//			}
+//		})
 		RealmHelper.helper.insert(entries)
-		TagDB.insert(tags)
+//		TagDB.insert(tags)
 	}
 	
 	static func delete(id: String) {
