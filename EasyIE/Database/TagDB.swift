@@ -20,13 +20,10 @@ class TagDB {
 		return tags
 	}
 	
-	static func getAllSTags() -> [STag] {
-		let tags = Array(RealmHelper.helper.getObjects(type: Tag.self)) as? [Tag] ?? [Tag]()
-		return tags.map({ return STag(managedObject: $0) })
-	}
-	
 	static func insert(_ tag: Tag) {
-		RealmHelper.helper.insert(tag)
+		RealmHelper.helper.insert(tag) {
+			print("tag added")
+		}
 	}
 	
 	static func insert(_ tags: [Tag]) {

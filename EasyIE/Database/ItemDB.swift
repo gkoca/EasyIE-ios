@@ -16,32 +16,30 @@ class ItemDB {
 	}
 	
 	static func getAll() -> [Item] {
-		let entries = Array(RealmHelper.helper.getObjects(type: Item.self)) as? [Item] ?? [Item]()
-		return entries
+		let items = Array(RealmHelper.helper.getObjects(type: Item.self)) as? [Item] ?? [Item]()
+		return items
 	}
 	
-	static func insert(_ entry: Item) {
-		RealmHelper.helper.insert(entry)
-//		TagDB.insert(entry.tags.map({ $0 }))
+	static func insert(_ item: Item, success: @escaping (() -> Void)) {
+		RealmHelper.helper.insert(item) {
+			print("item added")
+			success()
+		}
 	}
 	
-	static func insert(_ entries: [Item]) {
-//		var tags = [Tag]()//items.map({ $0.tags })
-//		entries.forEach({
-//			if $0.tags.count > 0 {
-//				tags.append(contentsOf: $0.tags)
-//			}
-//		})
-		RealmHelper.helper.insert(entries)
-//		TagDB.insert(tags)
+	//TODO: callback for multiple insert
+	static func insert(_ items: [Item]) {
+		RealmHelper.helper.insert(items)
 	}
 	
+	//TODO: callback for delete
 	static func delete(id: String) {
 		if let entry = getBy(id: id){
 			RealmHelper.helper.delete(entry)
 		}
 	}
 	
+	//TODO: callback for clear
 	static func clear() {
 		RealmHelper.helper.deleteAll(RealmHelper.helper.getObjects(type: Item.self))
 	}

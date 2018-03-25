@@ -23,13 +23,6 @@ class RealmHelper {
 		let fileURL = documentDirectory.appendingPathComponent("easyie.realm")
 		print("Create realm configuration with file url \(fileURL)")
 		return Realm.Configuration(fileURL: fileURL, readOnly: false, schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
-		
-//		var config2 = Realm.Configuration(
-//			fileUrl: Utilities.getDocumentsDirectory().stringByAppendingPathComponent("easyie.realm"),
-//			readOnly: false)
-		
-//		var config = Realm.Configuration()
-//		config.deleteRealmIfMigrationNeeded = true
 	}
 	
 	func update(block:(()->())) {
@@ -38,9 +31,18 @@ class RealmHelper {
 		}
 	}
 	
-	func insert(_ object: Object) {
+	func insert(_ object: Object, success: @escaping (() -> Void)) {
+		let group = DispatchGroup()
+		group.enter()
+		let observerToken = realm.observe { (reamNotification, realm) in
+			success()
+			group.leave()
+		}
 		update {
 			realm.add(object, update: true)
+		}
+		group.notify(queue: .main) {
+			observerToken.invalidate()
 		}
 	}
 	
@@ -66,6 +68,7 @@ class RealmHelper {
 		return realm.object(ofType: type, forPrimaryKey: primaryKey)
 	}
 	
+	//TODO: investigate
 	func getObject(by primaryKey: UUID, type: Object.Type) -> Object? {
 		return realm.object(ofType: type, forPrimaryKey: primaryKey)
 	}

@@ -12,7 +12,9 @@ import SearchTextField
 
 class AddItemViewController: FormViewController, UITextFieldDelegate {
 	
-	let tags = TagDB.getAllSTags()
+	@IBOutlet var tagViewModel: TagViewModel!
+	var parentVC: UIViewController?
+	
 	let daysOfWeek = ["Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 	let daysOfMonth = ["1st","2nd","3rd","4th","5th","6th","7th","8th","9th","10th",
 					   "11st","12nd","13rd", "14th","15th","16th","17th","18th","19th","20th",
@@ -34,7 +36,7 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
+		tagViewModel.loadTags()
 		form +++ Section()
 			<<< SegmentedRow<String>("itemType") {
 				$0.title = ""
@@ -80,7 +82,7 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 					let dateCycleType: DateCycleType = DateCycleType(rawValue: indexOfCycleType + 1)!
 					switch dateCycleType {
 					case .undefined:
-						assertionFailure("selected undefined dateCycleType")
+						fatalError("selected undefined dateCycleType")
 						break
 					case .firstWorkDayOfMonth:
 						print("firstWorkDayOfMonth")
@@ -158,95 +160,34 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 					}
 				})
 			
-//			+++ MultivaluedSection(multivaluedOptions: [.Reorder, .Insert, .Delete]) {
-//				$0.tag = "tagFields"
-//				$0.addButtonProvider = { section in
-//					return ButtonRow() {
-//						$0.title = "Add New Tag"
-//						}.cellUpdate { cell, row in
-//							cell.textLabel?.textAlignment = .left
-//					}
-//				}
-//				$0.multivaluedRowToInsertAt = { index in
-//					return SuggestionAccessoryRow<STag>("SuggestionAccessoryRow_\(index)") {
-//						$0.filterFunction = { [unowned self] text in
-//							let filteredValue = self.tags.filter({
-//								$0.value
-//									.lowercased()
-//									.folding(options: .diacriticInsensitive, locale: Locale.current)
-//									.contains(text
-//										.lowercased()
-//										.folding(options: .diacriticInsensitive, locale: Locale.current))
-//							})
-//							if filteredValue.count > 0 {
-//								return filteredValue
-//							} else {
-//								if text.count > 0 {
-//									return [STag(value: text)]
-//								} else {
-//									return []
-//								}
-//							}
-//						}
-//						$0.onChange({ (suggestionAccessoryRow) in
-//							print(suggestionAccessoryRow)
-//						})
-//						$0.placeholder = "Tag Name"
-//						}.onChange({ (suggestionAccessoryRow) in
-//							print(suggestionAccessoryRow)
-//							if let tag = suggestionAccessoryRow.value {
-//								if tag.value.isEmpty {
-//									print("tag isEmpty")
-//								} else {
-//									print("tag isNotEmpty")
-//								}
-//							}
-//						})
-//				}
-//
-//		}
-		
-		+++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete],
-						   header: "Multivalued TextField",
-						   footer: ".Insert multivaluedOption adds the 'Add New Tag' button row as last cell.") {
-							$0.tag = "textfields"
-							$0.addButtonProvider = { section in
-								return ButtonRow(){
-									$0.title = "Add New Tag"
-									}.cellUpdate { cell, row in
-										cell.textLabel?.textAlignment = .left
-								}
-							}
-//							$0.multivaluedRowToInsertAt = { index in
-//								return TextRow() {
-//									$0.placeholder = "Tag Name"
-//									}.onChange({ (nameRow) in
-//										print(nameRow.value ?? "no value")
-//									}).onCellSelection({ (cell, nameRow) in
-//										print("Selected : \(nameRow.value ?? "no value")")
-//									})
-//							}
-							
-							$0.multivaluedRowToInsertAt = { index in
-								return AutocompleteTextRow() {
-									$0.tag = "search_\(index)"
-									$0.placeholder = "Add New Tag"
-//									$0.keyboardReturnType
-									$0.filterStrings = self.tagsStrings
-									$0.inlineMode = true
-									$0.cell.textField.tag = index + 900
-									
-									}
-							}
+			
+			+++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete]) {
+				$0.tag = "tagFields"
+				$0.addButtonProvider = { section in
+					return ButtonRow(){
+						$0.title = "Add New Tag"
+						}.cellUpdate { cell, row in
+							cell.textLabel?.textAlignment = .left
+					}
+				}
+				
+				$0.multivaluedRowToInsertAt = { index in
+					return AutocompleteTextRow() {
+						$0.placeholder = "Tag Name"
+						$0.keyboardReturnType = KeyboardReturnTypeConfiguration(nextKeyboardType: .next, defaultKeyboardType: .done)
+						$0.filterStrings = self.tagViewModel.getAllTagsAsStringArray()
+						$0.inlineMode = true
+						$0.cell.textField.tag = index + 900
+					}
+				}
 		}
-		
 		rowKeyboardSpacing = 50.0
-		
 	}
 	
 	@IBAction func onCancelButton(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)
 	}
+	
 	@IBAction func onDoneButton(_ sender: Any) {
 		validate(form)
 	}
@@ -259,39 +200,33 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 			} else {
 				item.amount = -itemAmount
 			}
-			
 			if itemIsFixed {
+				// TODO: fixed items
 				item.cycleType = itemCycleType.rawValue
 				item.cycleValue = itemCycleValue
-				
 				
 				assertionFailure("not implemented")
 			} else {
 				item.date = itemDate
 			}
-			
 			let values = form.values()
 			itemTags.removeAll()
-			if let stags = values["tagFields"] as? [STag], stags.count > 0 {
-				
-				stags.forEach({ itemTags.append($0.managedObject()) })
-				
+			if let tags = values["tagFields"] as? [String] {
+				tags.forEach({ itemTags.append(Tag(value: $0)) })
 				self.item.tags.append(objectsIn: itemTags)
-				
-				print(itemTags)
-				
 			} else {
+				// TODO: alert when there is no tag
 				assertionFailure("need at least one tag")
 			}
-			ItemDB.insert(item)
+			if let parent = self.parentVC as? ItemViewController {
+				parent.itemViewModel.addItem(item, success: {
+					self.dismiss(animated: true, completion: nil)
+				})
+			}
 		} else {
+			// TODO: alert when amount is ZERO
 			assertionFailure("item.amount cannot be zero")
 		}
-	}
-	
-	
-	let tagsStrings = TagDB.getAllTags().flatMap { (tag) -> String? in
-		tag.value
 	}
 	
 }

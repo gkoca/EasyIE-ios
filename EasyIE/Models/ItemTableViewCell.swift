@@ -13,6 +13,6 @@ class ItemTableViewCell: UITableViewCell {
 	@IBOutlet weak var tagsLabel: UILabel!
 	@IBOutlet weak var dateLabel: UILabel!
 	@IBOutlet weak var amountLabel: UILabel!
-	
 	@IBOutlet weak var detailLabel: UILabel!
+	
 }

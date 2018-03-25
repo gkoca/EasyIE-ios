@@ -11,24 +11,41 @@ import UIKit
 class ItemViewController: UIViewController {
 
 	@IBOutlet weak var tableView: UITableView!
-	@IBOutlet var entryViewModel: ItemViewModel!
+	@IBOutlet var itemViewModel: ItemViewModel!
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		// Do any additional setup after loading the view, typically from a nib.
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 90.0
-//		tableView.transform = CGAffineTransform(rotationAngle: -CGFloat.pi)
-		
-		entryViewModel.loadEntries()
+		itemViewModel.loadItems()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		let indexPath = IndexPath(item: entryViewModel.getNumberOfEntriesToDisplay() - 1, section: 0)
-//		tableView.scrollToRow(at: indexPath, at: .bottom, animated: false)
+		
 	}
 	
+	override func viewDidAppear(_ animated: Bool) {
+		super.viewDidAppear(animated)
+		if itemViewModel.getNumberOfItemsToDisplay() > 0 && itemViewModel.itemViewNeedsUpdate {
+			tableView.reloadData()
+			let indexPath = IndexPath(item: itemViewModel.getNumberOfItemsToDisplay() - 1, section: 0)
+			
+			Dispatch.main {
+				self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+			}
+			itemViewModel.itemViewNeedsUpdate = false
+		}
+	}
+	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+		if segue.identifier == "AddItemVCSegue" {
+			if let addItemNavVC = segue.destination as? UINavigationController {
+				if let addItemVC = addItemNavVC.viewControllers.first as? AddItemViewController {
+					addItemVC.parentVC = self
+				}
+			}
+		}
+	}
 	override func didReceiveMemoryWarning() {
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
@@ -38,26 +55,25 @@ class ItemViewController: UIViewController {
 
 extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return entryViewModel.getNumberOfEntriesToDisplay()
+		return itemViewModel.getNumberOfItemsToDisplay()
 	}
 	
 	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-		let amount = entryViewModel.getEntryAmountAtIndex(indexPath.row)
-		
+		let amount = itemViewModel.getItemAmountAtIndex(indexPath.row)
 		
 		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
 		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
 		var tags = ""
-		for tag in entryViewModel.getEntryTagsAtIndex(indexPath.row) {
+		for tag in itemViewModel.getItemTagsAtIndex(indexPath.row) {
 			tags += tag.value
 			tags += " | "
 		}
 		tags.removeLast(3)
 		cell.tagsLabel.text = tags
-		cell.dateLabel.text = entryViewModel.getEntryDateStringAtIndex(indexPath.row)
-		if entryViewModel.getEntryIsFixedAtIndex(indexPath.row) {
-			switch entryViewModel.getEntryCycleTypeAtIndex(indexPath.row) {
+		cell.dateLabel.text = itemViewModel.getItemDateStringAtIndex(indexPath.row)
+		if itemViewModel.getItemIsFixedAtIndex(indexPath.row) {
+			switch itemViewModel.getItemCycleTypeAtIndex(indexPath.row) {
 			case .undefined:
 				fatalError("wrong data, inspect it.")
 				break

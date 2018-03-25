@@ -40,7 +40,7 @@ class Item: Object, Codable {
 	@objc dynamic var date: Date = Date()
 	
 	var tags = List<Tag>()
-
+	
 	enum CodingKeys: String, CodingKey {
 		case id = "id"
 		case amount = "amount"
@@ -51,7 +51,13 @@ class Item: Object, Codable {
 		case tags = "tags"
 	}
 	
-	init(id: String = UUID().uuidString, amount: Double = 0.0, date: Date = Date(), isFixed: Bool = false, cycleType: Int = DateCycleType.undefined.rawValue, cycleValue: Int = 0, tags: List<Tag> = List<Tag>()) {
+	init(id: String = UUID().uuidString,
+		 amount: Double = 0.0,
+		 date: Date = Date(),
+		 isFixed: Bool = false,
+		 cycleType: Int = DateCycleType.undefined.rawValue,
+		 cycleValue: Int = 0,
+		 tags: List<Tag> = List<Tag>()) {
 		super.init()
 		self.id = id
 		self.amount = amount
@@ -108,17 +114,14 @@ class Item: Object, Codable {
 	override class func primaryKey() -> String? {
 		return "id"
 	}
-//	override static func ignoredProperties() -> [String] {
-//		return ["isFixed", "cycleType"]
-//	}
+	//	override static func ignoredProperties() -> [String] {
+	//		return ["isFixed", "cycleType"]
+	//	}
 }
 
-
-
-
 // MARK: Convenience initializers
-
 extension Item {
+	
 	convenience init(data: Data) throws {
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .millisecondsSince1970
@@ -144,10 +147,11 @@ extension Item {
 	func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
 		return String(data: try self.jsonData(), encoding: encoding)
 	}
+	
 }
 
-
 extension Array where Element == Items.Element {
+	
 	init(data: Data) throws {
 		self = try JSONDecoder().decode(Items.self, from: data)
 	}
@@ -170,5 +174,6 @@ extension Array where Element == Items.Element {
 	func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
 		return String(data: try self.jsonData(), encoding: encoding)
 	}
+	
 }
 

@@ -91,7 +91,6 @@ extension Array {
 }
 
 // MARK: Persistable
-// usage:
 public protocol Persistable {
 	associatedtype ManagedObject: RealmSwift.Object
 	init(managedObject: ManagedObject)

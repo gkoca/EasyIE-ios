@@ -43,6 +43,7 @@ class Tag: Object, Codable {
 }
 
 extension Tag {
+	
 	convenience init(data: Data) throws {
 		let me = try JSONDecoder().decode(Tag.self, from: data)
 		self.init(value: me.value)
@@ -66,5 +67,6 @@ extension Tag {
 	func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
 		return String(data: try self.jsonData(), encoding: encoding)
 	}
+	
 }
 
