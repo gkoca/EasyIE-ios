@@ -105,6 +105,8 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 			imageView?.addObserver(self, forKeyPath: "image", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
 		}
 		textField.addTarget(self, action: #selector(_AutocompleteFieldCell.textFieldDidChange(_:)), for: .editingChanged)
+//		textField.addTarget(self, action: #selector(_AutocompleteFieldCell.textFieldDidEndEditing(_:)), for: .editingDidEnd)
+		textField.addTarget(self, action: #selector(_AutocompleteFieldCell.textFieldShouldReturn(_:)), for: .editingDidEndOnExit)
 		
 	}
 	
@@ -278,6 +280,9 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 	// MARK: TextFieldDelegate
 	
 	open func textFieldDidBeginEditing(_ textField: UITextField) {
+//		if let searchTextField = textField as? SearchTextField {
+//			searchTextField.textFieldDidBeginEditing()
+//		}
 		formViewController()?.beginEditing(of: self)
 		formViewController()?.textInputDidBeginEditing(textField, cell: self)
 		if let fieldRowConformance = row as? FormatterConformance, let _ = fieldRowConformance.formatter, fieldRowConformance.useFormatterOnDidBeginEditing ?? fieldRowConformance.useFormatterDuringInput {
@@ -285,20 +290,37 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 		} else {
 			textField.text = displayValue(useFormatter: false)
 		}
+		print("textFieldDidBeginEditing \(textField.text ?? "no value")")
 	}
 	
 	open func textFieldDidEndEditing(_ textField: UITextField) {
+		print("textFieldDidEndEditing 0 \(textField.text ?? "no value")")
+		if let r : RowOf<String> = self.row as? RowOf<String> {
+			r.value = textField.text
+		}
 		formViewController()?.endEditing(of: self)
+		print("textFieldDidEndEditing 1 \(textField.text ?? "no value")")
 		formViewController()?.textInputDidEndEditing(textField, cell: self)
+		print("textFieldDidEndEditing 2 \(textField.text ?? "no value")")
 		textFieldDidChange(textField)
+		print("textFieldDidEndEditing 3 \(textField.text ?? "no value")")
 		textField.text = displayValue(useFormatter: (row as? FormatterConformance)?.formatter != nil)
+		print("textFieldDidEndEditing 4 \(textField.text ?? "no value")")
 	}
 	
 	open func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+		if let searchTextField = textField as? SearchTextField {
+			searchTextField.textFieldDidEndEditingOnExit()
+		}
+		print("textFieldShouldReturn \(textField.text ?? "no value")")
 		return formViewController()?.textInputShouldReturn(textField, cell: self) ?? true
 	}
 	
 	open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//		if let searchTextField = textField as? SearchTextField {
+//						searchTextField.textFieldDidChange()
+//		}
+		print("shouldChangeCharactersIn \(textField.text ?? "no value")")
 		return formViewController()?.textInput(textField, shouldChangeCharactersInRange:range, replacementString:string, cell: self) ?? true
 	}
 	

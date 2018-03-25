@@ -210,17 +210,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-xf-bal">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" placeholder="this is placeholder text" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OH1-xf-bal" customClass="SearchTextField" customModule="SearchTextField">
                                 <rect key="frame" x="50" y="132" width="275" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="G0x-O1-Pu3"/>
                                 </constraints>
-                                <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="kcZ-tT-2RA" id="O1a-sp-CCD"/>
-                                </connections>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -234,7 +230,7 @@
                     <tabBarItem key="tabBarItem" title="Item 1" id="e73-qq-K48"/>
                     <navigationItem key="navigationItem" title="Savings &amp; Loans" id="Qx3-GQ-EYR"/>
                     <connections>
-                        <outlet property="textField" destination="OH1-xf-bal" id="lQN-ti-wxd"/>
+                        <outlet property="textField" destination="OH1-xf-bal" id="Fxf-kd-AQv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9H1-VD-mfb" userLabel="First Responder" sceneMemberID="firstResponder"/>

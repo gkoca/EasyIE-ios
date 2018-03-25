@@ -10,7 +10,7 @@ import Eureka
 import SwifterSwift
 import SearchTextField
 
-class AddItemViewController: FormViewController {
+class AddItemViewController: FormViewController, UITextFieldDelegate {
 	
 	let tags = TagDB.getAllSTags()
 	let daysOfWeek = ["Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
@@ -229,9 +229,13 @@ class AddItemViewController: FormViewController {
 							
 							$0.multivaluedRowToInsertAt = { index in
 								return AutocompleteTextRow() {
-									$0.tag = "search"
+									$0.tag = "search_\(index)"
+									$0.placeholder = "Add New Tag"
+//									$0.keyboardReturnType
 									$0.filterStrings = self.tagsStrings
 									$0.inlineMode = true
+									$0.cell.textField.tag = index + 900
+									
 									}
 							}
 		}
@@ -239,11 +243,6 @@ class AddItemViewController: FormViewController {
 		rowKeyboardSpacing = 50.0
 		
 	}
-	
-	
-	
-	
-	
 	
 	@IBAction func onCancelButton(_ sender: Any) {
 		self.dismiss(animated: true, completion: nil)

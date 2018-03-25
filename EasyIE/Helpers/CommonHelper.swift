@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 class Utilities {
 	static func getDocumentsDirectory() -> URL {
@@ -88,3 +89,13 @@ extension Array {
 		return filter{uniqueKeys.insert("\(keyValue($0))").inserted}
 	}
 }
+
+// MARK: Persistable
+// usage:
+public protocol Persistable {
+	associatedtype ManagedObject: RealmSwift.Object
+	init(managedObject: ManagedObject)
+	func managedObject() -> ManagedObject
+}
+
+

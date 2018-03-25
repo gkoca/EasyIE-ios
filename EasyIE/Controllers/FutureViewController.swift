@@ -8,10 +8,11 @@
 
 import Foundation
 import UIKit
+import SearchTextField
 
-class FutureViewController: UIViewController, UITextFieldDelegate {
+class FutureViewController: UIViewController {
 	
-	@IBOutlet weak var textField: UITextField!
+	@IBOutlet weak var textField: SearchTextField!
 	
 	let tagsStrings = TagDB.getAllTags().flatMap { (tag) -> String? in
 		tag.value
@@ -23,8 +24,9 @@ class FutureViewController: UIViewController, UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
+		textField.inlineMode = true
 		
-		
+		textField.filterStrings(tagsStrings)
 		
 	}
 	

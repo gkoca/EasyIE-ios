@@ -6,7 +6,6 @@
 //  Copyright © 2018 easy-ie. All rights reserved.
 //
 
-import Foundation
 import Realm
 import RealmSwift
 
@@ -114,81 +113,8 @@ class Item: Object, Codable {
 //	}
 }
 
-class Tag: Object, Codable {
-	
-	@objc dynamic var value: String = ""
-	let entries = LinkingObjects(fromType: Item.self, property: "tags")
-	
-	enum CodingKeys: String, CodingKey {
-		case value = "value"
-	}
-	
-	init(value: String) {
-		super.init()
-		self.value = value
-	}
-	
-	required init() {
-		super.init()
-	}
-	
-	required init(realm: RLMRealm, schema: RLMObjectSchema) {
-		super.init(realm: realm, schema: schema)
-	}
-	
-	required init(value: Any, schema: RLMSchema) {
-		super.init(value: value, schema: schema)
-	}
-	
-	override class func primaryKey() -> String? {
-		return "value"
-	}
-	
-}
 
-struct STag {
-	var value: String
-	
-	init(value: String) {
-		self.value = value
-	}
-}
 
-public protocol Persistable {
-	associatedtype ManagedObject: RealmSwift.Object
-	init(managedObject: ManagedObject)
-	func managedObject() -> ManagedObject
-}
-
-extension STag: Persistable {
-	
-	public init(managedObject: Tag) {
-		value = managedObject.value
-	}
-	
-	public func managedObject() -> Tag {
-		let tag = Tag(value: value)
-		return tag
-	}
-}
-
-extension STag: SuggestionValue {
-	
-	static func ==(lhs: STag, rhs: STag) -> Bool {
-		return lhs.value == rhs.value
-	}
-	
-	//TODO: examine
-	// Required by `InputTypeInitiable`, can always return nil in the SuggestionValue context.
-	init?(string stringValue: String) {
-		return nil
-	}
-	
-	// Text that is displayed as a completion suggestion.
-	var suggestionString: String {
-		return "\(value)"
-	}
-}
 
 // MARK: Convenience initializers
 
@@ -220,31 +146,6 @@ extension Item {
 	}
 }
 
-extension Tag {
-	convenience init(data: Data) throws {
-		let me = try JSONDecoder().decode(Tag.self, from: data)
-		self.init(value: me.value)
-	}
-	
-	convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
-		guard let data = json.data(using: encoding) else {
-			throw NSError(domain: "JSONDecoding", code: 0, userInfo: nil)
-		}
-		try self.init(data: data)
-	}
-	
-	convenience init(fromURL url: URL) throws {
-		try self.init(data: try Data(contentsOf: url))
-	}
-	
-	func jsonData() throws -> Data {
-		return try JSONEncoder().encode(self)
-	}
-	
-	func jsonString(encoding: String.Encoding = .utf8) throws -> String? {
-		return String(data: try self.jsonData(), encoding: encoding)
-	}
-}
 
 extension Array where Element == Items.Element {
 	init(data: Data) throws {
