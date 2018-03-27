@@ -55,7 +55,7 @@
 		E8710923206A37BC00E6EBF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8710925206A37BC00E6EBF3 /* ItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDB.swift; sourceTree = "<group>"; };
 		E8710926206A37BC00E6EBF3 /* TagDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDB.swift; sourceTree = "<group>"; };
-		E871093F206A3AC900E6EBF3 /* EasyIE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = EasyIE.app; path = "/Users/agk/Desktop/easyie-ios/build/Debug-iphoneos/EasyIE.app"; sourceTree = "<absolute>"; };
+		E8710941206A3C2F00E6EBF3 /* EasyIE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = EasyIE.app; path = "/Users/agk/Desktop/easyie-ios/build/Debug-iphoneos/EasyIE.app"; sourceTree = "<absolute>"; };
 		EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyIE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -209,7 +209,7 @@
 			);
 			name = EasyIE;
 			productName = EasyIE;
-			productReference = E871093F206A3AC900E6EBF3 /* EasyIE.app */;
+			productReference = E8710941206A3C2F00E6EBF3 /* EasyIE.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
