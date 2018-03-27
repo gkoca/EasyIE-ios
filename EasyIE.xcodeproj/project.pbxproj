@@ -25,7 +25,6 @@
 		E8710936206A37BC00E6EBF3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E8710920206A37BC00E6EBF3 /* Assets.xcassets */; };
 		E8710937206A37BC00E6EBF3 /* MOCK_DATA_03.json in Resources */ = {isa = PBXBuildFile; fileRef = E8710921206A37BC00E6EBF3 /* MOCK_DATA_03.json */; };
 		E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */ = {isa = PBXBuildFile; fileRef = E8710922206A37BC00E6EBF3 /* MOCK_DATA_20.json */; };
-		E8710939206A37BC00E6EBF3 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E8710923206A37BC00E6EBF3 /* Info.plist */; };
 		E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710925206A37BC00E6EBF3 /* ItemDB.swift */; };
 		E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710926206A37BC00E6EBF3 /* TagDB.swift */; };
 		FD917FC3B2597B9ABC146874 /* Pods_EasyIE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */; };
@@ -252,7 +251,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8710928206A37BC00E6EBF3 /* Main.storyboard in Resources */,
-				E8710939206A37BC00E6EBF3 /* Info.plist in Resources */,
 				E8710927206A37BC00E6EBF3 /* LaunchScreen.storyboard in Resources */,
 				E8710937206A37BC00E6EBF3 /* MOCK_DATA_03.json in Resources */,
 				E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */,
