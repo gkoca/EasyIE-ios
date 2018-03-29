@@ -15,6 +15,17 @@ class Utilities {
 		let documentsDirectory = paths[0]
 		return documentsDirectory
 	}
+	
+	static func findTopController() -> UIViewController {
+		if var topController = UIApplication.shared.keyWindow?.rootViewController {
+			while let presentedViewController = topController.presentedViewController {
+				topController = presentedViewController
+			}
+			return topController
+		} else {
+			return (UIApplication.shared.keyWindow?.rootViewController)!
+		}
+	}
 }
 
 fileprivate struct DeviceType {

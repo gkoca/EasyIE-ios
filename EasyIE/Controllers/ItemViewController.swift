@@ -69,7 +69,9 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 			tags += tag.value
 			tags += " | "
 		}
-		tags.removeLast(3)
+		if tags.count > 3 {
+			tags.removeLast(3)
+		}
 		cell.tagsLabel.text = tags
 		cell.dateLabel.text = itemViewModel.getItemDateStringAtIndex(indexPath.row)
 		if itemViewModel.getItemIsFixedAtIndex(indexPath.row) {
@@ -91,6 +93,9 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 				break
 			case .fixedDayOfMonth:
 				cell.detailLabel.text = "Fixed : Day of month"
+//				 DaysOFMonth(rawValue: itemViewModel.getItemCycleValueAtIndex(indexPath.row)) 
+				
+				
 				break
 			case .fixedDayOfWeek:
 				cell.detailLabel.text = "Fixed : Day of week"

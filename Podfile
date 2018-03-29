@@ -7,6 +7,5 @@ inhibit_all_warnings!
 pod 'RealmSwift'
 pod 'Eureka'
 pod 'SwifterSwift/SwiftStdlib'
-pod 'SearchTextField'
 
 end

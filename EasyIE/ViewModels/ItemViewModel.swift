@@ -62,6 +62,10 @@ class ItemViewModel: NSObject {
 		return DateCycleType(rawValue: items[index].cycleType)!
 	}
 	
+	func getItemCycleValueAtIndex(_ index: Int) -> Int {
+		return items[index].cycleValue
+	}
+	
 	func addItem(_ item:Item, success: @escaping (() -> Void)) {
 		ItemDB.insert(item) {
 			self.loadItems()

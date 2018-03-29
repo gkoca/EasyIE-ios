@@ -48,43 +48,43 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="207.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="07/03/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COO-xL-x1o">
-                                                    <rect key="frame" x="15" y="177" width="345" height="20"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 3210.00 ₺" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFv-Q0-wUP">
+                                                    <rect key="frame" x="15" y="11" width="345" height="28"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="3Jg-8I-TF8"/>
+                                                        <constraint firstAttribute="height" constant="28" id="yiw-w8-bJY"/>
                                                     </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amazon sdfsdfsd sdf sdf sdf f dfsdf df sdf sdf df sdf  sdf sdf sdfd fd f sdf sdf sdf " lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MI0-6f-Fne">
-                                                    <rect key="frame" x="15" y="43" width="345" height="108"/>
+                                                    <rect key="frame" x="15" y="39" width="345" height="116"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 3210.00 ₺" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bFv-Q0-wUP">
-                                                    <rect key="frame" x="15" y="11" width="345" height="24"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="24" id="yiw-w8-bJY"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vSe-Uj-VUz">
                                                     <rect key="frame" x="15" y="155" width="345" height="18"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="20" id="b38-DY-R0w"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="b38-DY-R0w"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="07/03/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="COO-xL-x1o">
+                                                    <rect key="frame" x="15" y="173" width="345" height="24"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="24" id="3Jg-8I-TF8"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="COO-xL-x1o" firstAttribute="top" secondItem="vSe-Uj-VUz" secondAttribute="bottom" constant="4" id="2nL-Wd-OPH"/>
                                                 <constraint firstItem="bFv-Q0-wUP" firstAttribute="trailing" secondItem="XaC-3e-s7z" secondAttribute="trailingMargin" id="Aex-zH-L4U"/>
                                                 <constraint firstItem="bFv-Q0-wUP" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="Fgu-AC-esk"/>
-                                                <constraint firstItem="vSe-Uj-VUz" firstAttribute="top" secondItem="MI0-6f-Fne" secondAttribute="bottom" constant="4" id="Qfu-46-S9Q"/>
+                                                <constraint firstItem="COO-xL-x1o" firstAttribute="top" secondItem="vSe-Uj-VUz" secondAttribute="bottom" id="MuF-lI-okL"/>
+                                                <constraint firstItem="vSe-Uj-VUz" firstAttribute="top" secondItem="MI0-6f-Fne" secondAttribute="bottom" id="Qfu-46-S9Q"/>
                                                 <constraint firstItem="COO-xL-x1o" firstAttribute="trailing" secondItem="XaC-3e-s7z" secondAttribute="trailingMargin" id="T1r-wX-Kd8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vSe-Uj-VUz" secondAttribute="trailing" id="Wep-jm-cq5"/>
                                                 <constraint firstItem="vSe-Uj-VUz" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="Zq0-9E-8Rq"/>
@@ -92,7 +92,7 @@
                                                 <constraint firstItem="COO-xL-x1o" firstAttribute="bottom" secondItem="XaC-3e-s7z" secondAttribute="bottomMargin" id="bnk-6i-gOV"/>
                                                 <constraint firstItem="bFv-Q0-wUP" firstAttribute="top" secondItem="XaC-3e-s7z" secondAttribute="topMargin" id="cwm-aa-0bG"/>
                                                 <constraint firstItem="MI0-6f-Fne" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="hxD-Ob-QSm"/>
-                                                <constraint firstItem="MI0-6f-Fne" firstAttribute="top" secondItem="bFv-Q0-wUP" secondAttribute="bottom" constant="8" id="jpb-Yt-Kd8"/>
+                                                <constraint firstItem="MI0-6f-Fne" firstAttribute="top" secondItem="bFv-Q0-wUP" secondAttribute="bottom" id="jpb-Yt-Kd8"/>
                                                 <constraint firstItem="COO-xL-x1o" firstAttribute="leading" secondItem="XaC-3e-s7z" secondAttribute="leadingMargin" id="kdt-8R-kU4"/>
                                             </constraints>
                                         </tableViewCellContentView>

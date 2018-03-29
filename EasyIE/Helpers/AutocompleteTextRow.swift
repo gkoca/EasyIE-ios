@@ -8,7 +8,6 @@
 
 import UIKit
 import Eureka
-import SearchTextField
 
 public protocol AutocompleteFieldRowConformance : FormatterConformance {
 	var titlePercentage : CGFloat? { get set }
@@ -105,6 +104,7 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 			imageView?.addObserver(self, forKeyPath: "image", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
 		}
 		textField.addTarget(self, action: #selector(_AutocompleteFieldCell.textFieldDidChange(_:)), for: .editingChanged)
+		textField.addTarget(self, action: #selector(_AutocompleteFieldCell.textFieldDidEndEditing(_:)), for: .editingDidEnd)
 		textField.addTarget(self, action: #selector(_AutocompleteFieldCell.textFieldShouldReturn(_:)), for: .editingDidEndOnExit)
 		
 	}
@@ -286,12 +286,21 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 		} else {
 			textField.text = displayValue(useFormatter: false)
 		}
+//		self.textField.addSubview(self.textField.placeholderLabel!)
 	}
 	
 	open func textFieldDidEndEditing(_ textField: UITextField) {
 		if let r : RowOf<String> = self.row as? RowOf<String> {
 			r.value = textField.text
+			
+			for subView in textField.subviews {
+				if let label = subView as? UILabel, label.text != textField.text {
+					
+				}
+			}
+			self.textField.isPlaceHolderLabelHidden = true
 		}
+		
 		formViewController()?.endEditing(of: self)
 		formViewController()?.textInputDidEndEditing(textField, cell: self)
 		textFieldDidChange(textField)
