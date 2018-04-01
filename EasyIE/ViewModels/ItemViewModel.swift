@@ -10,7 +10,30 @@ import Foundation
 
 class ItemViewModel: NSObject {
 	
-	private var items = Items()
+	private var items = Items() {
+		didSet {
+			var month = 0, year = 0
+			var sectionKey = ""
+			var monthlyItems = Items()
+			for item in items {
+				if month == item.date.month && year == item.date.year {
+					monthlyItems.append(item)
+					keyedItems[sectionKey] = monthlyItems
+				} else {
+					monthlyItems = Items()
+					month = item.date.month
+					year = item.date.year
+					monthlyItems.append(item)
+					let formatter = DateFormatter()
+					formatter.dateFormat = "MMMM yyyy"
+					sectionKey = formatter.string(from: item.date)
+					keyedItems[sectionKey] = monthlyItems
+				}
+			}
+			print(keyedItems)
+		}
+	}
+	private var keyedItems = [String:Items]()
 	
 	var itemViewNeedsUpdate = false
 	
@@ -35,6 +58,17 @@ class ItemViewModel: NSObject {
 		}
 		itemViewNeedsUpdate = true
 	}
+	
+	func addItem(_ item:Item, success: @escaping (() -> Void)) {
+		ItemDB.insert(item) {
+			self.loadItems()
+			success()
+		}
+	}
+}
+
+//MARK: Array
+extension ItemViewModel {
 	
 	func getNumberOfItemsToDisplay() -> Int {
 		return items.count
@@ -66,10 +100,65 @@ class ItemViewModel: NSObject {
 		return items[index].cycleValue
 	}
 	
-	func addItem(_ item:Item, success: @escaping (() -> Void)) {
-		ItemDB.insert(item) {
-			self.loadItems()
-			success()
+}
+
+//MARK: Dictionary
+extension ItemViewModel {
+	
+	func getKeysOfKeyedItems() -> [String] {
+		return keyedItems.map({ $0.key })
+	}
+	
+	func getNumberOfSectionToDisplay() -> Int {
+		return keyedItems.count
+	}
+	
+	func getNumberOfItemsInSection(section: Int) -> Int {
+		return getItemsInSection(section: section).count
+	}
+	
+	func getNumberOfItemsInSection(section: String) -> Int {
+		return getItemsInSection(section: section).count
+	}
+	
+	func getItemsInSection(section: Int) -> Items {
+		guard let items = keyedItems[getKeysOfKeyedItems()[section]] else {
+			return Items()
 		}
+		return items
+	}
+	
+	func getItemsInSection(section: String) -> Items {
+		guard let items = keyedItems[section] else {
+			return Items()
+		}
+		return items
+	}
+	
+	func getItemTagsAtSectionAndIndex(section: Int, index: Int) -> [Tag] {
+//		return items[index].tags.map({ $0 })
+		return keyedItems[getKeysOfKeyedItems()[section]]![index].tags.map({ $0 })
+	}
+	
+	func getItemAmountAtSectionAndIndex(section: Int, index: Int) -> Double {
+		return items[index].amount
+	}
+	
+	func getItemDateStringAtSectionAndIndex(section: Int, index: Int) -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "dd MMMM yyyy"
+		return dateFormatter.string(from: keyedItems[getKeysOfKeyedItems()[section]]![index].date)
+	}
+	
+	func getItemIsFixedAtSectionAndIndex(section: Int, index: Int) -> Bool {
+		return keyedItems[getKeysOfKeyedItems()[section]]![index].isFixed
+	}
+	
+	func getItemCycleTypeAtSectionAndIndex(section: Int, index: Int) -> DateCycleType {
+		return DateCycleType(rawValue: keyedItems[getKeysOfKeyedItems()[section]]![index].cycleType)!
+	}
+	
+	func getItemCycleValueAtSectionAndIndex(section: Int, index: Int) -> Int {
+		return keyedItems[getKeysOfKeyedItems()[section]]![index].cycleValue
 	}
 }
