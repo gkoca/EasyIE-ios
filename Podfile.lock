@@ -5,11 +5,13 @@ PODS:
   - Realm/Headers (3.3.1)
   - RealmSwift (3.3.1):
     - Realm (= 3.3.1)
+  - SwifterSwift/Foundation (4.2.0)
   - SwifterSwift/SwiftStdlib (4.2.0)
 
 DEPENDENCIES:
   - Eureka
   - RealmSwift
+  - SwifterSwift/Foundation
   - SwifterSwift/SwiftStdlib
 
 SPEC CHECKSUMS:
@@ -18,6 +20,6 @@ SPEC CHECKSUMS:
   RealmSwift: f28fe8507bdfb8f1c924962401b83e7b9d7abb5c
   SwifterSwift: 1d101dcfb0c3123226900f3b4d220d57fb60d546
 
-PODFILE CHECKSUM: 4b8e5f361bc9ddcd2477d4baad5b24810908477e
+PODFILE CHECKSUM: 57d01eaad9b5f181355c086e8aea6458d4bc1272
 
 COCOAPODS: 1.4.0

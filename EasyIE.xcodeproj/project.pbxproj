@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */; };
+		E834833120704285006281AF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833020704285006281AF /* Globals.swift */; };
+		E834833320706549006281AF /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833220706549006281AF /* Debug.swift */; };
 		E8710927206A37BC00E6EBF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8710909206A37BB00E6EBF3 /* LaunchScreen.storyboard */; };
 		E8710928206A37BC00E6EBF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E871090B206A37BB00E6EBF3 /* Main.storyboard */; };
 		E8710929206A37BC00E6EBF3 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E871090E206A37BB00E6EBF3 /* ItemViewModel.swift */; };
@@ -28,7 +30,6 @@
 		E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */ = {isa = PBXBuildFile; fileRef = E8710922206A37BC00E6EBF3 /* MOCK_DATA_20.json */; };
 		E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710925206A37BC00E6EBF3 /* ItemDB.swift */; };
 		E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710926206A37BC00E6EBF3 /* TagDB.swift */; };
-		E872C052206AE8C400A1D849 /* GlobalAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E872C051206AE8C400A1D849 /* GlobalAlertController.swift */; };
 		FD917FC3B2597B9ABC146874 /* Pods_EasyIE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +37,8 @@
 		0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.release.xcconfig"; sourceTree = "<group>"; };
 		783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.debug.xcconfig"; sourceTree = "<group>"; };
 		E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
+		E834833020704285006281AF /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		E834833220706549006281AF /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
 		E8420454206AAA37000F90CD /* EasyIE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyIE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E871090A206A37BB00E6EBF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E871090C206A37BB00E6EBF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		E8710923206A37BC00E6EBF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8710925206A37BC00E6EBF3 /* ItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDB.swift; sourceTree = "<group>"; };
 		E8710926206A37BC00E6EBF3 /* TagDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDB.swift; sourceTree = "<group>"; };
-		E872C051206AE8C400A1D849 /* GlobalAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalAlertController.swift; sourceTree = "<group>"; };
 		EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyIE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -104,13 +106,13 @@
 		E87108F5206A360B00E6EBF3 /* EasyIE */ = {
 			isa = PBXGroup;
 			children = (
-				E818D2B5206D8C66001B2EC0 /* ThirdParty */,
 				E8710915206A37BB00E6EBF3 /* App */,
 				E8710917206A37BB00E6EBF3 /* Controllers */,
 				E8710924206A37BC00E6EBF3 /* Database */,
 				E8710910206A37BB00E6EBF3 /* Helpers */,
 				E871091B206A37BC00E6EBF3 /* Models */,
 				E871091F206A37BC00E6EBF3 /* Resources */,
+				E818D2B5206D8C66001B2EC0 /* ThirdParty */,
 				E871090D206A37BB00E6EBF3 /* ViewModels */,
 				E8710908206A37BB00E6EBF3 /* Views */,
 			);
@@ -140,8 +142,9 @@
 			children = (
 				E8710911206A37BB00E6EBF3 /* AutocompleteTextRow.swift */,
 				E8710912206A37BB00E6EBF3 /* CommonHelper.swift */,
-				E8710913206A37BB00E6EBF3 /* RealmHelper.swift */,
+				E834833220706549006281AF /* Debug.swift */,
 				E8710914206A37BB00E6EBF3 /* Dispatch.swift */,
+				E8710913206A37BB00E6EBF3 /* RealmHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -150,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				E8710916206A37BB00E6EBF3 /* AppDelegate.swift */,
+				E834833020704285006281AF /* Globals.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -157,10 +161,9 @@
 		E8710917206A37BB00E6EBF3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E872C051206AE8C400A1D849 /* GlobalAlertController.swift */,
+				E871091A206A37BB00E6EBF3 /* AddItemViewController.swift */,
 				E8710918206A37BB00E6EBF3 /* FutureViewController.swift */,
 				E8710919206A37BB00E6EBF3 /* ItemViewController.swift */,
-				E871091A206A37BB00E6EBF3 /* AddItemViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -179,9 +182,9 @@
 			isa = PBXGroup;
 			children = (
 				E8710920206A37BC00E6EBF3 /* Assets.xcassets */,
+				E8710923206A37BC00E6EBF3 /* Info.plist */,
 				E8710921206A37BC00E6EBF3 /* MOCK_DATA_03.json */,
 				E8710922206A37BC00E6EBF3 /* MOCK_DATA_20.json */,
-				E8710923206A37BC00E6EBF3 /* Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -343,16 +346,17 @@
 				E8710931206A37BC00E6EBF3 /* ItemViewController.swift in Sources */,
 				E871092E206A37BC00E6EBF3 /* Dispatch.swift in Sources */,
 				E871092A206A37BC00E6EBF3 /* TagViewModel.swift in Sources */,
-				E872C052206AE8C400A1D849 /* GlobalAlertController.swift in Sources */,
 				E8710930206A37BC00E6EBF3 /* FutureViewController.swift in Sources */,
 				E8710932206A37BC00E6EBF3 /* AddItemViewController.swift in Sources */,
 				E871092F206A37BC00E6EBF3 /* AppDelegate.swift in Sources */,
 				E8710933206A37BC00E6EBF3 /* Item.swift in Sources */,
+				E834833120704285006281AF /* Globals.swift in Sources */,
 				E871092C206A37BC00E6EBF3 /* CommonHelper.swift in Sources */,
 				E871092D206A37BC00E6EBF3 /* RealmHelper.swift in Sources */,
 				E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */,
 				E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */,
 				E871092B206A37BC00E6EBF3 /* AutocompleteTextRow.swift in Sources */,
+				E834833320706549006281AF /* Debug.swift in Sources */,
 				E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */,
 				E8710935206A37BC00E6EBF3 /* Tag.swift in Sources */,
 				E8710934206A37BC00E6EBF3 /* ItemTableViewCell.swift in Sources */,

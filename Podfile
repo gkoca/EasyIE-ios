@@ -7,5 +7,6 @@ inhibit_all_warnings!
 pod 'RealmSwift'
 pod 'Eureka'
 pod 'SwifterSwift/SwiftStdlib'
+pod 'SwifterSwift/Foundation'
 
 end

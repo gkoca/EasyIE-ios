@@ -54,6 +54,7 @@ class ItemViewController: UIViewController {
 }
 
 extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
+	
 	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		return itemViewModel.getNumberOfItemsToDisplay()
 	}
@@ -74,31 +75,34 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 		}
 		cell.tagsLabel.text = tags
 		cell.dateLabel.text = itemViewModel.getItemDateStringAtIndex(indexPath.row)
+		//TODO: Localization
 		if itemViewModel.getItemIsFixedAtIndex(indexPath.row) {
 			switch itemViewModel.getItemCycleTypeAtIndex(indexPath.row) {
 			case .undefined:
 				fatalError("wrong data, inspect it.")
 				break
 			case .firstDayOfMonth:
-				cell.detailLabel.text = "Fixed : First Day Of Month"
+				cell.detailLabel.text = "First Day Of Month"
 				break
 			case .lastDayOfMonth:
-				cell.detailLabel.text = "Fixed : Last Day Of Month"
+				cell.detailLabel.text = "Last Day Of Month"
 				break
 			case .firstWorkDayOfMonth:
-				cell.detailLabel.text = "Fixed : First Work Day Of Month"
+				cell.detailLabel.text = "First Work Day Of Month"
 				break
 			case .lastWorkDayOfMonth:
-				cell.detailLabel.text = "Fixed : Last Work Day Of Month"
+				cell.detailLabel.text = "Last Work Day Of Month"
 				break
 			case .fixedDayOfMonth:
-				cell.detailLabel.text = "Fixed : Day of month"
-//				 DaysOFMonth(rawValue: itemViewModel.getItemCycleValueAtIndex(indexPath.row)) 
-				
-				
+				let cycleValue = itemViewModel.getItemCycleValueAtIndex(indexPath.row)
+				let numberFormatter = NumberFormatter()
+				numberFormatter.numberStyle = .ordinal
+				let ordinal = numberFormatter.string(from: NSNumber(value: cycleValue))
+				cell.detailLabel.text = "Every \(ordinal ?? "??") day of month"
 				break
 			case .fixedDayOfWeek:
-				cell.detailLabel.text = "Fixed : Day of week"
+				let cycleValue = itemViewModel.getItemCycleValueAtIndex(indexPath.row)
+				cell.detailLabel.text = "Every \(Constants.namesOfDays[cycleValue])"
 				break
 			}
 		} else {

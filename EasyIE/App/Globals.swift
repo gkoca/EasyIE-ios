@@ -1,12 +1,18 @@
 //
-//  GlobalAlertController.swift
+//  Globals.swift
 //  EasyIE
 //
-//  Created by Gökhan KOCA on 28.03.2018.
+//  Created by Gökhan KOCA on 1.04.2018.
 //  Copyright © 2018 easy-ie. All rights reserved.
 //
 
+import Foundation
 import UIKit
+
+class Constants {
+	//TODO: Localization
+	static let namesOfDays: [String] = ["Undefined","Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+}
 
 class GlobalAlertController {
 	
