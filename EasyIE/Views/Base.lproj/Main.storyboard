@@ -22,7 +22,7 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BVL-s7-nJb"/>
+                        <segue destination="DlU-oV-sCy" kind="relationship" relationship="rootViewController" id="Ip1-Kj-wIQ"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EuI-qT-WnM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -38,7 +38,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="iUV-Te-39o">
-                                <rect key="frame" x="0.0" y="116" width="375" height="502"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemTableViewCell" rowHeight="208" id="RJk-2B-FPk" customClass="ItemTableViewCell" customModule="EasyIE" customModuleProvider="target">
@@ -122,17 +122,9 @@
                     <navigationItem key="navigationItem" title="Incomes &amp; Expenses" id="HrE-Lb-uxv">
                         <rightBarButtonItems>
                             <barButtonItem style="done" systemItem="edit" id="v3r-FZ-ITU"/>
-                            <barButtonItem style="done" systemItem="add" id="0Ja-1i-ta5">
-                                <connections>
-                                    <segue destination="dc1-6s-DQF" kind="presentation" identifier="AddItemVCSegue" id="uhD-cr-SxS"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem style="done" systemItem="add" id="0Ja-1i-ta5"/>
                         </rightBarButtonItems>
                     </navigationItem>
-                    <connections>
-                        <outlet property="itemViewModel" destination="7Ej-2w-elV" id="zot-SD-FSG"/>
-                        <outlet property="tableView" destination="iUV-Te-39o" id="TRG-TU-Uhe"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
                 <customObject id="7Ej-2w-elV" customClass="ItemViewModel" customModule="EasyIE" customModuleProvider="target"/>
@@ -184,6 +176,117 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rOl-iG-UAk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="420" y="647"/>
+        </scene>
+        <!--Incomes & Expenses-->
+        <scene sceneID="KvA-nK-CtG">
+            <objects>
+                <tableViewController id="DlU-oV-sCy" customClass="ItemViewController" customModule="EasyIE" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="s0L-Oe-DWt">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ItemTableViewCell" rowHeight="208" id="wtu-fY-Qb3" customClass="ItemTableViewCell" customModule="EasyIE" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="208"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wtu-fY-Qb3" id="D0l-Be-WIG">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="207.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+ 3210.00 ₺" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MP1-dA-wKE">
+                                            <rect key="frame" x="16" y="11" width="343" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="R5L-Hq-30f"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Amazon sdfsdfsd sdf sdf sdf f dfsdf df sdf sdf df sdf  sdf sdf sdfd fd f sdf sdf sdf " lineBreakMode="clip" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2A-9w-FZU">
+                                            <rect key="frame" x="16" y="39" width="343" height="116"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aD8-Qo-mGh">
+                                            <rect key="frame" x="16" y="155" width="343" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="24" id="N7F-Ol-ap0"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="07/03/2018" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRF-jj-iwE">
+                                            <rect key="frame" x="16" y="173" width="343" height="24"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="24" id="ZR5-7m-a6f"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="aD8-Qo-mGh" firstAttribute="top" secondItem="O2A-9w-FZU" secondAttribute="bottom" id="7lN-ri-lBG"/>
+                                        <constraint firstItem="MP1-dA-wKE" firstAttribute="leading" secondItem="D0l-Be-WIG" secondAttribute="leadingMargin" id="Fco-T7-rxE"/>
+                                        <constraint firstItem="O2A-9w-FZU" firstAttribute="top" secondItem="MP1-dA-wKE" secondAttribute="bottom" id="MQx-Me-QdI"/>
+                                        <constraint firstItem="zRF-jj-iwE" firstAttribute="trailing" secondItem="D0l-Be-WIG" secondAttribute="trailingMargin" id="XOL-KR-G0F"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="aD8-Qo-mGh" secondAttribute="trailing" id="g0Q-rg-9sL"/>
+                                        <constraint firstItem="MP1-dA-wKE" firstAttribute="trailing" secondItem="D0l-Be-WIG" secondAttribute="trailingMargin" id="htR-lQ-UcV"/>
+                                        <constraint firstItem="zRF-jj-iwE" firstAttribute="bottom" secondItem="D0l-Be-WIG" secondAttribute="bottomMargin" id="ikW-bm-XiQ"/>
+                                        <constraint firstItem="O2A-9w-FZU" firstAttribute="trailing" secondItem="D0l-Be-WIG" secondAttribute="trailingMargin" id="jzR-19-a1G"/>
+                                        <constraint firstItem="zRF-jj-iwE" firstAttribute="top" secondItem="aD8-Qo-mGh" secondAttribute="bottom" id="pGr-1n-F9Y"/>
+                                        <constraint firstItem="MP1-dA-wKE" firstAttribute="top" secondItem="D0l-Be-WIG" secondAttribute="topMargin" id="si8-M2-1EU"/>
+                                        <constraint firstItem="aD8-Qo-mGh" firstAttribute="leading" secondItem="D0l-Be-WIG" secondAttribute="leadingMargin" id="vBY-If-8s2"/>
+                                        <constraint firstItem="zRF-jj-iwE" firstAttribute="leading" secondItem="D0l-Be-WIG" secondAttribute="leadingMargin" id="wZ2-m6-iZQ"/>
+                                        <constraint firstItem="O2A-9w-FZU" firstAttribute="leading" secondItem="D0l-Be-WIG" secondAttribute="leadingMargin" id="zIO-v6-SpA"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="amountLabel" destination="MP1-dA-wKE" id="JWL-Zf-wml"/>
+                                    <outlet property="dateLabel" destination="zRF-jj-iwE" id="b2H-rm-fe5"/>
+                                    <outlet property="detailLabel" destination="aD8-Qo-mGh" id="AUR-gD-GG9"/>
+                                    <outlet property="tagsLabel" destination="O2A-9w-FZU" id="FWd-wr-q5v"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="DlU-oV-sCy" id="Mei-Wh-tMd"/>
+                            <outlet property="delegate" destination="DlU-oV-sCy" id="zsc-xd-Vnc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Incomes &amp; Expenses" id="73R-gh-dch">
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" systemItem="edit" id="n4U-Yh-3so"/>
+                            <barButtonItem style="plain" systemItem="add" id="gXS-vt-rKK">
+                                <connections>
+                                    <segue destination="dc1-6s-DQF" kind="presentation" identifier="AddItemVCSegue" id="T2G-Y1-ww2"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
+                    </navigationItem>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="uLi-iz-UGB">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <attributedString key="attributedTitle">
+                            <fragment content="Get Past">
+                                <attributes>
+                                    <font key="NSFont" metaFont="smallSystem"/>
+                                    <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                </attributes>
+                            </fragment>
+                        </attributedString>
+                        <connections>
+                            <action selector="getPast:" destination="DlU-oV-sCy" eventType="valueChanged" id="Cvm-OB-t3y"/>
+                        </connections>
+                    </refreshControl>
+                    <connections>
+                        <outlet property="itemViewModel" destination="UXA-XI-jue" id="qaV-hj-cLc"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4O5-Yz-rTj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <customObject id="UXA-XI-jue" customClass="ItemViewModel" customModule="EasyIE" customModuleProvider="target"/>
+            </objects>
+            <point key="canvasLocation" x="-1914" y="646"/>
         </scene>
         <!--Profile-->
         <scene sceneID="rGf-D1-Iol">

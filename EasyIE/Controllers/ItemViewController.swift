@@ -8,10 +8,11 @@
 
 import UIKit
 
-class ItemViewController: UIViewController {
+class ItemViewController: UITableViewController {
 	
-	@IBOutlet weak var tableView: UITableView!
 	@IBOutlet var itemViewModel: ItemViewModel!
+	
+	var currentLastMonth = (0,0)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -51,42 +52,49 @@ class ItemViewController: UIViewController {
 		// Dispose of any resources that can be recreated.
 	}
 	
+	@IBAction func getPast(_ sender: UIRefreshControl) {
+		Dispatch.main(after: 3.0) {
+			sender.endRefreshing()
+		}
+	}
 }
 
-extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
+extension ItemViewController {
 	
-	func numberOfSections(in tableView: UITableView) -> Int {
-		return itemViewModel.getNumberOfSectionToDisplay()
+	override func numberOfSections(in tableView: UITableView) -> Int {
+		return itemViewModel.getNumberOfPeriodsToDisplay()
 	}
 	
-	func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return itemViewModel.getKeysOfKeyedItems()[section]
+	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+		return itemViewModel.getKeysOfPeriodicItems()[section].localizedDescription
 	}
 	
-	func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-		return itemViewModel.getNumberOfItemsInSection(section: section)
+	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+		let period = itemViewModel.getPeriodAtSection(section: section)
+		return itemViewModel.getNumberOfItemsInPeriod(period: period)
 	}
 	
-	func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-//		let amount = itemViewModel.getItemAmountAtIndex(indexPath.row)
-		let amount = itemViewModel.getItemAmountAtSectionAndIndex(section: indexPath.section, index: indexPath.row)
+	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+		let period = itemViewModel.getPeriodAtSection(section: indexPath.section)
+		let index = indexPath.row
 		
+		let amount = itemViewModel.getItemAmountAtPeriodAndIndex(period: period, index: index)
+		let itemIsFixed = itemViewModel.getItemIsFixedAtPeriodAndIndex(period: period, index: index)
+		let cycleType = itemViewModel.getItemCycleTypeAtPeriodAndIndex(period: period, index: index)
+		let cycleValue = itemViewModel.getItemCycleValueAtPeriodAndIndex(period: period, index: index)
+		let tags = itemViewModel.getItemTagsAtPeriodAndIndex(period: period, index: index)
+			.map { $0.value }
+			.joined(separator: " | ")
+		
+		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
 		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
 		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
-		var tags = ""
-		for tag in itemViewModel.getItemTagsAtSectionAndIndex(section: indexPath.section, index: indexPath.row) {
-			tags += tag.value
-			tags += " | "
-		}
-		if tags.count > 3 {
-			tags.removeLast(3)
-		}
 		cell.tagsLabel.text = tags
-		cell.dateLabel.text = itemViewModel.getItemDateStringAtSectionAndIndex(section: indexPath.section, index: indexPath.row)
+		cell.dateLabel.text = itemViewModel.getItemDateStringAtPeriodAndIndex(period: period, index: index)
+		
 		//TODO: Localization
-		if itemViewModel.getItemIsFixedAtSectionAndIndex(section: indexPath.section, index: indexPath.row) {
-			switch itemViewModel.getItemCycleTypeAtSectionAndIndex(section: indexPath.section, index: indexPath.row) {
+		if itemIsFixed {
+			switch cycleType {
 			case .undefined:
 				fatalError("wrong data, inspect it.")
 				break
@@ -103,14 +111,12 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 				cell.detailLabel.text = "Every last work day of month"
 				break
 			case .fixedDayOfMonth:
-				let cycleValue = itemViewModel.getItemCycleValueAtSectionAndIndex(section: indexPath.section, index: indexPath.row)
 				let numberFormatter = NumberFormatter()
 				numberFormatter.numberStyle = .ordinal
 				let ordinal = numberFormatter.string(from: NSNumber(value: cycleValue))
 				cell.detailLabel.text = "Every \(ordinal ?? "??") day of month"
 				break
 			case .fixedDayOfWeek:
-				let cycleValue = itemViewModel.getItemCycleValueAtSectionAndIndex(section: indexPath.section, index: indexPath.row)
 				cell.detailLabel.text = "Every \(Constants.namesOfDays[cycleValue])"
 				break
 			}
@@ -120,11 +126,11 @@ extension ItemViewController: UITableViewDelegate, UITableViewDataSource {
 		return cell
 	}
 	
-	func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 		return UITableViewAutomaticDimension
 	}
 	
-	func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 		tableView.deselectRow(at: indexPath, animated: true)
 	}
 }

@@ -1,12 +1,12 @@
 PODS:
   - Eureka (4.1.1)
-  - Realm (3.3.1):
-    - Realm/Headers (= 3.3.1)
-  - Realm/Headers (3.3.1)
-  - RealmSwift (3.3.1):
-    - Realm (= 3.3.1)
-  - SwifterSwift/Foundation (4.2.0)
-  - SwifterSwift/SwiftStdlib (4.2.0)
+  - Realm (3.3.2):
+    - Realm/Headers (= 3.3.2)
+  - Realm/Headers (3.3.2)
+  - RealmSwift (3.3.2):
+    - Realm (= 3.3.2)
+  - SwifterSwift/Foundation (4.3.0)
+  - SwifterSwift/SwiftStdlib (4.3.0)
 
 DEPENDENCIES:
   - Eureka
@@ -16,9 +16,9 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
-  Realm: 63ebf4903b446b0bdf2131244eb1e1549925c724
-  RealmSwift: f28fe8507bdfb8f1c924962401b83e7b9d7abb5c
-  SwifterSwift: 1d101dcfb0c3123226900f3b4d220d57fb60d546
+  Realm: d927fbf66df5532cfafc08afb5f7e53ded37b894
+  RealmSwift: 4e903a494e05d866581d69ad6f7e7b879d446baf
+  SwifterSwift: f3fce2b9fc5b9d8fda6eec33825e5243c60aebba
 
 PODFILE CHECKSUM: 57d01eaad9b5f181355c086e8aea6458d4bc1272
 

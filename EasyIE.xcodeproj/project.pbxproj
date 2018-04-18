@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E804099D208261F9003C938D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804099C208261F9003C938D /* Period.swift */; };
 		E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */; };
 		E834833120704285006281AF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833020704285006281AF /* Globals.swift */; };
 		E834833320706549006281AF /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833220706549006281AF /* Debug.swift */; };
@@ -36,6 +37,7 @@
 /* Begin PBXFileReference section */
 		0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.release.xcconfig"; sourceTree = "<group>"; };
 		783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.debug.xcconfig"; sourceTree = "<group>"; };
+		E804099C208261F9003C938D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		E834833020704285006281AF /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		E834833220706549006281AF /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			isa = PBXGroup;
 			children = (
 				E871091C206A37BC00E6EBF3 /* Item.swift */,
+				E804099C208261F9003C938D /* Period.swift */,
 				E871091D206A37BC00E6EBF3 /* ItemTableViewCell.swift */,
 				E871091E206A37BC00E6EBF3 /* Tag.swift */,
 			);
@@ -236,7 +239,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "easy-ie";
 				TargetAttributes = {
 					E87108F2206A360B00E6EBF3 = {
@@ -356,6 +359,7 @@
 				E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */,
 				E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */,
 				E871092B206A37BC00E6EBF3 /* AutocompleteTextRow.swift in Sources */,
+				E804099D208261F9003C938D /* Period.swift in Sources */,
 				E834833320706549006281AF /* Debug.swift in Sources */,
 				E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */,
 				E8710935206A37BC00E6EBF3 /* Tag.swift in Sources */,
@@ -400,6 +404,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -407,6 +412,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -457,6 +463,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -464,6 +471,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
