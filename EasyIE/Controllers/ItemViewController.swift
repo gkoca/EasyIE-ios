@@ -7,15 +7,31 @@
 //
 
 import UIKit
-
+extension ItemViewController: UISearchResultsUpdating {
+	// MARK: - UISearchResultsUpdating Delegate
+	func updateSearchResults(for searchController: UISearchController) {
+		// TODO
+	}
+}
 class ItemViewController: UITableViewController {
 	
 	@IBOutlet var itemViewModel: ItemViewModel!
 	
-	var currentLastMonth = (0,0)
+	let searchController = UISearchController(searchResultsController: nil)
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
+		searchController.searchResultsUpdater = self
+		searchController.obscuresBackgroundDuringPresentation = false
+		searchController.searchBar.placeholder = "Search"
+		if #available(iOS 11.0, *) {
+			navigationItem.searchController = searchController
+		} else {
+			// Fallback on earlier versions
+		}
+		definesPresentationContext = true
+		
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 90.0
 		itemViewModel.loadItems()

@@ -227,6 +227,27 @@ extension ItemViewModel {
 		
 		filteredPeriodicItems[currentOrNearestPeriod] = allPeriodicItems[currentOrNearestPeriod]
 		
+		let allPeriods = allPeriodicItems.map { $0.key }.sorted(by: <)
+		var nextPeriod: Period?
+		var previousPeriod: Period?
+		print("all sorted periods\n\(allPeriods.map({ $0.localizedDescription }))")
+		if let indexOfCurrentOrNearestPeriod = allPeriods.index(of: currentOrNearestPeriod) {
+			if indexOfCurrentOrNearestPeriod < allPeriods.count - 1 {
+				nextPeriod = allPeriods[indexOfCurrentOrNearestPeriod + 1]
+			}
+			if indexOfCurrentOrNearestPeriod > 0 {
+				previousPeriod = allPeriods[indexOfCurrentOrNearestPeriod - 1]
+			}
+		}
+		
+		if let nextPeriod = nextPeriod {
+			filteredPeriodicItems[nextPeriod] = allPeriodicItems[nextPeriod]
+		}
+		
+		if let previousPeriod = previousPeriod {
+			filteredPeriodicItems[previousPeriod] = allPeriodicItems[previousPeriod]
+		}
+		
 	}
 	
 	func getKeysOfPeriodicItems() -> [Period] {
