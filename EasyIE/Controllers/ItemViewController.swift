@@ -21,17 +21,6 @@ class ItemViewController: UITableViewController {
 	
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		searchController.searchResultsUpdater = self
-		searchController.obscuresBackgroundDuringPresentation = false
-		searchController.searchBar.placeholder = "Search"
-		if #available(iOS 11.0, *) {
-			navigationItem.searchController = searchController
-		} else {
-			// Fallback on earlier versions
-		}
-		definesPresentationContext = true
-		
 		tableView.rowHeight = UITableViewAutomaticDimension
 		tableView.estimatedRowHeight = 90.0
 		itemViewModel.loadItems()
@@ -39,18 +28,18 @@ class ItemViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
-		
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
-		if itemViewModel.getNumberOfItemsToDisplay() > 0 && itemViewModel.itemViewNeedsUpdate {
+		if itemViewModel.getNumberOfPeriodsToDisplay() > 0 && itemViewModel.itemViewNeedsUpdate {
 			tableView.reloadData()
-//			let indexPath = IndexPath(item: itemViewModel.getNumberOfItemsToDisplay() - 1, section: 0)
-//
-//			Dispatch.main {
-//				self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
-//			}
+			if let lastPeriod = itemViewModel.getKeysOfPeriodicItems().last {
+				let indexPath = IndexPath(row: itemViewModel.getNumberOfItemsInPeriod(period: lastPeriod) - 1, section: itemViewModel.getNumberOfPeriodsToDisplay() - 1)
+				Dispatch.main {
+					self.tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+				}
+			}
 			itemViewModel.itemViewNeedsUpdate = false
 		}
 	}
@@ -69,7 +58,12 @@ class ItemViewController: UITableViewController {
 	}
 	
 	@IBAction func getPast(_ sender: UIRefreshControl) {
-		Dispatch.main(after: 3.0) {
+		
+		Dispatch.main(after: 1.0) {
+			let currentFirst = self.itemViewModel.getKeysOfPeriodicItems()[0]
+			if self.itemViewModel.canGetOnePast(of: currentFirst) {
+				self.tableView.reloadData()
+			}
 			sender.endRefreshing()
 		}
 	}

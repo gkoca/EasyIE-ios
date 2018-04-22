@@ -30,6 +30,7 @@ class Item: Object, Codable {
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var amount: Double = 0.0
 	@objc dynamic var isFixed: Bool = false
+	@objc dynamic var isConfirmed: Bool = false
 	@objc dynamic var cycleType: Int = 0
 	@objc dynamic var cycleValue: Int = 0
 	@objc dynamic var date: Date = Date()
@@ -41,6 +42,7 @@ class Item: Object, Codable {
 		case amount = "amount"
 		case date = "date"
 		case isFixed = "isFixed"
+		case isConfirmed = "isConfirmed"
 		case cycleType = "cycleType"
 		case cycleValue = "cycleValue"
 		case tags = "tags"
@@ -50,6 +52,7 @@ class Item: Object, Codable {
 		 amount: Double = 0.0,
 		 date: Date = Date(),
 		 isFixed: Bool = false,
+		 isConfirmed: Bool = false,
 		 cycleType: Int = DateCycleType.undefined.rawValue,
 		 cycleValue: Int = 0,
 		 tags: List<Tag> = List<Tag>()) {
@@ -58,6 +61,7 @@ class Item: Object, Codable {
 		self.amount = amount
 		self.date = date
 		self.isFixed = isFixed
+		self.isConfirmed = isConfirmed
 		self.cycleType = cycleType
 		self.cycleValue = cycleValue
 		self.tags = tags
@@ -78,13 +82,14 @@ class Item: Object, Codable {
 			date = Date(timeIntervalSince1970: epoch)
 		}
 		let isFixed = try container.decode(Bool.self, forKey: .isFixed)
+		let isConfirmed = try container.decode(Bool.self, forKey: .isConfirmed)
 		let cycleType = try container.decode(Int.self, forKey: .cycleType)
 		let cycleValue = try container.decode(Int.self, forKey: .cycleValue)
 		let decodedTags =  try container.decode([Tag].self, forKey: .tags)
 		let t = List<Tag>()
 		t.append(objectsIn: decodedTags)
 		
-		self.init(id: id, amount: amount, date: date, isFixed: isFixed, cycleType: cycleType, cycleValue: cycleValue, tags: t)
+		self.init(id: id, amount: amount, date: date, isFixed: isFixed, isConfirmed: isConfirmed, cycleType: cycleType, cycleValue: cycleValue, tags: t)
 	}
 	
 	func encode(to encoder: Encoder) throws {
@@ -93,6 +98,7 @@ class Item: Object, Codable {
 		try container.encode(amount, forKey: .amount)
 		try container.encode(date, forKey: .date)
 		try container.encode(isFixed, forKey: .isFixed)
+		try container.encode(isConfirmed, forKey: .isConfirmed)
 		try container.encode(cycleType, forKey: .cycleType)
 		try container.encode(cycleValue, forKey: .cycleValue)
 		try container.encode(tags.map({ $0 }), forKey: .tags)
@@ -121,7 +127,7 @@ extension Item {
 		let decoder = JSONDecoder()
 		decoder.dateDecodingStrategy = .millisecondsSince1970
 		let me = try decoder.decode(Item.self, from: data)
-		self.init(id: me.id, amount: me.amount, date: me.date, isFixed: me.isFixed, cycleType: me.cycleType, cycleValue: me.cycleValue, tags: me.tags)
+		self.init(id: me.id, amount: me.amount, date: me.date, isFixed: me.isFixed, isConfirmed: me.isConfirmed, cycleType: me.cycleType, cycleValue: me.cycleValue, tags: me.tags)
 	}
 	
 	convenience init(_ json: String, using encoding: String.Encoding = .utf8) throws {
@@ -143,6 +149,15 @@ extension Item {
 		return String(data: try self.jsonData(), encoding: encoding)
 	}
 	
+}
+
+// MARK: Confirmation
+extension Item {
+	func confirm() {
+		RealmHelper.helper.update {
+			self.isConfirmed = !self.isConfirmed
+		}
+	}
 }
 
 extension Array where Element == Items.Element {
