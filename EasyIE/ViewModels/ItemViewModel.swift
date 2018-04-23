@@ -50,6 +50,7 @@ class ItemViewModel: NSObject {
 		if items.isEmpty {
 			loadDummyEntries {
 				print("\(self.items.count) items loaded from json")
+				self.setFilteredPeriodicItemsForFirst()
 			}
 		} else {
 			setFilteredPeriodicItemsForFirst()
@@ -182,6 +183,10 @@ extension ItemViewModel {
 			return Items()
 		}
 		return items
+	}
+	
+	func getItemAtPeriodAndIndex(period: Period, index: Int) -> Item {
+		return getItemsInPeriod(period: period)[index]
 	}
 	
 	func getItemAmountAtPeriodAndIndex(period: Period, index: Int) -> Double {

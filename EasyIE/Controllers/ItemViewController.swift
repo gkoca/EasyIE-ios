@@ -7,18 +7,11 @@
 //
 
 import UIKit
-extension ItemViewController: UISearchResultsUpdating {
-	// MARK: - UISearchResultsUpdating Delegate
-	func updateSearchResults(for searchController: UISearchController) {
-		// TODO
-	}
-}
+
 class ItemViewController: UITableViewController {
 	
 	@IBOutlet var itemViewModel: ItemViewModel!
-	
-	let searchController = UISearchController(searchResultsController: nil)
-	
+		
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tableView.rowHeight = UITableViewAutomaticDimension
@@ -58,11 +51,13 @@ class ItemViewController: UITableViewController {
 	}
 	
 	@IBAction func getPast(_ sender: UIRefreshControl) {
-		
 		Dispatch.main(after: 1.0) {
-			let currentFirst = self.itemViewModel.getKeysOfPeriodicItems()[0]
-			if self.itemViewModel.canGetOnePast(of: currentFirst) {
-				self.tableView.reloadData()
+			let periods = self.itemViewModel.getKeysOfPeriodicItems()
+			if periods.count > 0 {
+				let currentFirst = self.itemViewModel.getKeysOfPeriodicItems()[0]
+				if self.itemViewModel.canGetOnePast(of: currentFirst) {
+					self.tableView.reloadData()
+				}
 			}
 			sender.endRefreshing()
 		}
@@ -87,23 +82,27 @@ extension ItemViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let period = itemViewModel.getPeriodAtSection(section: indexPath.section)
 		let index = indexPath.row
-		
-		let amount = itemViewModel.getItemAmountAtPeriodAndIndex(period: period, index: index)
-		let itemIsFixed = itemViewModel.getItemIsFixedAtPeriodAndIndex(period: period, index: index)
-		let cycleType = itemViewModel.getItemCycleTypeAtPeriodAndIndex(period: period, index: index)
-		let cycleValue = itemViewModel.getItemCycleValueAtPeriodAndIndex(period: period, index: index)
-		let tags = itemViewModel.getItemTagsAtPeriodAndIndex(period: period, index: index)
+		let item = itemViewModel.getItemAtPeriodAndIndex(period: period, index: index)
+		let amount = item.amount
+		let itemIsFixed = item.isFixed
+		let itemIsConfirmed = item.isVerified
+		let cycleType = DateCycleType(rawValue: item.cycleType)!
+		let cycleValue = item.cycleValue
+		let tags = item.tags
 			.map { $0.value }
 			.joined(separator: " | ")
 		
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
+		cell.item = item
 		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
 		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
 		cell.tagsLabel.text = tags
-		cell.dateLabel.text = itemViewModel.getItemDateStringAtPeriodAndIndex(period: period, index: index)
-		
+		cell.dateLabel.text = item.date.string(withFormat: "dd MMMM yyyy")
 		//TODO: Localization
 		if itemIsFixed {
+			cell.pinImageView.isHidden = false
+			cell.confirmButton.isHidden = false
+			cell.confirmButton.setImage(itemIsConfirmed ? #imageLiteral(resourceName: "verified") : #imageLiteral(resourceName: "unverified"), for: .normal)
 			switch cycleType {
 			case .undefined:
 				fatalError("wrong data, inspect it.")
@@ -131,6 +130,8 @@ extension ItemViewController {
 				break
 			}
 		} else {
+			cell.pinImageView.isHidden = true
+			cell.confirmButton.isHidden = true
 			cell.detailLabel.text = ""
 		}
 		return cell

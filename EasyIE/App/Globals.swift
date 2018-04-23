@@ -11,7 +11,7 @@ import UIKit
 
 class Constants {
 	//TODO: Localization
-	static let namesOfDays: [String] = ["Undefined","Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+	static let namesOfDays: [String] = ["Undefined", "Monday", "Thuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
 }
 
 class GlobalAlertController {

@@ -1,646 +1,268 @@
  [{
-  "id": "60158e6d-fd5a-466a-8605-bad1d3185452",
-  "amount": -75.89,
+  "id": "995d48bb-5052-4317-8517-417c7e5a1c90",
+  "amount": 41.57,
   "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 4,
-  "cycleValue": 4,
-  "date": "1525465223",
-  "tags": [
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Training"
-		   },
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Business Development"
-		   }
-		   ]
-  }, {
-  "id": "ca0a71af-4895-41ac-8a54-924248ea5079",
-  "amount": -18.87,
-  "isFixed": false,
-  "isConfirmed": false,
+  "isVerified": false,
   "cycleType": 3,
-  "cycleValue": 2,
-  "date": "1525950438",
-  "tags": [
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Services"
-		   }
-		   ]
-  }, {
-  "id": "7c0ce5ee-1cbb-4094-b9f3-bc8bf026c260",
-  "amount": 67.89,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 6,
-  "cycleValue": 2,
-  "date": "1522239035",
-  "tags": [
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Accounting"
-		   }
-		   ]
-  }, {
-  "id": "4fff4177-05a3-4f16-bf97-c89d8a1426e8",
-  "amount": 78.27,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 5,
-  "cycleValue": 7,
-  "date": "1517473475",
-  "tags": [
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Human Resources"
-		   }
-		   ]
-  }, {
-  "id": "87aaba85-e16f-4510-8220-e7ba627501ac",
-  "amount": 87.27,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 6,
-  "cycleValue": 1,
-  "date": "1529235219",
-  "tags": [
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Engineering"
-		   }
-		   ]
-  }, {
-  "id": "40456db5-9c15-4318-8c71-2d3d6a290840",
-  "amount": 96.23,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 6,
   "cycleValue": 3,
-  "date": "1524996153",
+  "date": "1516601598",
   "tags": [
 		   {
-		   "value": "Research and Development"
+		   "value": "Sales"
+		   },
+		   {
+		   "value": "Human Resources"
+		   },
+		   {
+		   "value": "Training"
 		   }
 		   ]
   }, {
-  "id": "942e0d9d-0b68-4e30-a491-e3078793ecb9",
-  "amount": -60.8,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 3,
-  "cycleValue": 4,
-  "date": "1522367954",
+  "id": "e18bb955-ceba-44f4-be6f-8846ab90d268",
+  "amount": 32.3,
+  "isFixed": false,
+  "isVerified": false,
+  "cycleType": 2,
+  "cycleValue": 5,
+  "date": "1521680184",
   "tags": [
 		   {
-		   "value": "Accounting"
+		   "value": "Business Development"
+		   },
+		   {
+		   "value": "Marketing"
+		   }
+		   ]
+  }, {
+  "id": "726f10e0-a202-4a0c-afb9-718fb79e97de",
+  "amount": -94.18,
+  "isFixed": false,
+  "isVerified": false,
+  "cycleType": 1,
+  "cycleValue": 4,
+  "date": "1524573325",
+  "tags": [
+		   {
+		   "value": "Research and Development"
+		   },
+		   {
+		   "value": "Human Resources"
+		   }
+		   ]
+  }, {
+  "id": "08f8e11d-bbc8-4845-ab77-e8386dddd766",
+  "amount": 43.91,
+  "isFixed": true,
+  "isVerified": true,
+  "cycleType": 4,
+  "cycleValue": 1,
+  "date": "1528521291",
+  "tags": [
+		   {
+		   "value": "Legal"
+		   },
+		   {
+		   "value": "Sales"
+		   }
+		   ]
+  }, {
+  "id": "2030edfe-b1b5-4d74-adad-4924a742f022",
+  "amount": 35.63,
+  "isFixed": false,
+  "isVerified": false,
+  "cycleType": 1,
+  "cycleValue": 2,
+  "date": "1519146205",
+  "tags": [
+		   {
+		   "value": "Legal"
+		   },
+		   {
+		   "value": "Business Development"
+		   }
+		   ]
+  }, {
+  "id": "d326713b-2cb3-44d6-bbd1-c57688075748",
+  "amount": 84.84,
+  "isFixed": true,
+  "isVerified": true,
+  "cycleType": 3,
+  "cycleValue": 5,
+  "date": "1522572630",
+  "tags": [
+		   {
+		   "value": "Engineering"
+		   },
+		   {
+		   "value": "Engineering"
+		   }
+		   ]
+  }, {
+  "id": "9baeb23b-bac5-4704-a22e-f1d240f5dac0",
+  "amount": -13.47,
+  "isFixed": false,
+  "isVerified": true,
+  "cycleType": 5,
+  "cycleValue": 4,
+  "date": "1521248860",
+  "tags": [
+		   {
+		   "value": "Product Management"
 		   },
 		   {
 		   "value": "Business Development"
 		   },
 		   {
-		   "value": "Services"
+		   "value": "Marketing"
+		   },
+		   {
+		   "value": "Training"
+		   }
+		   ]
+  }, {
+  "id": "92b7af71-7449-458f-9185-edabe4bdc40a",
+  "amount": -94.82,
+  "isFixed": true,
+  "isVerified": false,
+  "cycleType": 6,
+  "cycleValue": 4,
+  "date": "1519139107",
+  "tags": [
+		   {
+		   "value": "Legal"
+		   },
+		   {
+		   "value": "Product Management"
+		   }
+		   ]
+  }, {
+  "id": "7a2125fe-d7c3-4110-96d0-3797864d434d",
+  "amount": 37.99,
+  "isFixed": true,
+  "isVerified": false,
+  "cycleType": 5,
+  "cycleValue": 4,
+  "date": "1523623344",
+  "tags": [
+		   {
+		   "value": "Support"
+		   },
+		   {
+		   "value": "Training"
+		   },
+		   {
+		   "value": "Marketing"
 		   },
 		   {
 		   "value": "Research and Development"
 		   }
 		   ]
   }, {
-  "id": "19b57eca-3b2f-434b-a4bf-d095c968a4c9",
-  "amount": 88.4,
-  "isFixed": false,
-  "isConfirmed": true,
+  "id": "2ad66ea2-9af7-4666-833a-3a1143e61965",
+  "amount": 13.94,
+  "isFixed": true,
+  "isVerified": false,
   "cycleType": 5,
   "cycleValue": 5,
-  "date": "1518680163",
-  "tags": [
-		   {
-		   "value": "Services"
-		   },
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Legal"
-		   }
-		   ]
-  }, {
-  "id": "5af7d2f4-34c0-4b07-b30b-d7fa015c9c69",
-  "amount": 15.51,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 6,
-  "cycleValue": 6,
-  "date": "1525839621",
+  "date": "1519885516",
   "tags": [
 		   {
 		   "value": "Engineering"
 		   },
 		   {
-		   "value": "Legal"
+		   "value": "Engineering"
 		   },
 		   {
-		   "value": "Services"
-		   },
-		   {
-		   "value": "Human Resources"
-		   },
-		   {
-		   "value": "Research and Development"
+		   "value": "Sales"
 		   }
 		   ]
   }, {
-  "id": "111044e1-6fcd-4a9c-8cb5-b65eb0b40424",
-  "amount": 36.41,
+  "id": "82d6b724-6a60-40da-b988-ad3b4e382d2f",
+  "amount": -78.23,
   "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 4,
-  "cycleValue": 5,
-  "date": "1525484067",
+  "isVerified": true,
+  "cycleType": 3,
+  "cycleValue": 6,
+  "date": "1520008372",
   "tags": [
 		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Support"
+		   "value": "Accounting"
 		   }
 		   ]
   }, {
-  "id": "16351c63-4ec0-45f4-9dfe-54cfab4c5019",
-  "amount": -44.42,
-  "isFixed": true,
-  "isConfirmed": true,
+  "id": "a96473a5-e53c-47c6-be2d-65feea2453ff",
+  "amount": 99.37,
+  "isFixed": false,
+  "isVerified": false,
   "cycleType": 5,
   "cycleValue": 7,
-  "date": "1520291334",
+  "date": "1526309969",
   "tags": [
 		   {
-		   "value": "Accounting"
+		   "value": "Engineering"
 		   },
 		   {
-		   "value": "Human Resources"
+		   "value": "Research and Development"
+		   },
+		   {
+		   "value": "Services"
+		   },
+		   {
+		   "value": "Research and Development"
 		   }
 		   ]
   }, {
-  "id": "4c69f2cf-18f1-4456-b7cb-fc6ba9744f4c",
-  "amount": 69.13,
-  "isFixed": true,
-  "isConfirmed": true,
+  "id": "a957f10e-b4a9-4b5e-b278-ca313be0fcdc",
+  "amount": -55.22,
+  "isFixed": false,
+  "isVerified": false,
   "cycleType": 1,
-  "cycleValue": 6,
-  "date": "1527316696",
+  "cycleValue": 2,
+  "date": "1528015187",
   "tags": [
-		   {
-		   "value": "Legal"
-		   },
-		   {
-		   "value": "Training"
-		   },
-		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Legal"
-		   }
-		   ]
-  }, {
-  "id": "5caa7065-6ba4-4b50-88e6-0d4a920b044f",
-  "amount": -24.3,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 1,
-  "date": "1519820773",
-  "tags": [
-		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Services"
-		   },
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Research and Development"
-		   }
-		   ]
-  }, {
-  "id": "191c749d-c5a9-4f8f-888a-ce827c17a44c",
-  "amount": -3.32,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 4,
-  "cycleValue": 4,
-  "date": "1527271385",
-  "tags": [
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Training"
-		   },
-		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Legal"
-		   }
-		   ]
-  }, {
-  "id": "b94a1bb6-b709-43ba-a1a2-cda3640785dd",
-  "amount": 98.67,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 2,
-  "cycleValue": 4,
-  "date": "1527929593",
-  "tags": [
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Sales"
-		   }
-		   ]
-  }, {
-  "id": "bae67d52-b789-4144-86bc-f04929180c02",
-  "amount": 2.79,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 6,
-  "cycleValue": 6,
-  "date": "1528224868",
-  "tags": [
-		   {
-		   "value": "Services"
-		   },
-		   {
-		   "value": "Sales"
-		   }
-		   ]
-  }, {
-  "id": "fcfacdad-218d-4556-9dc1-a85a2f35938e",
-  "amount": 83.24,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 3,
-  "cycleValue": 4,
-  "date": "1521567206",
-  "tags": [
-		   {
-		   "value": "Marketing"
-		   }
-		   ]
-  }, {
-  "id": "14a1ff4b-9eb3-48be-a1f9-2e096edbed2f",
-  "amount": 49.04,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 3,
-  "cycleValue": 1,
-  "date": "1523257696",
-  "tags": [
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Accounting"
-		   }
-		   ]
-  }, {
-  "id": "0d148094-edfe-4af1-9d38-09d32cfd60be",
-  "amount": 31.87,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 1,
-  "cycleValue": 7,
-  "date": "1519024624",
-  "tags": [
-		   {
-		   "value": "Services"
-		   },
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Engineering"
-		   },
-		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Services"
-		   }
-		   ]
-  }, {
-  "id": "ec424dd0-32e2-4f1f-a6b2-d6174b291d2c",
-  "amount": -75.59,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 2,
-  "cycleValue": 1,
-  "date": "1518786831",
-  "tags": [
-		   {
-		   "value": "Marketing"
-		   }
-		   ]
-  }, {
-  "id": "81567587-2aba-40fc-8462-6452303abefe",
-  "amount": -33.65,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 6,
-  "cycleValue": 6,
-  "date": "1527629131",
-  "tags": [
-		   {
-		   "value": "Legal"
-		   },
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Human Resources"
-		   }
-		   ]
-  }, {
-  "id": "bf740866-35c1-46d7-b457-b3eb781c185f",
-  "amount": -55.08,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 4,
-  "cycleValue": 7,
-  "date": "1527116787",
-  "tags": [
-		   {
-		   "value": "Legal"
-		   },
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Product Management"
-		   }
-		   ]
-  }, {
-  "id": "45a33c88-b870-4f99-bf9e-d737758e8919",
-  "amount": 1.49,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 4,
-  "cycleValue": 1,
-  "date": "1527549927",
-  "tags": [
-		   {
-		   "value": "Engineering"
-		   },
-		   {
-		   "value": "Accounting"
-		   }
-		   ]
-  }, {
-  "id": "5c7f9ea6-489d-40e4-8f86-ac0d3c687632",
-  "amount": 1.1,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 1,
-  "cycleValue": 1,
-  "date": "1520505219",
-  "tags": [
-		   {
-		   "value": "Engineering"
-		   },
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Services"
-		   }
-		   ]
-  }, {
-  "id": "37434ec4-c1ba-4195-950c-5d00e92c670c",
-  "amount": -35.54,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 2,
-  "cycleValue": 7,
-  "date": "1526440449",
-  "tags": [
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Engineering"
-		   }
-		   ]
-  }, {
-  "id": "38e9cc82-4350-4aa9-ba81-d7c065ad28b0",
-  "amount": -39.19,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 1,
-  "date": "1523819501",
-  "tags": [
-		   {
-		   "value": "Human Resources"
-		   },
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Marketing"
-		   }
-		   ]
-  }, {
-  "id": "5c4e328d-470f-40b1-b194-ca56f50f4032",
-  "amount": 16.45,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 6,
-  "cycleValue": 7,
-  "date": "1523228714",
-  "tags": [
-		   {
-		   "value": "Product Management"
-		   }
-		   ]
-  }, {
-  "id": "86ea4b2d-6330-40c7-97de-9eff2e99096e",
-  "amount": 57.48,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 6,
-  "cycleValue": 3,
-  "date": "1521799223",
-  "tags": [
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Engineering"
-		   },
-		   {
-		   "value": "Human Resources"
-		   },
 		   {
 		   "value": "Support"
 		   }
 		   ]
   }, {
-  "id": "21f4076c-c143-4450-ae80-3748ab10d3ce",
-  "amount": 61.24,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 6,
-  "date": "1523112787",
+  "id": "fbbca0bb-675b-4737-9514-4903792b8c4f",
+  "amount": 33.42,
+  "isFixed": true,
+  "isVerified": true,
+  "cycleType": 5,
+  "cycleValue": 7,
+  "date": "1527471924",
   "tags": [
-		   {
-		   "value": "Business Development"
-		   },
 		   {
 		   "value": "Marketing"
-		   }
-		   ]
-  }, {
-  "id": "f7a9b9f4-666d-4ba4-817d-e46d858ada60",
-  "amount": 12.02,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 1,
-  "cycleValue": 5,
-  "date": "1520950520",
-  "tags": [
-		   {
-		   "value": "Business Development"
 		   },
 		   {
-		   "value": "Research and Development"
+		   "value": "Support"
+		   },
+		   {
+		   "value": "Training"
+		   },
+		   {
+		   "value": "Sales"
 		   },
 		   {
 		   "value": "Engineering"
 		   }
 		   ]
   }, {
-  "id": "2736576c-6199-43ef-b29e-8fdba0f261cf",
-  "amount": 30.93,
+  "id": "1aa13944-b309-4ad1-869e-1b9301931f6b",
+  "amount": 80.16,
   "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 4,
-  "date": "1519695329",
-  "tags": [
-		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Marketing"
-		   }
-		   ]
-  }, {
-  "id": "3964593b-5014-4752-abd7-cbf3604540fe",
-  "amount": -68.32,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 3,
-  "cycleValue": 5,
-  "date": "1525443448",
-  "tags": [
-		   {
-		   "value": "Human Resources"
-		   },
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Legal"
-		   },
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Training"
-		   }
-		   ]
-  }, {
-  "id": "7084546f-e3aa-4fd9-a05a-6c957ee768b1",
-  "amount": 42.32,
-  "isFixed": false,
-  "isConfirmed": false,
+  "isVerified": true,
   "cycleType": 3,
   "cycleValue": 2,
-  "date": "1519902869",
+  "date": "1520328756",
   "tags": [
 		   {
-		   "value": "Sales"
+		   "value": "Accounting"
 		   },
 		   {
-		   "value": "Business Development"
+		   "value": "Training"
 		   },
 		   {
 		   "value": "Support"
@@ -653,320 +275,98 @@
 		   }
 		   ]
   }, {
-  "id": "6459da1f-bb22-412d-b35d-292e5feed33f",
-  "amount": -44.58,
-  "isFixed": false,
-  "isConfirmed": true,
+  "id": "0e77e5f3-d96d-4722-924b-8ebce698c5d0",
+  "amount": 4.75,
+  "isFixed": true,
+  "isVerified": false,
   "cycleType": 6,
+  "cycleValue": 6,
+  "date": "1524575787",
+  "tags": [
+		   {
+		   "value": "Legal"
+		   },
+		   {
+		   "value": "Human Resources"
+		   },
+		   {
+		   "value": "Business Development"
+		   },
+		   {
+		   "value": "Human Resources"
+		   },
+		   {
+		   "value": "Support"
+		   }
+		   ]
+  }, {
+  "id": "2af6c509-e4c2-49a1-949a-3ae1116f1411",
+  "amount": 97.45,
+  "isFixed": true,
+  "isVerified": true,
+  "cycleType": 3,
+  "cycleValue": 1,
+  "date": "1520035350",
+  "tags": [
+		   {
+		   "value": "Human Resources"
+		   }
+		   ]
+  }, {
+  "id": "e0e9dfa4-ba84-451a-9552-13480f060b26",
+  "amount": 76.55,
+  "isFixed": true,
+  "isVerified": true,
+  "cycleType": 1,
   "cycleValue": 2,
-  "date": "1523468744",
-  "tags": [
-		   {
-		   "value": "Training"
-		   },
-		   {
-		   "value": "Engineering"
-		   }
-		   ]
-  }, {
-  "id": "f3321911-7240-4aad-bb79-0192a89fc26d",
-  "amount": -43.77,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 2,
-  "cycleValue": 6,
-  "date": "1527645614",
-  "tags": [
-		   {
-		   "value": "Research and Development"
-		   }
-		   ]
-  }, {
-  "id": "1a97c5ab-e8fc-431e-8e8e-2dcb5c62a0cb",
-  "amount": 19.34,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 5,
-  "date": "1520884030",
-  "tags": [
-		   {
-		   "value": "Engineering"
-		   }
-		   ]
-  }, {
-  "id": "16fd40b3-75a3-40c4-a587-b109cd891b3d",
-  "amount": -84.99,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 2,
-  "cycleValue": 1,
-  "date": "1519512600",
-  "tags": [
-		   {
-		   "value": "Legal"
-		   },
-		   {
-		   "value": "Legal"
-		   },
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Business Development"
-		   }
-		   ]
-  }, {
-  "id": "c5f9a1bb-b322-4d8f-af3b-28b2587a870b",
-  "amount": -61.95,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 4,
-  "cycleValue": 6,
-  "date": "1525240656",
-  "tags": [
-		   {
-		   "value": "Services"
-		   }
-		   ]
-  }, {
-  "id": "73e06b5e-de62-4973-bbe5-07dae98a2d30",
-  "amount": 66.92,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 6,
-  "cycleValue": 4,
-  "date": "1525455817",
-  "tags": [
-		   {
-		   "value": "Human Resources"
-		   },
-		   {
-		   "value": "Training"
-		   },
-		   {
-		   "value": "Product Management"
-		   }
-		   ]
-  }, {
-  "id": "c5bc246e-dc63-4259-8b40-1f6dfff9a5fc",
-  "amount": 45.77,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 6,
-  "cycleValue": 1,
-  "date": "1523485448",
-  "tags": [
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Research and Development"
-		   }
-		   ]
-  }, {
-  "id": "4243ecaa-aa9f-4b03-a9ac-106223b6c48f",
-  "amount": -21.7,
-  "isFixed": false,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 7,
-  "date": "1526934430",
+  "date": "1522805055",
   "tags": [
 		   {
 		   "value": "Support"
 		   },
 		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Business Development"
-		   },
-		   {
-		   "value": "Sales"
-		   },
-		   {
-		   "value": "Sales"
-		   }
-		   ]
-  }, {
-  "id": "5c225a0e-612f-4500-95b7-aa37d903f736",
-  "amount": 66.69,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 1,
-  "cycleValue": 4,
-  "date": "1528956710",
-  "tags": [
-		   {
 		   "value": "Legal"
 		   },
 		   {
-		   "value": "Product Management"
-		   },
-		   {
-		   "value": "Accounting"
+		   "value": "Engineering"
 		   },
 		   {
 		   "value": "Human Resources"
-		   },
-		   {
-		   "value": "Accounting"
 		   }
 		   ]
   }, {
-  "id": "418d59bf-2274-4a41-b458-209a7bc4feb0",
-  "amount": 4.8,
-  "isFixed": true,
-  "isConfirmed": true,
+  "id": "7954257e-e0d2-414f-b69c-8eb17f20e5be",
+  "amount": -66.12,
+  "isFixed": false,
+  "isVerified": false,
   "cycleType": 5,
-  "cycleValue": 5,
-  "date": "1518084604",
+  "cycleValue": 2,
+  "date": "1525741310",
   "tags": [
 		   {
-		   "value": "Legal"
-		   },
+		   "value": "Support"
+		   }
+		   ]
+  }, {
+  "id": "fb0b494a-fa27-439e-a435-0c58c64e1eb5",
+  "amount": -86.45,
+  "isFixed": true,
+  "isVerified": false,
+  "cycleType": 6,
+  "cycleValue": 6,
+  "date": "1529328512",
+  "tags": [
 		   {
 		   "value": "Sales"
-		   }
-		   ]
-  }, {
-  "id": "5454ee9f-2727-41ef-bce0-d8e0137e01ee",
-  "amount": -76.41,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 1,
-  "cycleValue": 6,
-  "date": "1521878652",
-  "tags": [
-		   {
-		   "value": "Human Resources"
-		   }
-		   ]
-  }, {
-  "id": "37e56276-f87c-4730-a4e1-3bfacc2f5c7a",
-  "amount": 9.75,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 2,
-  "cycleValue": 3,
-  "date": "1528440732",
-  "tags": [
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Marketing"
-		   },
-		   {
-		   "value": "Research and Development"
 		   },
 		   {
 		   "value": "Support"
 		   },
-		   {
-		   "value": "Services"
-		   }
-		   ]
-  }, {
-  "id": "cef7d4c7-0cd2-445c-afc6-bf10bb5a989b",
-  "amount": -24.79,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 4,
-  "cycleValue": 4,
-  "date": "1524582877",
-  "tags": [
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
-		   "value": "Services"
-		   }
-		   ]
-  }, {
-  "id": "c9cb7e19-8f3f-4394-a916-940e6ea71cbf",
-  "amount": 20.53,
-  "isFixed": true,
-  "isConfirmed": true,
-  "cycleType": 3,
-  "cycleValue": 1,
-  "date": "1521617642",
-  "tags": [
 		   {
 		   "value": "Human Resources"
 		   },
 		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Support"
-		   },
-		   {
-		   "value": "Accounting"
-		   }
-		   ]
-  }, {
-  "id": "76982f79-70f2-47cf-be5f-c4c5ee0a059d",
-  "amount": 17.47,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 2,
-  "cycleValue": 1,
-  "date": "1523055347",
-  "tags": [
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Research and Development"
-		   },
-		   {
 		   "value": "Services"
-		   },
-		   {
-		   "value": "Engineering"
-		   },
-		   {
-		   "value": "Training"
-		   }
-		   ]
-  }, {
-  "id": "6f84ba07-194c-4ea3-acca-8b8d5cecdf30",
-  "amount": -5.96,
-  "isFixed": true,
-  "isConfirmed": false,
-  "cycleType": 3,
-  "cycleValue": 6,
-  "date": "1527675010",
-  "tags": [
-		   {
-		   "value": "Product Management"
-		   }
-		   ]
-  }, {
-  "id": "4374420e-3ece-4da0-882d-dc799e57768e",
-  "amount": -25.15,
-  "isFixed": false,
-  "isConfirmed": false,
-  "cycleType": 1,
-  "cycleValue": 5,
-  "date": "1521566287",
-  "tags": [
-		   {
-		   "value": "Accounting"
-		   },
-		   {
-		   "value": "Marketing"
 		   },
 		   {
 		   "value": "Marketing"

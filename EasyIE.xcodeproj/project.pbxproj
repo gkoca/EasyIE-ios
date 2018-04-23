@@ -222,6 +222,7 @@
 				E87108F1206A360B00E6EBF3 /* Resources */,
 				A0F4FFE3D8105CEA1F13A8E6 /* [CP] Embed Pods Frameworks */,
 				549018A1B612767930F7DFDF /* [CP] Copy Pods Resources */,
+				E826FD1B208D3CBC000534DE /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -320,6 +321,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		E826FD1B208D3CBC000534DE /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e467d4d36158e06c9ed3f9eb50b68aaaba7aaad9 31ebac0bd268ce44f918753588c7128f586404473eb30d7ec3de45a2fc9eb022";
 		};
 		FF68144A23F5E301395582F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
