@@ -31,6 +31,10 @@
 		E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */ = {isa = PBXBuildFile; fileRef = E8710922206A37BC00E6EBF3 /* MOCK_DATA_20.json */; };
 		E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710925206A37BC00E6EBF3 /* ItemDB.swift */; };
 		E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710926206A37BC00E6EBF3 /* TagDB.swift */; };
+		E8B39162208F390500F3DA6F /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39161208F390500F3DA6F /* Saving.swift */; };
+		E8B39164208F390F00F3DA6F /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39163208F390F00F3DA6F /* Loan.swift */; };
+		E8B39166208F391B00F3DA6F /* SavingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39165208F391B00F3DA6F /* SavingItem.swift */; };
+		E8B39168208F392300F3DA6F /* LoanItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39167208F392300F3DA6F /* LoanItem.swift */; };
 		FD917FC3B2597B9ABC146874 /* Pods_EasyIE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +67,10 @@
 		E8710923206A37BC00E6EBF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8710925206A37BC00E6EBF3 /* ItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDB.swift; sourceTree = "<group>"; };
 		E8710926206A37BC00E6EBF3 /* TagDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDB.swift; sourceTree = "<group>"; };
+		E8B39161208F390500F3DA6F /* Saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
+		E8B39163208F390F00F3DA6F /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
+		E8B39165208F391B00F3DA6F /* SavingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingItem.swift; sourceTree = "<group>"; };
+		E8B39167208F392300F3DA6F /* LoanItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanItem.swift; sourceTree = "<group>"; };
 		EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyIE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -174,8 +182,12 @@
 			isa = PBXGroup;
 			children = (
 				E871091C206A37BC00E6EBF3 /* Item.swift */,
-				E804099C208261F9003C938D /* Period.swift */,
 				E871091D206A37BC00E6EBF3 /* ItemTableViewCell.swift */,
+				E8B39163208F390F00F3DA6F /* Loan.swift */,
+				E8B39167208F392300F3DA6F /* LoanItem.swift */,
+				E804099C208261F9003C938D /* Period.swift */,
+				E8B39161208F390500F3DA6F /* Saving.swift */,
+				E8B39165208F391B00F3DA6F /* SavingItem.swift */,
 				E871091E206A37BC00E6EBF3 /* Tag.swift */,
 			);
 			path = Models;
@@ -363,6 +375,7 @@
 				E8710931206A37BC00E6EBF3 /* ItemViewController.swift in Sources */,
 				E871092E206A37BC00E6EBF3 /* Dispatch.swift in Sources */,
 				E871092A206A37BC00E6EBF3 /* TagViewModel.swift in Sources */,
+				E8B39168208F392300F3DA6F /* LoanItem.swift in Sources */,
 				E8710930206A37BC00E6EBF3 /* FutureViewController.swift in Sources */,
 				E8710932206A37BC00E6EBF3 /* AddItemViewController.swift in Sources */,
 				E871092F206A37BC00E6EBF3 /* AppDelegate.swift in Sources */,
@@ -370,11 +383,14 @@
 				E834833120704285006281AF /* Globals.swift in Sources */,
 				E871092C206A37BC00E6EBF3 /* CommonHelper.swift in Sources */,
 				E871092D206A37BC00E6EBF3 /* RealmHelper.swift in Sources */,
+				E8B39164208F390F00F3DA6F /* Loan.swift in Sources */,
 				E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */,
+				E8B39166208F391B00F3DA6F /* SavingItem.swift in Sources */,
 				E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */,
 				E871092B206A37BC00E6EBF3 /* AutocompleteTextRow.swift in Sources */,
 				E804099D208261F9003C938D /* Period.swift in Sources */,
 				E834833320706549006281AF /* Debug.swift in Sources */,
+				E8B39162208F390500F3DA6F /* Saving.swift in Sources */,
 				E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */,
 				E8710935206A37BC00E6EBF3 /* Tag.swift in Sources */,
 				E8710934206A37BC00E6EBF3 /* ItemTableViewCell.swift in Sources */,
