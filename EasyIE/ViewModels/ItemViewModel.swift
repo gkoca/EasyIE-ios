@@ -13,30 +13,50 @@ class ItemViewModel: NSObject {
 	private var items = Items() {
 		didSet {
 			var period = Period()
-			var periodicItems = Items()
+			var day = Day()
 			for item in items {
-				if period == Period(month: item.date.month, year: item.date.year) {
-					periodicItems.append(item)
-					allPeriodicItems[period] = periodicItems
+				day = Day(day: item.date.day, month: item.date.month, year: item.date.year)
+				period = Period(month: item.date.month, year: item.date.year)
+				
+				if allPeriodItems[period] != nil {
+					allPeriodItems[period]?.append(item)
 				} else {
-					periodicItems = Items()
-					period = Period(month: item.date.month, year: item.date.year)
-					periodicItems.append(item)
-					allPeriodicItems[period] = periodicItems
+					allPeriodItems[period] = [item]
 				}
+				
+				if allPeriodDayItems[period] != nil {
+					if allPeriodDayItems[period]![day] != nil {
+						allPeriodDayItems[period]![day]?.append(item)
+					} else {
+						allPeriodDayItems[period]![day] = [item]
+					}
+				} else {
+					allPeriodDayItems[period] = [day:[item]]
+				}
+				
+				
 			}
 //			allPeriodicItems = allPeriodicItems.sorted( by: { $0.key < $1.key } ) as [Period:Items]
-			print(allPeriodicItems.map({ $0.key.localizedDescription }))
+			print(allPeriodItems.map({ ($0.key.localizedDescription, $0.value.count) }))
+			
+			print(allPeriodDayItems.map({
+				($0.key.localizedDescription, $0.value.count, $0.value.map({
+					($0.key.localizedDescription, $0.value.count )
+				}))
+			}))
 		}
 	}
 	
-	private var allPeriodicItems = [Period:Items]()
-	private var filteredPeriodicItems = [Period:Items]()
+	private var allPeriodItems = [Period:Items]()
+	private var filteredPeriodItems = [Period:Items]()
+	
+	private var allPeriodDayItems = [Period:[Day:Items]]()
+	private var filteredPeriodDayItems = [Period:[Day:Items]]()
 	
 	var itemViewNeedsUpdate = false
 	
 	func loadDummyEntries(completion: @escaping () -> Void) {
-		let path = Bundle.main.path(forResource: "MOCK_DATA_20", ofType: "json")
+		let path = Bundle.main.path(forResource: "MOCK_DATA_1000", ofType: "json")
 		let url = URL(fileURLWithPath: path!)
 		if let items = try? Array<Item>(fromURL: url) {
 			ItemDB.insert(items)
@@ -70,7 +90,7 @@ class ItemViewModel: NSObject {
 extension ItemViewModel {
 	
 	func canGetOnePast(of period: Period) -> Bool {
-		let allKeys = allPeriodicItems.map { $0.key }.sorted(by: <)
+		let allKeys = allPeriodItems.map { $0.key }.sorted(by: <)
 		var targetPeriod: Period? = nil
 		var isSuccess = false
 		if var index = allKeys.index(of: period), index > 0 {
@@ -78,23 +98,23 @@ extension ItemViewModel {
 			targetPeriod = allKeys[index]
 		}
 		if let thePeriod = targetPeriod {
-			filteredPeriodicItems[thePeriod] = allPeriodicItems[thePeriod]
+			filteredPeriodItems[thePeriod] = allPeriodItems[thePeriod]
 			isSuccess = true
 		}
 		return isSuccess
 	}
 	
 	func sortAll() {
-		let allItems = allPeriodicItems
+		let allItems = allPeriodItems
 		for (period, items) in allItems {
-			allPeriodicItems[period] = items.sorted(by: { $0.date < $1.date })
+			allPeriodItems[period] = items.sorted(by: { $0.date < $1.date })
 		}
 	}
 	
 	func setFilteredPeriodicItemsForFirst() {
 		sortAll()
-		filteredPeriodicItems.removeAll()
-		var allYears = allPeriodicItems.map { $0.key.year }
+		filteredPeriodItems.removeAll()
+		var allYears = allPeriodItems.map { $0.key.year }
 		allYears.removeDuplicates()
 		var currentOrNearestPeriod = Period()
 		let currentYear = Date().year
@@ -114,7 +134,7 @@ extension ItemViewModel {
 		}
 		currentOrNearestPeriod.year = nearestYear
 		
-		var allMonthsOfNearestYear = allPeriodicItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
+		var allMonthsOfNearestYear = allPeriodItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
 		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
 		var indexOfMonth = 0
 		for i in 1...allMonthsOfNearestYear.count - 1 {
@@ -130,9 +150,9 @@ extension ItemViewModel {
 		print("currentOrNearestPeriod : \(currentOrNearestPeriod.localizedDescription)")
 		print("finished first step")
 		
-		filteredPeriodicItems[currentOrNearestPeriod] = allPeriodicItems[currentOrNearestPeriod]
+		filteredPeriodItems[currentOrNearestPeriod] = allPeriodItems[currentOrNearestPeriod]
 		
-		let allPeriods = allPeriodicItems.map { $0.key }.sorted(by: <)
+		let allPeriods = allPeriodItems.map { $0.key }.sorted(by: <)
 		var nextPeriod: Period?
 		var previousPeriod: Period?
 		print("all sorted periods\n\(allPeriods.map({ $0.localizedDescription }))")
@@ -146,17 +166,17 @@ extension ItemViewModel {
 		}
 		
 		if let nextPeriod = nextPeriod {
-			filteredPeriodicItems[nextPeriod] = allPeriodicItems[nextPeriod]
+			filteredPeriodItems[nextPeriod] = allPeriodItems[nextPeriod]
 		}
 		
 		if let previousPeriod = previousPeriod {
-			filteredPeriodicItems[previousPeriod] = allPeriodicItems[previousPeriod]
+			filteredPeriodItems[previousPeriod] = allPeriodItems[previousPeriod]
 		}
 		
 	}
 	
 	func getKeysOfPeriodicItems() -> [Period] {
-		return filteredPeriodicItems.map { $0.key }.sorted(by: <)
+		return filteredPeriodItems.map { $0.key }.sorted(by: <)
 	}
 	
 	func getPeriodAtSection(section: Int) -> Period {
@@ -164,7 +184,7 @@ extension ItemViewModel {
 	}
 	
 	func getNumberOfPeriodsToDisplay() -> Int {
-		return filteredPeriodicItems.count
+		return filteredPeriodItems.count
 	}
 	
 	func getNumberOfItemsInPeriod(period: Period) -> Int {
@@ -172,14 +192,14 @@ extension ItemViewModel {
 	}
 	
 	func getItemsInPeriod(period: Period) -> Items {
-		guard let items = filteredPeriodicItems[period] else {
+		guard let items = filteredPeriodItems[period] else {
 			return Items()
 		}
 		return items
 	}
 	
 	func getItemsInPeriod(period: Int) -> Items {
-		guard let items = filteredPeriodicItems[getKeysOfPeriodicItems()[period]] else {
+		guard let items = filteredPeriodItems[getKeysOfPeriodicItems()[period]] else {
 			return Items()
 		}
 		return items

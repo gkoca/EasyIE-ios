@@ -15,7 +15,7 @@ class Saving: Object {
 	
 	@objc dynamic var id: String = UUID().uuidString
 	@objc dynamic var target: Double = 0.0
-	@objc dynamic var tag: Tag = Tag()
+	@objc dynamic var tag: Tag?
 	
 	var items = List<SavingItem>()
 	
