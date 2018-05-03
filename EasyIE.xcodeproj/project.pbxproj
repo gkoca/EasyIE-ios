@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E804099D208261F9003C938D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804099C208261F9003C938D /* Period.swift */; };
+		E81549922099A175008A4E15 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81549912099A175008A4E15 /* TimelineCell.swift */; };
 		E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */; };
 		E834833120704285006281AF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833020704285006281AF /* Globals.swift */; };
 		E834833320706549006281AF /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833220706549006281AF /* Debug.swift */; };
@@ -44,6 +45,7 @@
 		0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.release.xcconfig"; sourceTree = "<group>"; };
 		783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.debug.xcconfig"; sourceTree = "<group>"; };
 		E804099C208261F9003C938D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		E81549912099A175008A4E15 /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		E834833020704285006281AF /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		E834833220706549006281AF /* Debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debug.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				E804099C208261F9003C938D /* Period.swift */,
 				E840F59B20904EC0006E0A28 /* Day.swift */,
 				E8B39161208F390500F3DA6F /* Saving.swift */,
+				E81549912099A175008A4E15 /* TimelineCell.swift */,
 				E8B39165208F391B00F3DA6F /* SavingItem.swift */,
 				E871091E206A37BC00E6EBF3 /* Tag.swift */,
 			);
@@ -327,6 +330,7 @@
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -334,6 +338,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -396,6 +401,7 @@
 				E8B39166208F391B00F3DA6F /* SavingItem.swift in Sources */,
 				E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */,
 				E871092B206A37BC00E6EBF3 /* AutocompleteTextRow.swift in Sources */,
+				E81549922099A175008A4E15 /* TimelineCell.swift in Sources */,
 				E804099D208261F9003C938D /* Period.swift in Sources */,
 				E834833320706549006281AF /* Debug.swift in Sources */,
 				E8B39162208F390500F3DA6F /* Saving.swift in Sources */,

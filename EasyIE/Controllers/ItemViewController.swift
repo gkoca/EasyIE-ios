@@ -83,17 +83,20 @@ extension ItemViewController {
 		let period = itemViewModel.getPeriodAtSection(section: indexPath.section)
 		let index = indexPath.row
 		let item = itemViewModel.getItemAtPeriodAndIndex(period: period, index: index)
-		let amount = item.amount
-		let itemIsFixed = item.isFixed
-		let itemIsConfirmed = item.isVerified
-		let cycleType = DateCycleType(rawValue: item.cycleType)!
-		let cycleValue = item.cycleValue
-		let tags = item.tags
-			.map { $0.value }
-			.joined(separator: " | ")
+//		let amount = item.amount
+//		let itemIsFixed = item.isFixed
+//		let itemIsConfirmed = item.isVerified
+//		let cycleType = DateCycleType(rawValue: item.cycleType)!
+//		let cycleValue = item.cycleValue
+//		let tags = item.tags
+//			.map { $0.value }
+//			.joined(separator: " | ")
 		
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
+		let cell = TimelineCell(style: .default, reuseIdentifier: "timeLineCell")
+//		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
 		cell.item = item
+		
+		/*
 		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
 		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
 		cell.tagsLabel.text = tags
@@ -134,6 +137,7 @@ extension ItemViewController {
 			cell.confirmButton.isHidden = true
 			cell.detailLabel.text = ""
 		}
+		*/
 		return cell
 	}
 	
