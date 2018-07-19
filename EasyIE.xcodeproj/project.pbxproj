@@ -14,6 +14,7 @@
 		E834833320706549006281AF /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833220706549006281AF /* Debug.swift */; };
 		E840F59C20904EC0006E0A28 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = E840F59B20904EC0006E0A28 /* Day.swift */; };
 		E840F59E209052B5006E0A28 /* MOCK_DATA_1000.json in Resources */ = {isa = PBXBuildFile; fileRef = E840F59D209052B5006E0A28 /* MOCK_DATA_1000.json */; };
+		E866C7A620A4817100DAB898 /* RoundableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866C7A520A4817100DAB898 /* RoundableView.swift */; };
 		E8710927206A37BC00E6EBF3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E8710909206A37BB00E6EBF3 /* LaunchScreen.storyboard */; };
 		E8710928206A37BC00E6EBF3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E871090B206A37BB00E6EBF3 /* Main.storyboard */; };
 		E8710929206A37BC00E6EBF3 /* ItemViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E871090E206A37BB00E6EBF3 /* ItemViewModel.swift */; };
@@ -52,6 +53,7 @@
 		E840F59B20904EC0006E0A28 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		E840F59D209052B5006E0A28 /* MOCK_DATA_1000.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MOCK_DATA_1000.json; sourceTree = "<group>"; };
 		E8420454206AAA37000F90CD /* EasyIE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = EasyIE.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E866C7A520A4817100DAB898 /* RoundableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundableView.swift; sourceTree = "<group>"; };
 		E871090A206A37BB00E6EBF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E871090C206A37BB00E6EBF3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E871090E206A37BB00E6EBF3 /* ItemViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemViewModel.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				E8710912206A37BB00E6EBF3 /* CommonHelper.swift */,
 				E834833220706549006281AF /* Debug.swift */,
 				E8710914206A37BB00E6EBF3 /* Dispatch.swift */,
+				E866C7A520A4817100DAB898 /* RoundableView.swift */,
 				E8710913206A37BB00E6EBF3 /* RealmHelper.swift */,
 			);
 			path = Helpers;
@@ -242,7 +245,6 @@
 				E87108F0206A360B00E6EBF3 /* Frameworks */,
 				E87108F1206A360B00E6EBF3 /* Resources */,
 				A0F4FFE3D8105CEA1F13A8E6 /* [CP] Embed Pods Frameworks */,
-				549018A1B612767930F7DFDF /* [CP] Copy Pods Resources */,
 				E826FD1B208D3CBC000534DE /* ShellScript */,
 			);
 			buildRules = (
@@ -305,21 +307,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		549018A1B612767930F7DFDF /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		A0F4FFE3D8105CEA1F13A8E6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -409,6 +396,7 @@
 				E8710935206A37BC00E6EBF3 /* Tag.swift in Sources */,
 				E8710934206A37BC00E6EBF3 /* ItemTableViewCell.swift in Sources */,
 				E8710929206A37BC00E6EBF3 /* ItemViewModel.swift in Sources */,
+				E866C7A620A4817100DAB898 /* RoundableView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

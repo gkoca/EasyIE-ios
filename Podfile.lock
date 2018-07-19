@@ -21,6 +21,16 @@ DEPENDENCIES:
   - SwifterSwift/Foundation
   - SwifterSwift/SwiftStdlib
 
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Crashlytics
+    - Eureka
+    - Fabric
+    - Realm
+    - RealmSwift
+    - SnapKit
+    - SwifterSwift
+
 SPEC CHECKSUMS:
   Crashlytics: aee1a064cbbf99b32efa3f056a5f458d846bc8ff
   Eureka: b88fb930e42c79f8c03c373d0fcdc28c1d6c50ed
@@ -32,4 +42,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: a4a9e5d65fb72ce5af84f2a5324d57a8cb3df41c
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.2

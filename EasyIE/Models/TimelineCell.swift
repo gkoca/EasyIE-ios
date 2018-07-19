@@ -77,11 +77,22 @@ class TimelineCell: UITableViewCell {
 			
 			line.backgroundColor = UIColor.AppColor.arrowDark
 			line.snp.makeConstraints { (make) in
-				make.top.equalTo(contentView)
-				make.bottom.equalTo(contentView)
 				make.left.equalTo(contentView).offset(28)
+				make.top.equalTo(contentView)
 				make.size.width.equalTo(2)
-				make.size.height.equalTo(contentView)
+				make.bottom.equalTo(-1)
+				
+			}
+			
+			bigDot.backgroundColor = UIColor.AppColor.arrowDark
+			bigDot.layer.cornerRadius = 10
+			
+			bigDot.snp.makeConstraints { (make) in
+				make.left.equalTo(contentView).offset(20)
+				make.top.equalTo(contentView).offset(16)
+				make.size.width.equalTo(16)
+				make.size.height.equalTo(16)
+				
 			}
 			
 //			dateLabel.snp.makeConstraints { (maker) in
