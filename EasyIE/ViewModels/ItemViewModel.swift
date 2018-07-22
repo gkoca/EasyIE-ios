@@ -24,34 +24,34 @@ class ItemViewModel: NSObject {
 					allPeriodItems[period] = [item]
 				}
 				
-				if allPeriodDayItems[period] != nil {
-					if allPeriodDayItems[period]![day] != nil {
-						allPeriodDayItems[period]![day]?.append(item)
+				if allTimelineItems[period] != nil {
+					if allTimelineItems[period]![day] != nil {
+						allTimelineItems[period]![day]?.append(item)
 					} else {
-						allPeriodDayItems[period]![day] = [item]
+						allTimelineItems[period]![day] = [item]
 					}
 				} else {
-					allPeriodDayItems[period] = [day:[item]]
+					allTimelineItems[period] = [day:[item]]
 				}
 				
 				
 			}
 //			allPeriodicItems = allPeriodicItems.sorted( by: { $0.key < $1.key } ) as [Period:Items]
-			print(allPeriodItems.map({ ($0.key.localizedDescription, $0.value.count) }))
+			print(allPeriodItems.map({ ($0.key.description, $0.value.count) }))
 			
-			print(allPeriodDayItems.map({
-				($0.key.localizedDescription, $0.value.count, $0.value.map({
-					($0.key.localizedDescription, $0.value.count )
-				}))
-			}))
+//			print(allTimelineItems.map({
+//				($0.key.description, $0.value.count, $0.value.map({
+//					($0.key.description, $0.value.count )
+//				}))
+//			}))
 		}
 	}
 	
 	private var allPeriodItems = [Period:Items]()
 	private var filteredPeriodItems = [Period:Items]()
 	
-	private var allPeriodDayItems = [Period:[Day:Items]]()
-	private var filteredPeriodDayItems = [Period:[Day:Items]]()
+	private var allTimelineItems = [Period:[Day:Items]]()
+	private var filteredTimelineItems = [Period:[Day:Items]]()
 	
 	var itemViewNeedsUpdate = false
 	
@@ -86,7 +86,109 @@ class ItemViewModel: NSObject {
 	}
 }
 
-//Mark Periodic
+//MARK: Timeline
+extension ItemViewModel {
+	
+	func sortTimelineItems() {
+		let allItems = allTimelineItems
+		for (period, itemsOfDay) in allItems {
+			let allItemsOfDay = itemsOfDay
+			for (day, items) in allItemsOfDay {
+				if allTimelineItems[period] != nil {
+					allTimelineItems[period]![day] = items.sorted(by: { $0.date < $1.date })
+				} else {
+					print("⚠️ investigate allPeriodDayItems[\(period.description)]")
+				}
+			}
+		}
+	}
+	
+	func setFilteredTimelineItemsForFirst() {
+		sortTimelineItems()
+		filteredTimelineItems.removeAll()
+		var allYears = allTimelineItems.map { $0.key.year }
+		allYears.removeDuplicates()
+		var currentOrNearestPeriod = Period()
+		let currentYear = Date().year
+		let currentMonth = Date().month
+		var nearestYear = allYears[0]
+		if allYears.count > 1 {
+			var distanceOfYear = abs(allYears[0] - currentYear)
+			var indexOfYear = 0
+			for i in 1...allYears.count - 1 {
+				let differenceOfYear = abs(allYears[i] - currentYear)
+				if differenceOfYear < distanceOfYear {
+					indexOfYear = i
+					distanceOfYear = differenceOfYear
+				}
+			}
+			nearestYear = allYears[indexOfYear] //nearest year found
+		}
+		currentOrNearestPeriod.year = nearestYear
+		
+		var allMonthsOfNearestYear = allPeriodItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
+		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
+		var indexOfMonth = 0
+		for i in 1...allMonthsOfNearestYear.count - 1 {
+			let differenceOfMonth = abs(allMonthsOfNearestYear[i] - currentMonth)
+			if differenceOfMonth < distanceOfMonth {
+				indexOfMonth = i
+				distanceOfMonth = differenceOfMonth
+			}
+		}
+		let nearestMonth = allMonthsOfNearestYear[indexOfMonth]
+		currentOrNearestPeriod.month = nearestMonth
+		
+		filteredTimelineItems[currentOrNearestPeriod] = allTimelineItems[currentOrNearestPeriod]
+		
+		let allPeriods = allTimelineItems.map { $0.key }.sorted(by: <)
+		var nextPeriod: Period?
+		var previousPeriod: Period?
+		if let indexOfCurrentOrNearestPeriod = allPeriods.index(of: currentOrNearestPeriod) {
+			if indexOfCurrentOrNearestPeriod < allPeriods.count - 1 {
+				nextPeriod = allPeriods[indexOfCurrentOrNearestPeriod + 1]
+			}
+			if indexOfCurrentOrNearestPeriod > 0 {
+				previousPeriod = allPeriods[indexOfCurrentOrNearestPeriod - 1]
+			}
+		}
+		
+		if let nextPeriod = nextPeriod {
+			filteredTimelineItems[nextPeriod] = allTimelineItems[nextPeriod]
+		}
+		
+		if let previousPeriod = previousPeriod {
+			filteredTimelineItems[previousPeriod] = allTimelineItems[previousPeriod]
+		}
+	}
+	
+	func getKeysOfTimelineItems() -> [Period] {
+		return filteredTimelineItems.map { $0.key }.sorted(by: <)
+	}
+	
+	func getPeriod(at section: Int) -> Period {
+		return getKeysOfTimelineItems()[section]
+	}
+	
+	func getNumberOfPeriodsToDisplay() -> Int {
+		return filteredTimelineItems.count
+	}
+	
+	func getNumberOfItemsInPeriod(period: Period) -> Int {
+		return getTimelineItems(in: period).count
+	}
+	
+	func getTimelineItems(in period: Period) -> TimelineItems {
+		//		TODO: imlementation
+		return TimelineItems()
+	}
+	
+	func getTimelineItem(at period: Period, and index: Int) -> TimelineItem {
+		return getTimelineItems(in: period)[index]
+	}
+}
+
+//MARK: Periodic
 extension ItemViewModel {
 	
 	func canGetOnePast(of period: Period) -> Bool {
@@ -147,7 +249,7 @@ extension ItemViewModel {
 		let nearestMonth = allMonthsOfNearestYear[indexOfMonth]
 		currentOrNearestPeriod.month = nearestMonth
 		
-		print("currentOrNearestPeriod : \(currentOrNearestPeriod.localizedDescription)")
+		print("currentOrNearestPeriod : \(currentOrNearestPeriod.description)")
 		print("finished first step")
 		
 		filteredPeriodItems[currentOrNearestPeriod] = allPeriodItems[currentOrNearestPeriod]
@@ -155,7 +257,7 @@ extension ItemViewModel {
 		let allPeriods = allPeriodItems.map { $0.key }.sorted(by: <)
 		var nextPeriod: Period?
 		var previousPeriod: Period?
-		print("all sorted periods\n\(allPeriods.map({ $0.localizedDescription }))")
+		print("all sorted periods\n\(allPeriods.map({ $0.description }))")
 		if let indexOfCurrentOrNearestPeriod = allPeriods.index(of: currentOrNearestPeriod) {
 			if indexOfCurrentOrNearestPeriod < allPeriods.count - 1 {
 				nextPeriod = allPeriods[indexOfCurrentOrNearestPeriod + 1]
@@ -177,18 +279,6 @@ extension ItemViewModel {
 	
 	func getKeysOfPeriodicItems() -> [Period] {
 		return filteredPeriodItems.map { $0.key }.sorted(by: <)
-	}
-	
-	func getPeriodAtSection(section: Int) -> Period {
-		return getKeysOfPeriodicItems()[section]
-	}
-	
-	func getNumberOfPeriodsToDisplay() -> Int {
-		return filteredPeriodItems.count
-	}
-	
-	func getNumberOfItemsInPeriod(period: Period) -> Int {
-		return getItemsInPeriod(period: period).count
 	}
 	
 	func getItemsInPeriod(period: Period) -> Items {

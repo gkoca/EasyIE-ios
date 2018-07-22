@@ -9,14 +9,13 @@
 #if canImport(Foundation)
 import Foundation
 
-
 struct Day: Hashable, Comparable {
 	
 	var day: Int = 0
 	var month: Int = 0
 	var year: Int = 0
 	
-	var localizedDescription: String {
+	var description: String {
 		get {
 			var date = Date()
 			date.hour = 12
@@ -28,7 +27,7 @@ struct Day: Hashable, Comparable {
 	}
 	
 	var hashValue: Int {
-		return localizedDescription.hashValue
+		return description.hashValue
 	}
 	
 	static func == (lhs: Day, rhs: Day) -> Bool {

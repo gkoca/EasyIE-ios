@@ -8,7 +8,6 @@ PODS:
   - Realm/Headers (3.7.4)
   - RealmSwift (3.7.4):
     - Realm (= 3.7.4)
-  - SnapKit (4.0.0)
   - SwifterSwift/Foundation (4.4.0)
   - SwifterSwift/SwiftStdlib (4.4.0)
 
@@ -17,7 +16,6 @@ DEPENDENCIES:
   - Eureka
   - Fabric
   - RealmSwift
-  - SnapKit (~> 4.0.0)
   - SwifterSwift/Foundation
   - SwifterSwift/SwiftStdlib
 
@@ -28,7 +26,6 @@ SPEC REPOS:
     - Fabric
     - Realm
     - RealmSwift
-    - SnapKit
     - SwifterSwift
 
 SPEC CHECKSUMS:
@@ -37,9 +34,8 @@ SPEC CHECKSUMS:
   Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SwifterSwift: 1ce0e31801ddd3a2bd3256626275425adb01067a
 
-PODFILE CHECKSUM: a4a9e5d65fb72ce5af84f2a5324d57a8cb3df41c
+PODFILE CHECKSUM: a0d6013fdf37d525cb8212f3f453d3b962e6579f
 
 COCOAPODS: 1.5.3

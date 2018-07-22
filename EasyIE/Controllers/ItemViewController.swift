@@ -71,7 +71,7 @@ extension ItemViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return itemViewModel.getKeysOfPeriodicItems()[section].localizedDescription
+		return itemViewModel.getKeysOfPeriodicItems()[section].description
 	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

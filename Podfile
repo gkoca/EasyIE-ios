@@ -10,6 +10,5 @@ pod 'RealmSwift'
 pod 'Eureka'
 pod 'SwifterSwift/SwiftStdlib'
 pod 'SwifterSwift/Foundation'
-pod 'SnapKit', '~> 4.0.0'
 
 end
