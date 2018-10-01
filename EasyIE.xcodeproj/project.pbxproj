@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E8DBD154CC93CD45D51588E /* Pods_EasyIE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B15CBD9F953E3E1C968522E7 /* Pods_EasyIE.framework */; };
 		E804099D208261F9003C938D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804099C208261F9003C938D /* Period.swift */; };
 		E80D8F932116F2E9002C6D60 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80D8F922116F2E9002C6D60 /* ItemCellViewModel.swift */; };
 		E80D8F95211701E7002C6D60 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E80D8F94211701E7002C6D60 /* .swiftlint.yml */; };
@@ -46,12 +47,12 @@
 		E8B39164208F390F00F3DA6F /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39163208F390F00F3DA6F /* Loan.swift */; };
 		E8B39166208F391B00F3DA6F /* SavingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39165208F391B00F3DA6F /* SavingItem.swift */; };
 		E8B39168208F392300F3DA6F /* LoanItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39167208F392300F3DA6F /* LoanItem.swift */; };
-		FD917FC3B2597B9ABC146874 /* Pods_EasyIE.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.release.xcconfig"; sourceTree = "<group>"; };
-		783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.debug.xcconfig"; sourceTree = "<group>"; };
+		58BF0B6DF295390F012D3B20 /* Pods-EasyIE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.release.xcconfig"; sourceTree = "<group>"; };
+		80BB6C7C393F0C644716BFC3 /* Pods-EasyIE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.debug.xcconfig"; sourceTree = "<group>"; };
+		B15CBD9F953E3E1C968522E7 /* Pods_EasyIE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyIE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E804099C208261F9003C938D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
 		E80D8F922116F2E9002C6D60 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
 		E80D8F94211701E7002C6D60 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
@@ -93,7 +94,6 @@
 		E8B39163208F390F00F3DA6F /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 		E8B39165208F391B00F3DA6F /* SavingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingItem.swift; sourceTree = "<group>"; };
 		E8B39167208F392300F3DA6F /* LoanItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoanItem.swift; sourceTree = "<group>"; };
-		EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_EasyIE.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,20 +101,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FD917FC3B2597B9ABC146874 /* Pods_EasyIE.framework in Frameworks */,
+				9E8DBD154CC93CD45D51588E /* Pods_EasyIE.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		453FD041F7DCE8FD1E41BEA9 /* Pods */ = {
+		5E6031BFF231112439BFFC09 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */,
-				0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */,
+				80BB6C7C393F0C644716BFC3 /* Pods-EasyIE.debug.xcconfig */,
+				58BF0B6DF295390F012D3B20 /* Pods-EasyIE.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		E0C1FE8A016E948D917AC01A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B15CBD9F953E3E1C968522E7 /* Pods_EasyIE.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		E818D2B5206D8C66001B2EC0 /* ThirdParty */ = {
@@ -143,9 +151,9 @@
 			children = (
 				E80D8F94211701E7002C6D60 /* .swiftlint.yml */,
 				E87108F5206A360B00E6EBF3 /* EasyIE */,
-				453FD041F7DCE8FD1E41BEA9 /* Pods */,
-				EDAC49AF7D008F9733912F23 /* Frameworks */,
 				E8420454206AAA37000F90CD /* EasyIE.app */,
+				5E6031BFF231112439BFFC09 /* Pods */,
+				E0C1FE8A016E948D917AC01A /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -254,14 +262,6 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
-		EDAC49AF7D008F9733912F23 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				EC281A968B7A1B2747139A0E /* Pods_EasyIE.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -269,12 +269,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E8710905206A360B00E6EBF3 /* Build configuration list for PBXNativeTarget "EasyIE" */;
 			buildPhases = (
-				FF68144A23F5E301395582F8 /* [CP] Check Pods Manifest.lock */,
+				4FD95F83B4A95CA50860ACDE /* [CP] Check Pods Manifest.lock */,
 				E87108EF206A360B00E6EBF3 /* Sources */,
 				E87108F0206A360B00E6EBF3 /* Frameworks */,
 				E87108F1206A360B00E6EBF3 /* Resources */,
-				A0F4FFE3D8105CEA1F13A8E6 /* [CP] Embed Pods Frameworks */,
 				E826FD1B208D3CBC000534DE /* ShellScript */,
+				FDFB40B35EEEBA4D4535B7F3 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -297,6 +297,7 @@
 				TargetAttributes = {
 					E87108F2206A360B00E6EBF3 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1000;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -337,28 +338,26 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		A0F4FFE3D8105CEA1F13A8E6 /* [CP] Embed Pods Frameworks */ = {
+		4FD95F83B4A95CA50860ACDE /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
-				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
-				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
-				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+			inputFileListPaths = (
 			);
-			name = "[CP] Embed Pods Frameworks";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
+				"$(DERIVED_FILE_DIR)/Pods-EasyIE-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E826FD1B208D3CBC000534DE /* ShellScript */ = {
@@ -372,24 +371,34 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e467d4d36158e06c9ed3f9eb50b68aaaba7aaad9 31ebac0bd268ce44f918753588c7128f586404473eb30d7ec3de45a2fc9eb022\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\"";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e467d4d36158e06c9ed3f9eb50b68aaaba7aaad9 31ebac0bd268ce44f918753588c7128f586404473eb30d7ec3de45a2fc9eb022\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
-		FF68144A23F5E301395582F8 /* [CP] Check Pods Manifest.lock */ = {
+		FDFB40B35EEEBA4D4535B7F3 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+			inputFileListPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SwifterSwift/SwifterSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-EasyIE-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwifterSwift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -569,7 +578,7 @@
 		};
 		E8710906206A360B00E6EBF3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */;
+			baseConfigurationReference = 80BB6C7C393F0C644716BFC3 /* Pods-EasyIE.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -579,14 +588,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.easy-ie.ios.EasyIE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		E8710907206A360B00E6EBF3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */;
+			baseConfigurationReference = 58BF0B6DF295390F012D3B20 /* Pods-EasyIE.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -596,7 +605,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.easy-ie.ios.EasyIE";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

@@ -14,7 +14,7 @@ class ItemViewController: UITableViewController {
 		
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		tableView.rowHeight = UITableViewAutomaticDimension
+		tableView.rowHeight = UITableView.automaticDimension
 		tableView.estimatedRowHeight = 90.0
 		itemViewModel.loadItems()
 	}
@@ -142,7 +142,7 @@ extension ItemViewController {
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-		return UITableViewAutomaticDimension
+		return UITableView.automaticDimension
 	}
 	
 	override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

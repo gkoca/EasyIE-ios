@@ -33,6 +33,14 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		tagViewModel.loadTags()
+		addFistSection()
+		addSecondSection()
+		addThirdSection()
+		addforthSection()
+		rowKeyboardSpacing = 50.0
+	}
+	
+	private func addFistSection() {
 		form +++ Section()
 			<<< SegmentedRow<String>("itemType") {
 				//TODO: Localization
@@ -46,14 +54,11 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 					case segmentedRow.options![0]?:
 						segmentedRow.cell.segmentedControl.tintColor = UIColor.AppColor.colorIncome
 						self.itemIsIncome = true
-						break
 					case segmentedRow.options![1]?:
 						segmentedRow.cell.segmentedControl.tintColor = UIColor.AppColor.colorExpense
 						self.itemIsIncome = false
-						break
 					default:
 						print("shomething wrong")
-						break
 					}
 				})
 			<<< SwitchRow("isFixed") {
@@ -63,6 +68,9 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 				}.onChange({ (switchRow) in
 					self.itemIsFixed = switchRow.value!
 				})
+	}
+	private func addSecondSection() {
+		form
 			//TODO: Localization
 			+++ Section(footer: "Choose your date cycle your fixed entry.") {
 				$0.hidden = .function(["isFixed"], { form -> Bool in
@@ -81,35 +89,28 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 					switch dateCycleType {
 					case .undefined:
 						fatalError("selected undefined dateCycleType")
-						break
 					case .firstWorkDayOfMonth:
 						print("firstWorkDayOfMonth")
 						self.itemCycleType = .firstWorkDayOfMonth
 						self.itemCycleValue = 0
-						break
 					case .lastWorkDayOfMonth:
 						print("lastWorkDayOfMonth")
 						self.itemCycleType = .lastWorkDayOfMonth
 						self.itemCycleValue = 0
-						break
 					case .firstDayOfMonth:
 						print("firstDayOfMonth")
 						self.itemCycleType = .firstDayOfMonth
 						self.itemCycleValue = 0
-						break
 					case .lastDayOfMonth:
 						print("lastDayOfMonth")
 						self.itemCycleType = .lastDayOfMonth
 						self.itemCycleValue = 0
-						break
 					case .fixedDayOfMonth:
 						print("fixedDayOfMonth")
 						self.itemCycleType = .fixedDayOfMonth
-						break
 					case .fixedDayOfWeek:
 						print("fixedDayOfWeek")
 						self.itemCycleType = .fixedDayOfWeek
-						break
 					}
 				})
 			
@@ -166,8 +167,10 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 						Debug.printInvestigate(#file, #line)
 					}
 				})
-			
-			+++ Section()
+	}
+	
+	private func addThirdSection() {
+		form +++ Section()
 			//TODO: Localization
 			<<< DateInlineRow("Date") {
 				$0.title = $0.tag
@@ -179,10 +182,13 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 				}.onChange({ (row) in
 					self.itemDate = row.inlineRow?.value ?? Date()
 				})
-			
-			+++ Section()
+		
+	}
+	
+	private func addforthSection() {
+		form +++ Section()
 			//TODO: Localization
-			<<< DecimalRow("Amount"){
+			<<< DecimalRow("Amount") {
 				$0.title = $0.tag
 				$0.placeholder = "0.00 ₺"
 				}.onChange({ (row) in
@@ -194,17 +200,17 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 			+++ MultivaluedSection(multivaluedOptions: [.Insert, .Delete]) {
 				$0.tag = "tagFields"
 				$0.addButtonProvider = { section in
-					return ButtonRow(){
+					return ButtonRow {
 						//TODO: Localization
 						$0.title = "Add New Tag"
 						$0.tag = "addNewTagButton"
-						}.cellUpdate { cell, row in
+						}.cellUpdate { cell, _ in
 							cell.textLabel?.textAlignment = .left
 					}
 				}
 				
 				$0.multivaluedRowToInsertAt = { index in
-					return AutocompleteTextRow() {
+					return AutocompleteTextRow {
 						//TODO: Localization
 						$0.placeholder = "Tag Name"
 						$0.keyboardReturnType = KeyboardReturnTypeConfiguration(nextKeyboardType: .next, defaultKeyboardType: .done)
@@ -213,7 +219,6 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 					}
 				}
 		}
-		rowKeyboardSpacing = 50.0
 	}
 	
 	@IBAction func onCancelButton(_ sender: Any) {

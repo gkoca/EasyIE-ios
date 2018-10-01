@@ -6,13 +6,15 @@
 //  Copyright © 2018 easy-ie. All rights reserved.
 //
 
+// TODO: enable swiftlint
+// swiftlint:disable all
 import UIKit
 import Eureka
 
-public protocol AutocompleteFieldRowConformance : FormatterConformance {
-	var titlePercentage : CGFloat? { get set }
-	var placeholder : String? { get set }
-	var placeholderColor : UIColor? { get set }
+public protocol AutocompleteFieldRowConformance: FormatterConformance {
+	var titlePercentage: CGFloat? { get set }
+	var placeholder: String? { get set }
+	var placeholderColor: UIColor? { get set }
 	var filterStrings: [String]? { get set }
 	var inlineMode: Bool? { get set }
 }
@@ -39,7 +41,7 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 	
 	private var calculatedTitlePercentage: CGFloat = 0.7
 	
-	public required init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+	public required init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		
 		let textField = SearchTextField()
 		self.textField = textField
@@ -53,20 +55,20 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 		contentView.addSubview(titleLabel!)
 		contentView.addSubview(textField)
 		
-		NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationWillResignActive, object: nil, queue: nil) { [weak self] _ in
+		NotificationCenter.default.addObserver(forName: UIApplication.willResignActiveNotification, object: nil, queue: nil) { [weak self] _ in
 			guard let me = self else { return }
 			guard me.observingTitleText else { return }
 			me.titleLabel?.removeObserver(me, forKeyPath: "text")
 			me.observingTitleText = false
 		}
-		NotificationCenter.default.addObserver(forName: Notification.Name.UIApplicationDidBecomeActive, object: nil, queue: nil) { [weak self] _ in
+		NotificationCenter.default.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
 			guard let me = self else { return }
 			guard !me.observingTitleText else { return }
 			me.titleLabel?.addObserver(me, forKeyPath: "text", options: NSKeyValueObservingOptions.old.union(.new), context: nil)
 			me.observingTitleText = true
 		}
 		
-		NotificationCenter.default.addObserver(forName: Notification.Name.UIContentSizeCategoryDidChange, object: nil, queue: nil) { [weak self] _ in
+		NotificationCenter.default.addObserver(forName: UIContentSizeCategory.didChangeNotification, object: nil, queue: nil) { [weak self] _ in
 			self?.setupTitleLabel()
 			self?.setNeedsUpdateConstraints()
 		}
@@ -89,9 +91,9 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 			titleLabel?.removeObserver(self, forKeyPath: "text")
 		}
 		imageView?.removeObserver(self, forKeyPath: "image")
-		NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationWillResignActive, object: nil)
-		NotificationCenter.default.removeObserver(self, name: Notification.Name.UIApplicationDidBecomeActive, object: nil)
-		NotificationCenter.default.removeObserver(self, name: Notification.Name.UIContentSizeCategoryDidChange, object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIApplication.willResignActiveNotification, object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIApplication.didBecomeActiveNotification, object: nil)
+		NotificationCenter.default.removeObserver(self, name: UIContentSizeCategory.didChangeNotification, object: nil)
 	}
 	
 	open override func setup() {
@@ -129,7 +131,7 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 		textField.font = .preferredFont(forTextStyle: .body)
 		if let placeholder = (row as? AutocompleteFieldRowConformance)?.placeholder {
 			if let color = (row as? AutocompleteFieldRowConformance)?.placeholderColor {
-				textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedStringKey.foregroundColor: color])
+				textField.attributedPlaceholder = NSAttributedString(string: placeholder, attributes: [NSAttributedString.Key.foregroundColor: color])
 			} else {
 				textField.placeholder = (row as? AutocompleteFieldRowConformance)?.placeholder
 			}
@@ -189,7 +191,7 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 			views["imageView"] = imageView
 			if let titleLabel = titleLabel, let text = titleLabel.text, !text.isEmpty {
 				views["label"] = titleLabel
-				dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[label]-[textField]-|", options: NSLayoutFormatOptions(), metrics: nil, views: views)
+				dynamicConstraints += NSLayoutConstraint.constraints(withVisualFormat: "H:[imageView]-(15)-[label]-[textField]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
 				dynamicConstraints.append(NSLayoutConstraint(item: titleLabel,
 															 attribute: .width,
 															 relatedBy: (row as? AutocompleteFieldRowConformance)?.titlePercentage != nil ? .equal : .lessThanOrEqual,
@@ -377,7 +379,7 @@ open class AutocompleteFieldRow<Cell: CellType>: FormatteableRow<Cell>, Autocomp
 
 open class AutocompleteTextCell: _AutocompleteFieldCell<String>, CellType {
 	
-	required public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
+	required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
 		super.init(style: style, reuseIdentifier: reuseIdentifier)
 	}
 	
@@ -403,3 +405,4 @@ public final class AutocompleteTextRow: _AutocompleteTextRow, RowType {
 		super.init(tag: tag)
 	}
 }
+// swiftlint:enable all

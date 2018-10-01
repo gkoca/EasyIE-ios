@@ -28,5 +28,5 @@ line_length: 190
 cyclomatic_complexity: 20
 
 attributes:
- always_on_same_line: ["@IBAction", "@IBOutlet", "@IBInspectable"]
+ always_on_same_line: ["@IBAction", "@IBOutlet"]
  always_on_line_above: ["@IBInspectable", "@UIApplicationMain", "@discardableResult", "@objc"]

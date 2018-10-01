@@ -11,23 +11,33 @@ import RealmSwift
 class RealmHelper {
 	
 	static let helper = RealmHelper()
-	let realm = try! Realm(configuration: getConfiguration())
+	let realm: Realm
 	
+	init() {
+		do {
+			realm = try Realm(configuration: RealmHelper.getConfiguration())
+		} catch {
+			fatalError(error.localizedDescription)
+		}
+	}
 	private static func getConfiguration() -> Realm.Configuration {
-		let documentDirectory = try! FileManager.default.url(
-			for: .documentDirectory,
-			in: .userDomainMask,
-			appropriateFor: nil,
-			create: false
-		)
-		let fileURL = documentDirectory.appendingPathComponent("easyie.realm")
-		print("Create realm configuration with file url \(fileURL)")
-		return Realm.Configuration(fileURL: fileURL, readOnly: false, schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
+		do {
+			let documentDirectory = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+			let fileURL = documentDirectory.appendingPathComponent("easyie.realm")
+			print("Create realm configuration with file url \(fileURL)")
+			return Realm.Configuration(fileURL: fileURL, readOnly: false, schemaVersion: 1, deleteRealmIfMigrationNeeded: true)
+		} catch {
+			fatalError(error.localizedDescription)
+		}
 	}
 	
 	func update(block:(()->())) {
-		try! realm.write {
-			block()
+		do {
+			try realm.write {
+				block()
+			}
+		} catch {
+			fatalError(error.localizedDescription)
 		}
 	}
 	

@@ -19,9 +19,9 @@ class GlobalAlertController {
 
 	static func showSingleActionAlert(title: String = "",
 									  message: String = "",
-									  preferredStyle: UIAlertControllerStyle = .alert,
+									  preferredStyle: UIAlertController.Style = .alert,
 									  positiveActionTitle: String = "Ok",
-									  positiveActionStyle: UIAlertActionStyle = .cancel,
+									  positiveActionStyle: UIAlertAction.Style = .cancel,
 									  positiveAction: ((UIAlertAction) -> Swift.Void)? = nil) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 		let action = UIAlertAction(title: positiveActionTitle, style: positiveActionStyle, handler: positiveAction)
@@ -33,12 +33,12 @@ class GlobalAlertController {
 
 	static func showTwoActionAlert(title: String = "",
 								   message: String = "",
-								   preferredStyle: UIAlertControllerStyle = .alert,
+								   preferredStyle: UIAlertController.Style = .alert,
 								   positiveActionTitle: String = "Ok",
-								   positiveActionStyle: UIAlertActionStyle = .default,
+								   positiveActionStyle: UIAlertAction.Style = .default,
 								   positiveAction: ((UIAlertAction) -> Void)? = nil,
 								   negativeActionTitle: String = "Cancel",
-								   negativeActionStyle: UIAlertActionStyle = .cancel,
+								   negativeActionStyle: UIAlertAction.Style = .cancel,
 								   negativeAction: ((UIAlertAction) -> Void)? = nil) {
 		let alert = UIAlertController(title: title, message: message, preferredStyle: preferredStyle)
 		let positiveAct = UIAlertAction(title: positiveActionTitle, style: positiveActionStyle, handler: positiveAction)
