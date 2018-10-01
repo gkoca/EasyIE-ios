@@ -23,7 +23,7 @@ class TimelineItem {
 	var dayInfo: Day?
 	var cell: UITableViewCell
 	
-	init(with type:TimelineItemType, and item: Item? = nil, and dayInfo: Day? = nil) {
+	init(with type: TimelineItemType, and item: Item? = nil, and dayInfo: Day? = nil) {
 		self.type = type
 		switch type {
 		case .undefined:

@@ -315,7 +315,7 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 	}
 	
 	open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-		return formViewController()?.textInput(textField, shouldChangeCharactersInRange:range, replacementString:string, cell: self) ?? true
+		return formViewController()?.textInput(textField, shouldChangeCharactersInRange: range, replacementString: string, cell: self) ?? true
 	}
 	
 	open func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -340,7 +340,9 @@ open class _AutocompleteFieldCell<T> : Cell<T>, UITextFieldDelegate, SearchTextF
 			setNeedsUpdateConstraints()
 			updateConstraintsIfNeeded()
 		}
-		guard let titlePercentage = row.titlePercentage else  { return }
+		guard let titlePercentage = row.titlePercentage else {
+			return
+		}
 		var targetTitleWidth = bounds.size.width * titlePercentage
 		if let imageView = imageView, let _ = imageView.image, let titleLabel = titleLabel {
 			var extraWidthToSubtract = titleLabel.frame.minX - imageView.frame.minX // Left-to-right interface layout

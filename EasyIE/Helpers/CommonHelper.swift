@@ -28,11 +28,11 @@ class Utilities {
 	}
 }
 
-fileprivate struct DeviceType {
+private struct DeviceType {
 	static let isIPad = UIDevice.current.model == "iPad"
 }
 
-fileprivate enum Storyboard : String {
+private enum Storyboard: String {
 	case main = "Main"
 	case mainIPad = "MainIPad"
 }
@@ -70,17 +70,16 @@ extension UIColor {
 		self.init(red: CGFloat(red) / 255.0, green: CGFloat(green) / 255.0, blue: CGFloat(blue) / 255.0, alpha: 1.0)
 	}
 	
-	convenience init(netHex:Int) {
-		self.init(red:(netHex >> 16) & 0xff, green:(netHex >> 8) & 0xff, blue:netHex & 0xff)
+	convenience init(netHex: Int) {
+		self.init(red: (netHex >> 16) & 0xff, green: (netHex >> 8) & 0xff, blue: netHex & 0xff)
 	}
-	
+	// TODO: Cleanup
 	struct AppColor {
 		static let arrowDark = UIColor(netHex: 0x707070)
 		static let colorIncome = UIColor(netHex: 0x388e3c)
 		static let colorIncomeDark = UIColor(netHex: 0x00600f)
 		static let colorExpense = UIColor(netHex: 0xd32f2f)
 		static let colorExpenseDark = UIColor(netHex: 0x9a0007)
-		
 		static let colorPrimary = UIColor(netHex: 0x880e4f)
 		static let colorPrimaryLight = UIColor(netHex: 0xbc477b)
 		static let colorPrimaryDark = UIColor(netHex: 0x560027)
@@ -95,9 +94,11 @@ extension UIColor {
 // MARK: Array
 // usage : objectsArray = objectsArray.filterDuplicate{ ($0.name,$0.age) }
 extension Array {
-	func filterDuplicate<T>(_ keyValue:(Element)->T) -> [Element] {
+	func filterDuplicate<T>(_ keyValue: (Element) -> T) -> [Element] {
 		var uniqueKeys = Set<String>()
-		return filter{uniqueKeys.insert("\(keyValue($0))").inserted}
+		return filter {
+			uniqueKeys.insert("\(keyValue($0))").inserted
+		}
 	}
 }
 

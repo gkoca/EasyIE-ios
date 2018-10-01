@@ -1,15 +1,16 @@
 PODS:
-  - Crashlytics (3.10.5):
-    - Fabric (~> 1.7.9)
-  - Eureka (4.2.0)
-  - Fabric (1.7.9)
-  - Realm (3.7.4):
-    - Realm/Headers (= 3.7.4)
-  - Realm/Headers (3.7.4)
-  - RealmSwift (3.7.4):
-    - Realm (= 3.7.4)
-  - SwifterSwift/Foundation (4.4.0)
-  - SwifterSwift/SwiftStdlib (4.4.0)
+  - Crashlytics (3.10.8):
+    - Fabric (~> 1.7.12)
+  - Eureka (4.3.0)
+  - Fabric (1.7.12)
+  - Realm (3.10.0):
+    - Realm/Headers (= 3.10.0)
+  - Realm/Headers (3.10.0)
+  - RealmSwift (3.10.0):
+    - Realm (= 3.10.0)
+  - SwifterSwift/Foundation (4.6.0)
+  - SwifterSwift/SwiftStdlib (4.6.0)
+  - SwiftLint (0.27.0)
 
 DEPENDENCIES:
   - Crashlytics
@@ -18,6 +19,7 @@ DEPENDENCIES:
   - RealmSwift
   - SwifterSwift/Foundation
   - SwifterSwift/SwiftStdlib
+  - SwiftLint
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -27,15 +29,17 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SwifterSwift
+    - SwiftLint
 
 SPEC CHECKSUMS:
-  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
-  Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
-  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
-  Realm: a469bb59e33f9926102ccaea4349822c53b9117e
-  RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
-  SwifterSwift: 1ce0e31801ddd3a2bd3256626275425adb01067a
+  Crashlytics: 058dc1ba579f6c100bc60a6878703779bff383c4
+  Eureka: 6d711cb30ca333b4bc893110285a722ae3840114
+  Fabric: d7387db9a31aadff63b147a4b91d982c53afaa4f
+  Realm: 85ab9e4f779d66f6e9ffeb118dc25b7f130c96ac
+  RealmSwift: 69121c8b86d0ae005fb779efdb10e606732e1c74
+  SwifterSwift: 812ffec6f301922f5430e75be3f2939ea3a80024
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
 
-PODFILE CHECKSUM: a0d6013fdf37d525cb8212f3f453d3b962e6579f
+PODFILE CHECKSUM: 984564e9e83b074527dde975103c0608682152a7
 
 COCOAPODS: 1.5.3

@@ -55,7 +55,7 @@ class TimelineCell: UITableViewCell {
 			// TODO: Localization
 			let itemType = item.amount < 0 ? "expense" : "income"
 			let verificationMessage =  item.isVerified ? "Do you want to remove verification from this \(itemType)?" : "Do you verify this \(itemType)?"
-			GlobalAlertController.showTwoActionAlert(title: "Verification", message: verificationMessage, preferredStyle: .alert, positifActionTitle: "Yes", positifAction: { (action) in
+			GlobalAlertController.showTwoActionAlert(title: "Verification", message: verificationMessage, preferredStyle: .alert, positiveActionTitle: "Yes", positiveAction: { (_) in
 				item.verify()
 			}, negativeActionTitle: "No", negativeActionStyle: .cancel)
 		}

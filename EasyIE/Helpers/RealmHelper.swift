@@ -34,7 +34,7 @@ class RealmHelper {
 	func insert(_ object: Object, success: @escaping (() -> Void)) {
 		let group = DispatchGroup()
 		group.enter()
-		let observerToken = realm.observe { (reamNotification, realm) in
+		let observerToken = realm.observe { (_, _) in
 			success()
 			group.leave()
 		}

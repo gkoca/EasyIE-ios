@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E804099D208261F9003C938D /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = E804099C208261F9003C938D /* Period.swift */; };
+		E80D8F932116F2E9002C6D60 /* ItemCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E80D8F922116F2E9002C6D60 /* ItemCellViewModel.swift */; };
+		E80D8F95211701E7002C6D60 /* .swiftlint.yml in Resources */ = {isa = PBXBuildFile; fileRef = E80D8F94211701E7002C6D60 /* .swiftlint.yml */; };
 		E81549922099A175008A4E15 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E81549912099A175008A4E15 /* TimelineCell.swift */; };
 		E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */; };
 		E834833120704285006281AF /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = E834833020704285006281AF /* Globals.swift */; };
@@ -51,6 +53,8 @@
 		0386597D9D80989EF9AF43EB /* Pods-EasyIE.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.release.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.release.xcconfig"; sourceTree = "<group>"; };
 		783F45F7D659DFEBAA6D8432 /* Pods-EasyIE.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-EasyIE.debug.xcconfig"; path = "Pods/Target Support Files/Pods-EasyIE/Pods-EasyIE.debug.xcconfig"; sourceTree = "<group>"; };
 		E804099C208261F9003C938D /* Period.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Period.swift; sourceTree = "<group>"; };
+		E80D8F922116F2E9002C6D60 /* ItemCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCellViewModel.swift; sourceTree = "<group>"; };
+		E80D8F94211701E7002C6D60 /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text; path = .swiftlint.yml; sourceTree = "<group>"; };
 		E81549912099A175008A4E15 /* TimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		E818D2B6206D8C84001B2EC0 /* SearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTextField.swift; sourceTree = "<group>"; };
 		E834833020704285006281AF /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -137,6 +141,7 @@
 		E87108EA206A360A00E6EBF3 = {
 			isa = PBXGroup;
 			children = (
+				E80D8F94211701E7002C6D60 /* .swiftlint.yml */,
 				E87108F5206A360B00E6EBF3 /* EasyIE */,
 				453FD041F7DCE8FD1E41BEA9 /* Pods */,
 				EDAC49AF7D008F9733912F23 /* Frameworks */,
@@ -174,6 +179,7 @@
 			children = (
 				E871090E206A37BB00E6EBF3 /* ItemViewModel.swift */,
 				E871090F206A37BB00E6EBF3 /* TagViewModel.swift */,
+				E80D8F922116F2E9002C6D60 /* ItemCellViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -321,6 +327,7 @@
 				E8710928206A37BC00E6EBF3 /* Main.storyboard in Resources */,
 				E8710927206A37BC00E6EBF3 /* LaunchScreen.storyboard in Resources */,
 				E8710937206A37BC00E6EBF3 /* MOCK_DATA_03.json in Resources */,
+				E80D8F95211701E7002C6D60 /* .swiftlint.yml in Resources */,
 				E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */,
 				E840F59E209052B5006E0A28 /* MOCK_DATA_1000.json in Resources */,
 				E8710936206A37BC00E6EBF3 /* Assets.xcassets in Resources */,
@@ -356,16 +363,16 @@
 		};
 		E826FD1B208D3CBC000534DE /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\" e467d4d36158e06c9ed3f9eb50b68aaaba7aaad9 31ebac0bd268ce44f918753588c7128f586404473eb30d7ec3de45a2fc9eb022";
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" e467d4d36158e06c9ed3f9eb50b68aaaba7aaad9 31ebac0bd268ce44f918753588c7128f586404473eb30d7ec3de45a2fc9eb022\n\n\"${PODS_ROOT}/SwiftLint/swiftlint\"";
 		};
 		FF68144A23F5E301395582F8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -405,6 +412,7 @@
 				E834833120704285006281AF /* Globals.swift in Sources */,
 				E871092C206A37BC00E6EBF3 /* CommonHelper.swift in Sources */,
 				E871092D206A37BC00E6EBF3 /* RealmHelper.swift in Sources */,
+				E80D8F932116F2E9002C6D60 /* ItemCellViewModel.swift in Sources */,
 				E8B39164208F390F00F3DA6F /* Loan.swift in Sources */,
 				E84128C92103C45F008E651F /* SeperatorTimelineCell.swift in Sources */,
 				E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */,

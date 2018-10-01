@@ -18,9 +18,9 @@ class Loan: Object {
 	@objc dynamic var startDate: Date = Date()
 	@objc dynamic var endDate: Date = Date()
 	@objc dynamic var tag: Tag?
-	
+
 	var items = List<LoanItem>()
-	
+
 	override class func primaryKey() -> String? {
 		return "id"
 	}

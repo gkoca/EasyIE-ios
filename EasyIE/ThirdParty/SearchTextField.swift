@@ -395,11 +395,9 @@ open class SearchTextField: UITextField {
 		if let firstElement = filteredResults.first {
 			if let itemSelectionHandler = self.itemSelectionHandler {
 				itemSelectionHandler(filteredResults, 0)
-			}
-			else {
+			} else {
 				if inlineMode, let filterAfter = startFilteringAfter {
 					let stringElements = self.text?.components(separatedBy: filterAfter)
-					
 					self.text = stringElements!.first! + filterAfter + firstElement.title
 				} else {
 					self.text = firstElement.title
@@ -409,12 +407,11 @@ open class SearchTextField: UITextField {
 	}
 	
 	open func hideResultsList() {
-		if let tableFrame:CGRect = tableView?.frame {
+		if let tableFrame: CGRect = tableView?.frame {
 			let newFrame = CGRect(x: tableFrame.origin.x, y: tableFrame.origin.y, width: tableFrame.size.width, height: 0.0)
 			UIView.animate(withDuration: 0.2, animations: { [weak self] in
 				self?.tableView?.frame = newFrame
 			})
-			
 		}
 	}
 	
@@ -437,7 +434,6 @@ open class SearchTextField: UITextField {
 				if titleFilterRange.location != NSNotFound || subtitleFilterRange.location != NSNotFound || addAll {
 					item.attributedTitle = NSMutableAttributedString(string: item.title)
 					item.attributedSubtitle = NSMutableAttributedString(string: (item.subtitle != nil ? item.subtitle! : ""))
-					
 					item.attributedTitle!.setAttributes(highlightAttributes, range: titleFilterRange)
 					
 					if subtitleFilterRange.location != NSNotFound {
@@ -487,8 +483,15 @@ open class SearchTextField: UITextField {
 		
 		for attr in highlightAttributes {
 			if attr.0 == NSAttributedStringKey.font {
+				
+				if let font = attr.1 as? UIFont {
+					
+				}
+				
 				let fontName = (attr.1 as! UIFont).fontName
 				let pointSize = (attr.1 as! UIFont).pointSize * fontConversionRate
+				
+			
 				highlightAttributesForSubtitle[attr.0] = UIFont(name: fontName, size: pointSize)
 			} else {
 				highlightAttributesForSubtitle[attr.0] = attr.1

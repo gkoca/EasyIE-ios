@@ -9,7 +9,7 @@
 import Foundation
 
 struct Period: Hashable, Comparable {
-	
+
 	var month: Int = 0
 	var year: Int = 0
 	var description: String {
@@ -21,15 +21,15 @@ struct Period: Hashable, Comparable {
 			return date.string(withFormat: "MMMM yyyy")
 		}
 	}
-	
+
 	var hashValue: Int {
 		return description.hashValue
 	}
-	
+
 	static func == (lhs: Period, rhs: Period) -> Bool {
 		return lhs.month == rhs.month && lhs.year == rhs.year
 	}
-	
+
 	static func < (lhs: Period, rhs: Period) -> Bool {
 		if lhs.year == rhs.year {
 			return lhs.month < rhs.month
@@ -37,7 +37,7 @@ struct Period: Hashable, Comparable {
 			return lhs.year < rhs.year
 		}
 	}
-	
+
 	static func > (lhs: Period, rhs: Period) -> Bool {
 		if lhs.year == rhs.year {
 			return lhs.month > rhs.month
@@ -45,7 +45,7 @@ struct Period: Hashable, Comparable {
 			return lhs.year > rhs.year
 		}
 	}
-	
+
 	static func <= (lhs: Period, rhs: Period) -> Bool {
 		if lhs == rhs {
 			return true
@@ -53,7 +53,7 @@ struct Period: Hashable, Comparable {
 			return lhs < rhs
 		}
 	}
-	
+
 	static func >= (lhs: Period, rhs: Period) -> Bool {
 		if lhs == rhs {
 			return true

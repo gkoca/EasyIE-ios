@@ -247,10 +247,8 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 					break
 				case .fixedDayOfMonth:
 					item.cycleValue = itemCycleValue
-					break
 				case .fixedDayOfWeek:
 					item.cycleValue = itemCycleValue
-					break
 				}
 			} else {
 				item.date = itemDate
@@ -258,10 +256,8 @@ class AddItemViewController: FormViewController, UITextFieldDelegate {
 			let values = form.values()
 			itemTags.removeAll()
 			if let tags = values["tagFields"] as? [String], tags.count > 0 {
-				for tag in tags {
-					if tag.count > 0 {
-						itemTags.append(Tag(value: tag))
-					}
+				for tag in tags where tag.count > 0 {
+					itemTags.append(Tag(value: tag))
 				}
 				if itemTags.count > 0 {
 					self.item.tags.append(objectsIn: itemTags)

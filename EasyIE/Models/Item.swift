@@ -22,7 +22,7 @@ enum DateCycleType: Int {
 }
 
 enum DaysOfWeek: String {
-	case Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday
+	case monday, tuesday, wednesday, thursday, friday, saturday, sunday
 }
 
 class Item: Object, Codable {
@@ -76,9 +76,9 @@ class Item: Object, Codable {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		let id = try container.decode(String.self, forKey: .id)
 		let amount = try container.decode(Double.self, forKey: .amount)
-		let d = try container.decode(String.self, forKey: .date)
+		let dateValue = try container.decode(String.self, forKey: .date)
 		var date = Date()
-		if let epoch = Double(d) {
+		if let epoch = Double(dateValue) {
 			date = Date(timeIntervalSince1970: epoch)
 		}
 		let isFixed = try container.decode(Bool.self, forKey: .isFixed)
@@ -86,10 +86,10 @@ class Item: Object, Codable {
 		let cycleType = try container.decode(Int.self, forKey: .cycleType)
 		let cycleValue = try container.decode(Int.self, forKey: .cycleValue)
 		let decodedTags =  try container.decode([Tag].self, forKey: .tags)
-		let t = List<Tag>()
-		t.append(objectsIn: decodedTags)
+		let tagsValue = List<Tag>()
+		tagsValue.append(objectsIn: decodedTags)
 		
-		self.init(id: id, amount: amount, date: date, isFixed: isFixed, isVerified: isVerified, cycleType: cycleType, cycleValue: cycleValue, tags: t)
+		self.init(id: id, amount: amount, date: date, isFixed: isFixed, isVerified: isVerified, cycleType: cycleType, cycleValue: cycleValue, tags: tagsValue)
 	}
 	
 	func encode(to encoder: Encoder) throws {

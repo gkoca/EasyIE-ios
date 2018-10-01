@@ -18,11 +18,11 @@ class ItemViewModel: NSObject {
 				day = Day(day: item.date.day, month: item.date.month, year: item.date.year)
 				period = Period(month: item.date.month, year: item.date.year)
 				
-				if allPeriodItems[period] != nil {
-					allPeriodItems[period]?.append(item)
-				} else {
-					allPeriodItems[period] = [item]
-				}
+//				if allPeriodItems[period] != nil {
+//					allPeriodItems[period]?.append(item)
+//				} else {
+//					allPeriodItems[period] = [item]
+//				}
 				
 				if allTimelineItems[period] != nil {
 					if allTimelineItems[period]![day] != nil {
@@ -31,13 +31,13 @@ class ItemViewModel: NSObject {
 						allTimelineItems[period]![day] = [item]
 					}
 				} else {
-					allTimelineItems[period] = [day:[item]]
+					allTimelineItems[period] = [day: [item]]
 				}
 				
 				
 			}
 //			allPeriodicItems = allPeriodicItems.sorted( by: { $0.key < $1.key } ) as [Period:Items]
-			print(allPeriodItems.map({ ($0.key.description, $0.value.count) }))
+//			print(allPeriodItems.map({ ($0.key.description, $0.value.count) }))
 			
 //			print(allTimelineItems.map({
 //				($0.key.description, $0.value.count, $0.value.map({
@@ -47,22 +47,24 @@ class ItemViewModel: NSObject {
 		}
 	}
 	
-	private var allPeriodItems = [Period:Items]()
-	private var filteredPeriodItems = [Period:Items]()
+//	private var allPeriodItems = [Period:Items]()
+//	private var filteredPeriodItems = [Period:Items]()
 	
-	private var allTimelineItems = [Period:[Day:Items]]()
-	private var filteredTimelineItems = [Period:[Day:Items]]()
+	private var allTimelineItems = [Period: [Day: Items]]()
+	private var filteredTimelineItems = [Period: [Day: Items]]()
 	
 	var itemViewNeedsUpdate = false
 	
 	func loadDummyEntries(completion: @escaping () -> Void) {
 		let path = Bundle.main.path(forResource: "MOCK_DATA_1000", ofType: "json")
 		let url = URL(fileURLWithPath: path!)
+		//swiftlint:disable syntactic_sugar
 		if let items = try? Array<Item>(fromURL: url) {
 			ItemDB.insert(items)
 			self.items = items
 			completion()
 		}
+		//swiftlint:enable syntactic_sugar
 	}
 	
 	func loadItems() {
@@ -70,15 +72,15 @@ class ItemViewModel: NSObject {
 		if items.isEmpty {
 			loadDummyEntries {
 				print("\(self.items.count) items loaded from json")
-				self.setFilteredPeriodicItemsForFirst()
+				self.setFilteredTimelineItemsForFirst()
 			}
 		} else {
-			setFilteredPeriodicItemsForFirst()
+			setFilteredTimelineItemsForFirst()
 		}
 		itemViewNeedsUpdate = true
 	}
 	
-	func addItem(_ item:Item, success: @escaping (() -> Void)) {
+	func addItem(_ item: Item, success: @escaping (() -> Void)) {
 		ItemDB.insert(item) {
 			self.loadItems()
 			success()
@@ -86,7 +88,7 @@ class ItemViewModel: NSObject {
 	}
 }
 
-//MARK: Timeline
+// MARK: Timeline
 extension ItemViewModel {
 	
 	func sortTimelineItems() {
@@ -126,7 +128,8 @@ extension ItemViewModel {
 		}
 		currentOrNearestPeriod.year = nearestYear
 		
-		var allMonthsOfNearestYear = allPeriodItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
+		var allMonthsOfNearestYear = allTimelineItems.filter { $0.key.year == nearestYear }.map { $0.key.month }
+		
 		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
 		var indexOfMonth = 0
 		for i in 1...allMonthsOfNearestYear.count - 1 {
@@ -173,8 +176,8 @@ extension ItemViewModel {
 	func getNumberOfPeriodsToDisplay() -> Int {
 		return filteredTimelineItems.count
 	}
-	
-	func getNumberOfItemsInPeriod(period: Period) -> Int {
+
+	func getNumberOfItems(in period: Period) -> Int {
 		return getTimelineItems(in: period).count
 	}
 	
@@ -183,12 +186,29 @@ extension ItemViewModel {
 		return TimelineItems()
 	}
 	
-	func getTimelineItem(at period: Period, and index: Int) -> TimelineItem {
+	func getTimelineItem(in period: Period, at index: Int) -> TimelineItem {
 		return getTimelineItems(in: period)[index]
 	}
+
+	func canGetOnePast(of period: Period) -> Bool {
+		let allKeys = allTimelineItems.map { $0.key }.sorted(by: <)
+		var targetPeriod: Period?
+		var isSuccess = false
+		if var index = allKeys.index(of: period), index > 0 {
+			index -= 1
+			targetPeriod = allKeys[index]
+		}
+		if let thePeriod = targetPeriod {
+			filteredTimelineItems[thePeriod] = allTimelineItems[thePeriod]
+			isSuccess = true
+		}
+		return isSuccess
+	}
+	
 }
 
-//MARK: Periodic
+/*
+// MARK: Periodic
 extension ItemViewModel {
 	
 	func canGetOnePast(of period: Period) -> Bool {
@@ -235,7 +255,7 @@ extension ItemViewModel {
 			nearestYear = allYears[indexOfYear] //nearest year found
 		}
 		currentOrNearestPeriod.year = nearestYear
-		
+
 		var allMonthsOfNearestYear = allPeriodItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
 		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
 		var indexOfMonth = 0
@@ -248,12 +268,12 @@ extension ItemViewModel {
 		}
 		let nearestMonth = allMonthsOfNearestYear[indexOfMonth]
 		currentOrNearestPeriod.month = nearestMonth
-		
+
 		print("currentOrNearestPeriod : \(currentOrNearestPeriod.description)")
 		print("finished first step")
-		
+
 		filteredPeriodItems[currentOrNearestPeriod] = allPeriodItems[currentOrNearestPeriod]
-		
+
 		let allPeriods = allPeriodItems.map { $0.key }.sorted(by: <)
 		var nextPeriod: Period?
 		var previousPeriod: Period?
@@ -266,15 +286,15 @@ extension ItemViewModel {
 				previousPeriod = allPeriods[indexOfCurrentOrNearestPeriod - 1]
 			}
 		}
-		
+
 		if let nextPeriod = nextPeriod {
 			filteredPeriodItems[nextPeriod] = allPeriodItems[nextPeriod]
 		}
-		
+
 		if let previousPeriod = previousPeriod {
 			filteredPeriodItems[previousPeriod] = allPeriodItems[previousPeriod]
 		}
-		
+
 	}
 	
 	func getKeysOfPeriodicItems() -> [Period] {
@@ -326,3 +346,4 @@ extension ItemViewModel {
 	}
 	
 }
+*/
