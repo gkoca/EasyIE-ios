@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cfk-lB-id9">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Cfk-lB-id9">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -301,21 +298,21 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MEQ-Bx-maj">
-                                            <rect key="frame" x="16" y="25.5" width="2" height="77.5"/>
+                                            <rect key="frame" x="16" y="26" width="2" height="77"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="2" id="Rxf-y3-oT5"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="351-Op-b5S">
-                                            <rect key="frame" x="16" y="0.0" width="2" height="17.5"/>
+                                            <rect key="frame" x="16" y="0.0" width="2" height="18"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="2" id="Zul-ga-34E"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zcx-pv-3hp" customClass="RoundableView" customModule="EasyIE" customModuleProvider="target">
-                                            <rect key="frame" x="13" y="17.5" width="8" height="8"/>
+                                            <rect key="frame" x="13" y="18" width="8" height="8"/>
                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="8" id="HtI-c3-wJA"/>
@@ -485,8 +482,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Incomes &amp; Expenses" id="73R-gh-dch">
                         <rightBarButtonItems>
-                            <barButtonItem style="plain" systemItem="edit" id="n4U-Yh-3so"/>
-                            <barButtonItem style="plain" systemItem="add" id="gXS-vt-rKK">
+                            <barButtonItem style="done" systemItem="edit" id="n4U-Yh-3so"/>
+                            <barButtonItem style="done" systemItem="add" id="gXS-vt-rKK">
                                 <connections>
                                     <segue destination="dc1-6s-DQF" kind="presentation" identifier="AddItemVCSegue" id="T2G-Y1-ww2"/>
                                 </connections>
