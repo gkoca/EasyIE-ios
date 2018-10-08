@@ -43,6 +43,9 @@
 		E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */ = {isa = PBXBuildFile; fileRef = E8710922206A37BC00E6EBF3 /* MOCK_DATA_20.json */; };
 		E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710925206A37BC00E6EBF3 /* ItemDB.swift */; };
 		E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710926206A37BC00E6EBF3 /* TagDB.swift */; };
+		E87634E2216BBCBD0052AC90 /* DayInfoTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87634E1216BBCBD0052AC90 /* DayInfoTimelineCell.xib */; };
+		E87634E4216BCD070052AC90 /* NormalTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87634E3216BCD070052AC90 /* NormalTimelineCell.xib */; };
+		E87634E6216BCDC40052AC90 /* FixedTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87634E5216BCDC40052AC90 /* FixedTimelineCell.xib */; };
 		E8B39162208F390500F3DA6F /* Saving.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39161208F390500F3DA6F /* Saving.swift */; };
 		E8B39164208F390F00F3DA6F /* Loan.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39163208F390F00F3DA6F /* Loan.swift */; };
 		E8B39166208F391B00F3DA6F /* SavingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B39165208F391B00F3DA6F /* SavingItem.swift */; };
@@ -90,6 +93,9 @@
 		E8710923206A37BC00E6EBF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8710925206A37BC00E6EBF3 /* ItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDB.swift; sourceTree = "<group>"; };
 		E8710926206A37BC00E6EBF3 /* TagDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDB.swift; sourceTree = "<group>"; };
+		E87634E1216BBCBD0052AC90 /* DayInfoTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayInfoTimelineCell.xib; sourceTree = "<group>"; };
+		E87634E3216BCD070052AC90 /* NormalTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalTimelineCell.xib; sourceTree = "<group>"; };
+		E87634E5216BCDC40052AC90 /* FixedTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FixedTimelineCell.xib; sourceTree = "<group>"; };
 		E8B39161208F390500F3DA6F /* Saving.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Saving.swift; sourceTree = "<group>"; };
 		E8B39163208F390F00F3DA6F /* Loan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loan.swift; sourceTree = "<group>"; };
 		E8B39165208F391B00F3DA6F /* SavingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavingItem.swift; sourceTree = "<group>"; };
@@ -136,9 +142,9 @@
 		E84128C32103C3C8008E651F /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
-				E84128C12103C387008E651F /* DayInfoTimelineCell.swift */,
-				E84128C42103C409008E651F /* NormalTimelineCell.swift */,
-				E84128C62103C422008E651F /* FixedTimelineCell.swift */,
+				E87634E9216BCEA40052AC90 /* FixedTimelineCell */,
+				E87634E8216BCE910052AC90 /* NormalTimelineCell */,
+				E87634E7216BCE6F0052AC90 /* DayInfoTimelineCell */,
 				E84128C82103C45F008E651F /* SeperatorTimelineCell.swift */,
 				E81549912099A175008A4E15 /* TimelineCell.swift */,
 				E84128BF2103BB32008E651F /* TimelineItem.swift */,
@@ -262,6 +268,33 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		E87634E7216BCE6F0052AC90 /* DayInfoTimelineCell */ = {
+			isa = PBXGroup;
+			children = (
+				E84128C12103C387008E651F /* DayInfoTimelineCell.swift */,
+				E87634E1216BBCBD0052AC90 /* DayInfoTimelineCell.xib */,
+			);
+			path = DayInfoTimelineCell;
+			sourceTree = "<group>";
+		};
+		E87634E8216BCE910052AC90 /* NormalTimelineCell */ = {
+			isa = PBXGroup;
+			children = (
+				E84128C42103C409008E651F /* NormalTimelineCell.swift */,
+				E87634E3216BCD070052AC90 /* NormalTimelineCell.xib */,
+			);
+			path = NormalTimelineCell;
+			sourceTree = "<group>";
+		};
+		E87634E9216BCEA40052AC90 /* FixedTimelineCell */ = {
+			isa = PBXGroup;
+			children = (
+				E84128C62103C422008E651F /* FixedTimelineCell.swift */,
+				E87634E5216BCDC40052AC90 /* FixedTimelineCell.xib */,
+			);
+			path = FixedTimelineCell;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -326,10 +359,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E8710928206A37BC00E6EBF3 /* Main.storyboard in Resources */,
+				E87634E2216BBCBD0052AC90 /* DayInfoTimelineCell.xib in Resources */,
+				E87634E4216BCD070052AC90 /* NormalTimelineCell.xib in Resources */,
 				E8710927206A37BC00E6EBF3 /* LaunchScreen.storyboard in Resources */,
 				E8710937206A37BC00E6EBF3 /* MOCK_DATA_03.json in Resources */,
 				E80D8F95211701E7002C6D60 /* .swiftlint.yml in Resources */,
 				E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */,
+				E87634E6216BCDC40052AC90 /* FixedTimelineCell.xib in Resources */,
 				E840F59E209052B5006E0A28 /* MOCK_DATA_1000.json in Resources */,
 				E8710936206A37BC00E6EBF3 /* Assets.xcassets in Resources */,
 			);
