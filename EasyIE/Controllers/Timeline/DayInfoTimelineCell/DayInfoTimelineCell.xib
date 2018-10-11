@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayTimeLineCell" id="sL5-HP-kim" customClass="DayInfoTimelineCell" customModule="EasyIE" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayInfoTimelineCell" id="sL5-HP-kim" customClass="DayInfoTimelineCell" customModule="EasyIE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sL5-HP-kim" id="4Bs-Fh-eo8">
@@ -43,7 +43,7 @@
                         <rect key="frame" x="13" y="23" width="2" height="20.5"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gb-GX-I0b">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gb-GX-I0b" userLabel="top line">
                         <rect key="frame" x="13" y="0.0" width="2" height="21"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
@@ -67,6 +67,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="dayInfoLabel" destination="9dh-Uq-h9I" id="oCR-sW-Rqq"/>
+                <outlet property="topLine" destination="2gb-GX-I0b" id="Bnv-Mm-LA6"/>
             </connections>
             <point key="canvasLocation" x="-402.39999999999998" y="-135.832083958021"/>
         </tableViewCell>

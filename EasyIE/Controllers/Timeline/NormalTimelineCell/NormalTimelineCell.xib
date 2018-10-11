@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="299" id="fS8-tn-vwB" customClass="NormalTimelineCell" customModule="EasyIE" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="normalTimelineCell" rowHeight="299" id="fS8-tn-vwB" customClass="NormalTimelineCell" customModule="EasyIE" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fS8-tn-vwB" id="ph3-6u-hSQ">
@@ -81,6 +81,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="amountLabel" destination="eJp-40-kAg" id="6FA-Qq-dlY"/>
+                <outlet property="bottomLine" destination="bOo-5q-lL3" id="gYv-U7-knh"/>
                 <outlet property="tagsLabel" destination="tQp-2C-AZs" id="h8R-t3-qLO"/>
             </connections>
             <point key="canvasLocation" x="136.80000000000001" y="154.27286356821591"/>

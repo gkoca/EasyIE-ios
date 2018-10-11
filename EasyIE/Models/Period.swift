@@ -5,13 +5,16 @@
 //  Created by Gökhan KOCA on 14.04.2018.
 //  Copyright © 2018 easy-ie. All rights reserved.
 //
-#if canImport(Foundation)
+
 import Foundation
+
+typealias Year = Int
+typealias Month = Int
 
 struct Period: Hashable, Comparable {
 
-	var month: Int = 0
-	var year: Int = 0
+	var month: Year = 0
+	var year: Month = 0
 	var description: String {
 		get {
 			var date = Date()
@@ -62,4 +65,3 @@ struct Period: Hashable, Comparable {
 		}
 	}
 }
-#endif

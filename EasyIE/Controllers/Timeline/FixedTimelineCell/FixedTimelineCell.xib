@@ -108,6 +108,7 @@
             </tableViewCellContentView>
             <connections>
                 <outlet property="amountLabel" destination="Sfv-MC-Ncd" id="hm6-aA-3vo"/>
+                <outlet property="bottomLine" destination="elB-Mq-0q2" id="dHL-mu-pUP"/>
                 <outlet property="confirmButton" destination="v1o-al-KFJ" id="21i-ye-W6w"/>
                 <outlet property="detailLabel" destination="T1K-3W-z9y" id="7dF-EI-tcR"/>
                 <outlet property="tagsLabel" destination="9OU-kM-70x" id="L23-kw-QVe"/>

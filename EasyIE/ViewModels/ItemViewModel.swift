@@ -17,13 +17,6 @@ class ItemViewModel: NSObject {
 			for item in items {
 				day = Day(day: item.date.day, month: item.date.month, year: item.date.year)
 				period = Period(month: item.date.month, year: item.date.year)
-				
-//				if allPeriodItems[period] != nil {
-//					allPeriodItems[period]?.append(item)
-//				} else {
-//					allPeriodItems[period] = [item]
-//				}
-				
 				if allTimelineItems[period] != nil {
 					if allTimelineItems[period]![day] != nil {
 						allTimelineItems[period]![day]?.append(item)
@@ -36,22 +29,12 @@ class ItemViewModel: NSObject {
 				
 				
 			}
-//			allPeriodicItems = allPeriodicItems.sorted( by: { $0.key < $1.key } ) as [Period:Items]
-//			print(allPeriodItems.map({ ($0.key.description, $0.value.count) }))
-			
-//			print(allTimelineItems.map({
-//				($0.key.description, $0.value.count, $0.value.map({
-//					($0.key.description, $0.value.count )
-//				}))
-//			}))
 		}
 	}
 	
-//	private var allPeriodItems = [Period:Items]()
-//	private var filteredPeriodItems = [Period:Items]()
-	
-	private var allTimelineItems = [Period: [Day: Items]]()
+	private var allTimelineItems = [Period: [Day: Items]]() //TODO: make it local variable
 	private var filteredTimelineItems = [Period: [Day: Items]]()
+	private var timelineCellItems = [Period: TimelineItems]()
 	
 	var itemViewNeedsUpdate = false
 	
@@ -91,7 +74,7 @@ class ItemViewModel: NSObject {
 // MARK: Timeline
 extension ItemViewModel {
 	
-	func sortTimelineItems() {
+	private func sortTimelineItems() {
 		let allItems = allTimelineItems
 		for (period, itemsOfDay) in allItems {
 			let allItemsOfDay = itemsOfDay
@@ -105,14 +88,10 @@ extension ItemViewModel {
 		}
 	}
 	
-	func setFilteredTimelineItemsForFirst() {
-		sortTimelineItems()
-		filteredTimelineItems.removeAll()
+	private func getCurrentNearestYear() -> Year {
 		var allYears = allTimelineItems.map { $0.key.year }
 		allYears.removeDuplicates()
-		var currentOrNearestPeriod = Period()
 		let currentYear = Date().year
-		let currentMonth = Date().month
 		var nearestYear = allYears[0]
 		if allYears.count > 1 {
 			var distanceOfYear = abs(allYears[0] - currentYear)
@@ -124,12 +103,14 @@ extension ItemViewModel {
 					distanceOfYear = differenceOfYear
 				}
 			}
-			nearestYear = allYears[indexOfYear] //nearest year found
+			nearestYear = allYears[indexOfYear]
 		}
-		currentOrNearestPeriod.year = nearestYear
-		
-		var allMonthsOfNearestYear = allTimelineItems.filter { $0.key.year == nearestYear }.map { $0.key.month }
-		
+		return nearestYear
+	}
+	
+	private func getCurrentNearestMonth(of year: Year) -> Month {
+		let currentMonth = Date().month
+		var allMonthsOfNearestYear = allTimelineItems.filter { $0.key.year == year }.map { $0.key.month }
 		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
 		var indexOfMonth = 0
 		for i in 1...allMonthsOfNearestYear.count - 1 {
@@ -139,7 +120,19 @@ extension ItemViewModel {
 				distanceOfMonth = differenceOfMonth
 			}
 		}
-		let nearestMonth = allMonthsOfNearestYear[indexOfMonth]
+		return allMonthsOfNearestYear[indexOfMonth]
+	}
+	
+	private func setFilteredTimelineItemsForFirst() {
+		sortTimelineItems()
+		filteredTimelineItems.removeAll()
+		
+		let nearestYear = getCurrentNearestYear()
+		let nearestMonth = getCurrentNearestMonth(of: nearestYear)
+		
+		var currentOrNearestPeriod = Period()
+		
+		currentOrNearestPeriod.year = nearestYear
 		currentOrNearestPeriod.month = nearestMonth
 		
 		filteredTimelineItems[currentOrNearestPeriod] = allTimelineItems[currentOrNearestPeriod]
@@ -163,6 +156,33 @@ extension ItemViewModel {
 		if let previousPeriod = previousPeriod {
 			filteredTimelineItems[previousPeriod] = allTimelineItems[previousPeriod]
 		}
+		setTimelineCellItems()
+	}
+	
+	func setTimelineCellItems() {
+		
+		for (period, itemsOfDay) in filteredTimelineItems {
+			let allItemsOfDay = itemsOfDay
+			for (day, items) in allItemsOfDay {
+				let dayCell = TimelineItem(with: .dayInfo, day: day)
+				if timelineCellItems[period] == nil {
+					timelineCellItems[period]?.append(dayCell)
+				} else {
+					timelineCellItems[period] = TimelineItems()
+					timelineCellItems[period]?.append(dayCell)
+				}
+				
+				for item in items {
+					let timelineCellitem = TimelineItem(with: .normal, item: item, day: day)
+					if timelineCellItems[period] != nil {
+						timelineCellItems[period]?.append(timelineCellitem)
+					} else {
+						timelineCellItems[period] = TimelineItems()
+						timelineCellItems[period]?.append(timelineCellitem)
+					}
+				}
+			}
+		}
 	}
 	
 	func getKeysOfTimelineItems() -> [Period] {
@@ -176,20 +196,19 @@ extension ItemViewModel {
 	func getNumberOfPeriodsToDisplay() -> Int {
 		return filteredTimelineItems.count
 	}
-
+	
 	func getNumberOfItems(in period: Period) -> Int {
 		return getTimelineItems(in: period).count
 	}
 	
 	func getTimelineItems(in period: Period) -> TimelineItems {
-		//		TODO: imlementation
-		return TimelineItems()
+		return timelineCellItems[period] ?? TimelineItems()
 	}
 	
 	func getTimelineItem(in period: Period, at index: Int) -> TimelineItem {
 		return getTimelineItems(in: period)[index]
 	}
-
+	
 	func canGetOnePast(of period: Period) -> Bool {
 		let allKeys = allTimelineItems.map { $0.key }.sorted(by: <)
 		var targetPeriod: Period?
@@ -210,140 +229,140 @@ extension ItemViewModel {
 /*
 // MARK: Periodic
 extension ItemViewModel {
-	
-	func canGetOnePast(of period: Period) -> Bool {
-		let allKeys = allPeriodItems.map { $0.key }.sorted(by: <)
-		var targetPeriod: Period? = nil
-		var isSuccess = false
-		if var index = allKeys.index(of: period), index > 0 {
-			index -= 1
-			targetPeriod = allKeys[index]
-		}
-		if let thePeriod = targetPeriod {
-			filteredPeriodItems[thePeriod] = allPeriodItems[thePeriod]
-			isSuccess = true
-		}
-		return isSuccess
-	}
-	
-	func sortAll() {
-		let allItems = allPeriodItems
-		for (period, items) in allItems {
-			allPeriodItems[period] = items.sorted(by: { $0.date < $1.date })
-		}
-	}
-	
-	func setFilteredPeriodicItemsForFirst() {
-		sortAll()
-		filteredPeriodItems.removeAll()
-		var allYears = allPeriodItems.map { $0.key.year }
-		allYears.removeDuplicates()
-		var currentOrNearestPeriod = Period()
-		let currentYear = Date().year
-		let currentMonth = Date().month
-		var nearestYear = allYears[0]
-		if allYears.count > 1 {
-			var distanceOfYear = abs(allYears[0] - currentYear)
-			var indexOfYear = 0
-			for i in 1...allYears.count - 1 {
-				let differenceOfYear = abs(allYears[i] - currentYear)
-				if differenceOfYear < distanceOfYear {
-					indexOfYear = i
-					distanceOfYear = differenceOfYear
-				}
-			}
-			nearestYear = allYears[indexOfYear] //nearest year found
-		}
-		currentOrNearestPeriod.year = nearestYear
 
-		var allMonthsOfNearestYear = allPeriodItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
-		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
-		var indexOfMonth = 0
-		for i in 1...allMonthsOfNearestYear.count - 1 {
-			let differenceOfMonth = abs(allMonthsOfNearestYear[i] - currentMonth)
-			if differenceOfMonth < distanceOfMonth {
-				indexOfMonth = i
-				distanceOfMonth = differenceOfMonth
-			}
-		}
-		let nearestMonth = allMonthsOfNearestYear[indexOfMonth]
-		currentOrNearestPeriod.month = nearestMonth
+func canGetOnePast(of period: Period) -> Bool {
+let allKeys = allPeriodItems.map { $0.key }.sorted(by: <)
+var targetPeriod: Period? = nil
+var isSuccess = false
+if var index = allKeys.index(of: period), index > 0 {
+index -= 1
+targetPeriod = allKeys[index]
+}
+if let thePeriod = targetPeriod {
+filteredPeriodItems[thePeriod] = allPeriodItems[thePeriod]
+isSuccess = true
+}
+return isSuccess
+}
 
-		print("currentOrNearestPeriod : \(currentOrNearestPeriod.description)")
-		print("finished first step")
+func sortAll() {
+let allItems = allPeriodItems
+for (period, items) in allItems {
+allPeriodItems[period] = items.sorted(by: { $0.date < $1.date })
+}
+}
 
-		filteredPeriodItems[currentOrNearestPeriod] = allPeriodItems[currentOrNearestPeriod]
+func setFilteredPeriodicItemsForFirst() {
+sortAll()
+filteredPeriodItems.removeAll()
+var allYears = allPeriodItems.map { $0.key.year }
+allYears.removeDuplicates()
+var currentOrNearestPeriod = Period()
+let currentYear = Date().year
+let currentMonth = Date().month
+var nearestYear = allYears[0]
+if allYears.count > 1 {
+var distanceOfYear = abs(allYears[0] - currentYear)
+var indexOfYear = 0
+for i in 1...allYears.count - 1 {
+let differenceOfYear = abs(allYears[i] - currentYear)
+if differenceOfYear < distanceOfYear {
+indexOfYear = i
+distanceOfYear = differenceOfYear
+}
+}
+nearestYear = allYears[indexOfYear] //nearest year found
+}
+currentOrNearestPeriod.year = nearestYear
 
-		let allPeriods = allPeriodItems.map { $0.key }.sorted(by: <)
-		var nextPeriod: Period?
-		var previousPeriod: Period?
-		print("all sorted periods\n\(allPeriods.map({ $0.description }))")
-		if let indexOfCurrentOrNearestPeriod = allPeriods.index(of: currentOrNearestPeriod) {
-			if indexOfCurrentOrNearestPeriod < allPeriods.count - 1 {
-				nextPeriod = allPeriods[indexOfCurrentOrNearestPeriod + 1]
-			}
-			if indexOfCurrentOrNearestPeriod > 0 {
-				previousPeriod = allPeriods[indexOfCurrentOrNearestPeriod - 1]
-			}
-		}
+var allMonthsOfNearestYear = allPeriodItems.filter { $0.key.year == nearestYear }.map { $0.key.month  }
+var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
+var indexOfMonth = 0
+for i in 1...allMonthsOfNearestYear.count - 1 {
+let differenceOfMonth = abs(allMonthsOfNearestYear[i] - currentMonth)
+if differenceOfMonth < distanceOfMonth {
+indexOfMonth = i
+distanceOfMonth = differenceOfMonth
+}
+}
+let nearestMonth = allMonthsOfNearestYear[indexOfMonth]
+currentOrNearestPeriod.month = nearestMonth
 
-		if let nextPeriod = nextPeriod {
-			filteredPeriodItems[nextPeriod] = allPeriodItems[nextPeriod]
-		}
+print("currentOrNearestPeriod : \(currentOrNearestPeriod.description)")
+print("finished first step")
 
-		if let previousPeriod = previousPeriod {
-			filteredPeriodItems[previousPeriod] = allPeriodItems[previousPeriod]
-		}
+filteredPeriodItems[currentOrNearestPeriod] = allPeriodItems[currentOrNearestPeriod]
 
-	}
-	
-	func getKeysOfPeriodicItems() -> [Period] {
-		return filteredPeriodItems.map { $0.key }.sorted(by: <)
-	}
-	
-	func getItemsInPeriod(period: Period) -> Items {
-		guard let items = filteredPeriodItems[period] else {
-			return Items()
-		}
-		return items
-	}
-	
-	func getItemsInPeriod(period: Int) -> Items {
-		guard let items = filteredPeriodItems[getKeysOfPeriodicItems()[period]] else {
-			return Items()
-		}
-		return items
-	}
-	
-	func getItemAtPeriodAndIndex(period: Period, index: Int) -> Item {
-		return getItemsInPeriod(period: period)[index]
-	}
-	
-	func getItemAmountAtPeriodAndIndex(period: Period, index: Int) -> Double {
-		return getItemsInPeriod(period: period)[index].amount
-	}
-	
-	func getItemTagsAtPeriodAndIndex(period: Period, index: Int) -> [Tag] {
-		return getItemsInPeriod(period: period)[index].tags.map { $0 }
-	}
-	
-	func getItemDateStringAtPeriodAndIndex(period: Period, index: Int) -> String {
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "dd MMMM yyyy"
-		return dateFormatter.string(from: getItemsInPeriod(period: period)[index].date)
-	}
-	
-	func getItemIsFixedAtPeriodAndIndex(period: Period, index: Int) -> Bool {
-		return getItemsInPeriod(period: period)[index].isFixed
-	}
-	
-	func getItemCycleTypeAtPeriodAndIndex(period: Period, index: Int) -> DateCycleType {
-		return DateCycleType(rawValue: getItemsInPeriod(period: period)[index].cycleType)!
-	}
-	
-	func getItemCycleValueAtPeriodAndIndex(period: Period, index: Int) -> Int {
-		return getItemsInPeriod(period: period)[index].cycleValue
-	}
-	
+let allPeriods = allPeriodItems.map { $0.key }.sorted(by: <)
+var nextPeriod: Period?
+var previousPeriod: Period?
+print("all sorted periods\n\(allPeriods.map({ $0.description }))")
+if let indexOfCurrentOrNearestPeriod = allPeriods.index(of: currentOrNearestPeriod) {
+if indexOfCurrentOrNearestPeriod < allPeriods.count - 1 {
+nextPeriod = allPeriods[indexOfCurrentOrNearestPeriod + 1]
+}
+if indexOfCurrentOrNearestPeriod > 0 {
+previousPeriod = allPeriods[indexOfCurrentOrNearestPeriod - 1]
+}
+}
+
+if let nextPeriod = nextPeriod {
+filteredPeriodItems[nextPeriod] = allPeriodItems[nextPeriod]
+}
+
+if let previousPeriod = previousPeriod {
+filteredPeriodItems[previousPeriod] = allPeriodItems[previousPeriod]
+}
+
+}
+
+func getKeysOfPeriodicItems() -> [Period] {
+return filteredPeriodItems.map { $0.key }.sorted(by: <)
+}
+
+func getItemsInPeriod(period: Period) -> Items {
+guard let items = filteredPeriodItems[period] else {
+return Items()
+}
+return items
+}
+
+func getItemsInPeriod(period: Int) -> Items {
+guard let items = filteredPeriodItems[getKeysOfPeriodicItems()[period]] else {
+return Items()
+}
+return items
+}
+
+func getItemAtPeriodAndIndex(period: Period, index: Int) -> Item {
+return getItemsInPeriod(period: period)[index]
+}
+
+func getItemAmountAtPeriodAndIndex(period: Period, index: Int) -> Double {
+return getItemsInPeriod(period: period)[index].amount
+}
+
+func getItemTagsAtPeriodAndIndex(period: Period, index: Int) -> [Tag] {
+return getItemsInPeriod(period: period)[index].tags.map { $0 }
+}
+
+func getItemDateStringAtPeriodAndIndex(period: Period, index: Int) -> String {
+let dateFormatter = DateFormatter()
+dateFormatter.dateFormat = "dd MMMM yyyy"
+return dateFormatter.string(from: getItemsInPeriod(period: period)[index].date)
+}
+
+func getItemIsFixedAtPeriodAndIndex(period: Period, index: Int) -> Bool {
+return getItemsInPeriod(period: period)[index].isFixed
+}
+
+func getItemCycleTypeAtPeriodAndIndex(period: Period, index: Int) -> DateCycleType {
+return DateCycleType(rawValue: getItemsInPeriod(period: period)[index].cycleType)!
+}
+
+func getItemCycleValueAtPeriodAndIndex(period: Period, index: Int) -> Int {
+return getItemsInPeriod(period: period)[index].cycleValue
+}
+
 }
 */

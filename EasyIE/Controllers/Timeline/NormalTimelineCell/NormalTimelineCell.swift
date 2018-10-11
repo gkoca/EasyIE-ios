@@ -11,9 +11,14 @@ import UIKit
 class NormalTimelineCell: UITableViewCell {
 	
 	var item: Item?
-	
+	var isLastCell: Bool = false {
+		didSet {
+			bottomLine.isHidden = isLastCell
+		}
+	}
 	@IBOutlet weak var amountLabel: UILabel!
 	@IBOutlet weak var tagsLabel: UILabel!
+	@IBOutlet weak var bottomLine: UIView!
 	
 	override func awakeFromNib() {
 		super.awakeFromNib()

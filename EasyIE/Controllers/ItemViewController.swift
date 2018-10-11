@@ -16,6 +16,7 @@ class ItemViewController: UITableViewController {
 		super.viewDidLoad()
 		tableView.rowHeight = UITableView.automaticDimension
 		tableView.estimatedRowHeight = 90.0
+		registerCells()
 		itemViewModel.loadItems()
 	}
 	
@@ -66,6 +67,16 @@ class ItemViewController: UITableViewController {
 
 extension ItemViewController {
 	
+	private func registerCells() {
+		let fixedTimelineCellNib = UINib(nibName: "FixedTimelineCell", bundle: nil)
+		let normalTimelineCellNib = UINib(nibName: "NormalTimelineCell", bundle: nil)
+		let dayInfoTimelineCellNib = UINib(nibName: "DayInfoTimelineCell", bundle: nil)
+		
+		tableView.register(fixedTimelineCellNib, forCellReuseIdentifier: "fixedItemTimeLineCell")
+		tableView.register(normalTimelineCellNib, forCellReuseIdentifier: "normalTimelineCell")
+		tableView.register(dayInfoTimelineCellNib, forCellReuseIdentifier: "dayInfoTimelineCell")
+	}
+	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return itemViewModel.getNumberOfPeriodsToDisplay()
 	}
@@ -82,6 +93,28 @@ extension ItemViewController {
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let period = itemViewModel.getPeriod(at: indexPath.section)
 		let index = indexPath.row
+		let timelineCellItem = itemViewModel.getTimelineItem(in: period, at: index)
+		
+		switch timelineCellItem.type {
+		case .dayInfo:
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "dayInfoTimelineCell") as? DayInfoTimelineCell else {
+				fatalError("dequeueReusableCell as DayInfoTimelineCell is nil")
+			}
+			cell.dayInfo = timelineCellItem.dayInfo
+			return cell
+		case .normal:
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "fixedItemTimeLineCell") as? FixedTimelineCell else {
+				fatalError("dequeueReusableCell as FixedTimelineCell is nil")
+			}
+			cell.item = timelineCellItem.item
+			return cell
+		case .fixed:
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "normalTimelineCell") as? NormalTimelineCell else {
+				fatalError("dequeueReusableCell as NormalTimelineCell is nil")
+			}
+			cell.item = timelineCellItem.item
+			return cell
+		}
 //		let item = itemViewModel.getItemAtPeriodAndIndex(period: period, index: index)
 //		let amount = item.amount
 //		let itemIsFixed = item.isFixed
@@ -93,10 +126,9 @@ extension ItemViewController {
 //			.joined(separator: " | ")
 		
 //		let cell = TimelineCell(style: .default, reuseIdentifier: "timeLineCell")
-		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) //as! ItemTableViewCell
+//		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) //as! ItemTableViewCell
 //		cell.item = item
-//		
-//		
+
 //		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
 //		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
 //		cell.tagsLabel.text = tags
@@ -138,7 +170,6 @@ extension ItemViewController {
 //			cell.detailLabel.text = ""
 //		}
 		
-		return cell
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
