@@ -21,6 +21,8 @@ class TimelineItem {
 	var type: TimelineItemType
 	var item: Item?
 	var dayInfo: Day?
+	var isFirst: Bool = false
+	var isLast: Bool = false
 //	var cell: UITableViewCell
 	
 	init(with type: TimelineItemType, item: Item? = nil, day: Day? = nil) {

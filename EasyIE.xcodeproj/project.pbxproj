@@ -43,6 +43,8 @@
 		E8710938206A37BC00E6EBF3 /* MOCK_DATA_20.json in Resources */ = {isa = PBXBuildFile; fileRef = E8710922206A37BC00E6EBF3 /* MOCK_DATA_20.json */; };
 		E871093A206A37BC00E6EBF3 /* ItemDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710925206A37BC00E6EBF3 /* ItemDB.swift */; };
 		E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8710926206A37BC00E6EBF3 /* TagDB.swift */; };
+		E8752BA4216FCB4B0067746F /* HeaderTimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8752BA2216FCB4B0067746F /* HeaderTimelineCell.swift */; };
+		E8752BA5216FCB4B0067746F /* HeaderTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8752BA3216FCB4B0067746F /* HeaderTimelineCell.xib */; };
 		E87634E2216BBCBD0052AC90 /* DayInfoTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87634E1216BBCBD0052AC90 /* DayInfoTimelineCell.xib */; };
 		E87634E4216BCD070052AC90 /* NormalTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87634E3216BCD070052AC90 /* NormalTimelineCell.xib */; };
 		E87634E6216BCDC40052AC90 /* FixedTimelineCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E87634E5216BCDC40052AC90 /* FixedTimelineCell.xib */; };
@@ -93,6 +95,8 @@
 		E8710923206A37BC00E6EBF3 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E8710925206A37BC00E6EBF3 /* ItemDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDB.swift; sourceTree = "<group>"; };
 		E8710926206A37BC00E6EBF3 /* TagDB.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagDB.swift; sourceTree = "<group>"; };
+		E8752BA2216FCB4B0067746F /* HeaderTimelineCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTimelineCell.swift; sourceTree = "<group>"; };
+		E8752BA3216FCB4B0067746F /* HeaderTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTimelineCell.xib; sourceTree = "<group>"; };
 		E87634E1216BBCBD0052AC90 /* DayInfoTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DayInfoTimelineCell.xib; sourceTree = "<group>"; };
 		E87634E3216BCD070052AC90 /* NormalTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalTimelineCell.xib; sourceTree = "<group>"; };
 		E87634E5216BCDC40052AC90 /* FixedTimelineCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FixedTimelineCell.xib; sourceTree = "<group>"; };
@@ -142,6 +146,7 @@
 		E84128C32103C3C8008E651F /* Timeline */ = {
 			isa = PBXGroup;
 			children = (
+				E8752BA1216FCB040067746F /* HeaderTimelineCell */,
 				E87634E9216BCEA40052AC90 /* FixedTimelineCell */,
 				E87634E8216BCE910052AC90 /* NormalTimelineCell */,
 				E87634E7216BCE6F0052AC90 /* DayInfoTimelineCell */,
@@ -268,6 +273,15 @@
 			path = Database;
 			sourceTree = "<group>";
 		};
+		E8752BA1216FCB040067746F /* HeaderTimelineCell */ = {
+			isa = PBXGroup;
+			children = (
+				E8752BA2216FCB4B0067746F /* HeaderTimelineCell.swift */,
+				E8752BA3216FCB4B0067746F /* HeaderTimelineCell.xib */,
+			);
+			path = HeaderTimelineCell;
+			sourceTree = "<group>";
+		};
 		E87634E7216BCE6F0052AC90 /* DayInfoTimelineCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -368,6 +382,7 @@
 				E87634E6216BCDC40052AC90 /* FixedTimelineCell.xib in Resources */,
 				E840F59E209052B5006E0A28 /* MOCK_DATA_1000.json in Resources */,
 				E8710936206A37BC00E6EBF3 /* Assets.xcassets in Resources */,
+				E8752BA5216FCB4B0067746F /* HeaderTimelineCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +476,7 @@
 				E8B39164208F390F00F3DA6F /* Loan.swift in Sources */,
 				E84128C92103C45F008E651F /* SeperatorTimelineCell.swift in Sources */,
 				E871093B206A37BC00E6EBF3 /* TagDB.swift in Sources */,
+				E8752BA4216FCB4B0067746F /* HeaderTimelineCell.swift in Sources */,
 				E84128C52103C409008E651F /* NormalTimelineCell.swift in Sources */,
 				E8B39166208F391B00F3DA6F /* SavingItem.swift in Sources */,
 				E818D2B7206D8C84001B2EC0 /* SearchTextField.swift in Sources */,

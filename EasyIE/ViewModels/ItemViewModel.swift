@@ -26,8 +26,6 @@ class ItemViewModel: NSObject {
 				} else {
 					allTimelineItems[period] = [day: [item]]
 				}
-				
-				
 			}
 		}
 	}
@@ -41,13 +39,11 @@ class ItemViewModel: NSObject {
 	func loadDummyEntries(completion: @escaping () -> Void) {
 		let path = Bundle.main.path(forResource: "MOCK_DATA_1000", ofType: "json")
 		let url = URL(fileURLWithPath: path!)
-		//swiftlint:disable syntactic_sugar
-		if let items = try? Array<Item>(fromURL: url) {
+		if let items = try? Items(fromURL: url) {
 			ItemDB.insert(items)
 			self.items = items
 			completion()
 		}
-		//swiftlint:enable syntactic_sugar
 	}
 	
 	func loadItems() {
@@ -163,24 +159,34 @@ extension ItemViewModel {
 		
 		for (period, itemsOfDay) in filteredTimelineItems {
 			let allItemsOfDay = itemsOfDay
+			
+			var j = 0
 			for (day, items) in allItemsOfDay {
 				let dayCell = TimelineItem(with: .dayInfo, day: day)
-				if timelineCellItems[period] == nil {
+				if timelineCellItems[period] != nil {
 					timelineCellItems[period]?.append(dayCell)
 				} else {
 					timelineCellItems[period] = TimelineItems()
+					dayCell.isFirst = true
 					timelineCellItems[period]?.append(dayCell)
 				}
-				
+				var i = 0
 				for item in items {
-					let timelineCellitem = TimelineItem(with: .normal, item: item, day: day)
+					let type = item.isFixed ? TimelineItemType.fixed : TimelineItemType.normal
+					
+					let timelineCellitem = TimelineItem(with: type, item: item, day: day)
+					if items.count - 1 == i && allItemsOfDay.count - 1 == j {
+						timelineCellitem.isLast = true
+					}
 					if timelineCellItems[period] != nil {
 						timelineCellItems[period]?.append(timelineCellitem)
 					} else {
 						timelineCellItems[period] = TimelineItems()
 						timelineCellItems[period]?.append(timelineCellitem)
 					}
+					i += 1
 				}
+				j += 1
 			}
 		}
 	}

@@ -22,6 +22,7 @@ identifier_name:
   - url
   - GlobalAPIKey
   - i
+  - j
   - me
 
 line_length: 190

@@ -11,20 +11,20 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dayInfoTimelineCell" id="sL5-HP-kim" customClass="DayInfoTimelineCell" customModule="EasyIE" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="dayInfoTimelineCell" rowHeight="48" id="sL5-HP-kim" customClass="DayInfoTimelineCell" customModule="EasyIE" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="sL5-HP-kim" id="4Bs-Fh-eo8">
-                <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9dh-Uq-h9I">
-                        <rect key="frame" x="28" y="0.0" width="331" height="43.5"/>
+                        <rect key="frame" x="32" y="8" width="327" height="39.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GG4-Xe-sEQ" userLabel="BigDot" customClass="RoundableView" customModule="EasyIE" customModuleProvider="target">
-                        <rect key="frame" x="8" y="16" width="12" height="12"/>
+                        <rect key="frame" x="10" y="22" width="12" height="12"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="GG4-Xe-sEQ" secondAttribute="height" multiplier="1:1" id="3nN-qI-bEv"/>
@@ -40,11 +40,11 @@
                         </userDefinedRuntimeAttributes>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HBy-Gm-xcm" userLabel="bottom line">
-                        <rect key="frame" x="13" y="23" width="2" height="20.5"/>
+                        <rect key="frame" x="15" y="29" width="2" height="18.5"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2gb-GX-I0b" userLabel="top line">
-                        <rect key="frame" x="13" y="0.0" width="2" height="21"/>
+                        <rect key="frame" x="15" y="0.0" width="2" height="27"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </subviews>
@@ -53,23 +53,23 @@
                     <constraint firstItem="GG4-Xe-sEQ" firstAttribute="trailing" secondItem="2gb-GX-I0b" secondAttribute="trailing" constant="5" id="52i-Ox-drr"/>
                     <constraint firstItem="GG4-Xe-sEQ" firstAttribute="trailing" secondItem="HBy-Gm-xcm" secondAttribute="trailing" constant="5" id="8ZW-rO-Mbj"/>
                     <constraint firstAttribute="trailingMargin" secondItem="9dh-Uq-h9I" secondAttribute="trailing" id="AQa-vD-opQ"/>
-                    <constraint firstItem="GG4-Xe-sEQ" firstAttribute="leading" secondItem="4Bs-Fh-eo8" secondAttribute="leading" constant="8" id="CM9-kO-n0S"/>
+                    <constraint firstItem="GG4-Xe-sEQ" firstAttribute="leading" secondItem="4Bs-Fh-eo8" secondAttribute="leading" constant="10" id="CM9-kO-n0S"/>
                     <constraint firstItem="2gb-GX-I0b" firstAttribute="bottom" secondItem="GG4-Xe-sEQ" secondAttribute="top" constant="5" id="Fez-FV-DTq"/>
                     <constraint firstItem="GG4-Xe-sEQ" firstAttribute="bottom" secondItem="HBy-Gm-xcm" secondAttribute="top" constant="5" id="H0u-Mf-03Q"/>
                     <constraint firstAttribute="bottom" secondItem="HBy-Gm-xcm" secondAttribute="bottom" id="HUr-Pa-kJB"/>
                     <constraint firstItem="HBy-Gm-xcm" firstAttribute="leading" secondItem="GG4-Xe-sEQ" secondAttribute="leading" constant="5" id="Jhu-uE-oO0"/>
                     <constraint firstAttribute="bottom" secondItem="9dh-Uq-h9I" secondAttribute="bottom" id="L1P-O5-i9H"/>
-                    <constraint firstItem="GG4-Xe-sEQ" firstAttribute="centerY" secondItem="4Bs-Fh-eo8" secondAttribute="centerY" id="Sl0-d7-Axq"/>
-                    <constraint firstItem="9dh-Uq-h9I" firstAttribute="leading" secondItem="GG4-Xe-sEQ" secondAttribute="trailing" constant="8" id="Vub-Oj-1FF"/>
+                    <constraint firstItem="GG4-Xe-sEQ" firstAttribute="centerY" secondItem="9dh-Uq-h9I" secondAttribute="centerY" id="Sl0-d7-Axq"/>
+                    <constraint firstItem="9dh-Uq-h9I" firstAttribute="leading" secondItem="GG4-Xe-sEQ" secondAttribute="trailing" constant="10" id="Vub-Oj-1FF"/>
                     <constraint firstItem="2gb-GX-I0b" firstAttribute="leading" secondItem="GG4-Xe-sEQ" secondAttribute="leading" constant="5" id="wOU-ex-h8J"/>
-                    <constraint firstItem="9dh-Uq-h9I" firstAttribute="top" secondItem="4Bs-Fh-eo8" secondAttribute="top" id="wTu-o4-UO6"/>
+                    <constraint firstItem="9dh-Uq-h9I" firstAttribute="top" secondItem="4Bs-Fh-eo8" secondAttribute="top" constant="8" id="wTu-o4-UO6"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dayInfoLabel" destination="9dh-Uq-h9I" id="oCR-sW-Rqq"/>
                 <outlet property="topLine" destination="2gb-GX-I0b" id="Bnv-Mm-LA6"/>
             </connections>
-            <point key="canvasLocation" x="-402.39999999999998" y="-135.832083958021"/>
+            <point key="canvasLocation" x="-402.39999999999998" y="-133.5832083958021"/>
         </tableViewCell>
     </objects>
 </document>

@@ -10,7 +10,18 @@ import UIKit
 
 class NormalTimelineCell: UITableViewCell {
 	
-	var item: Item?
+	var item: Item? {
+		didSet {
+			if let item = item {
+				amountLabel.text = item.amount > 0 ? "+" + String(item.amount) : String(item.amount)
+				amountLabel.textColor = item.amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
+				let tags = item.tags
+					.map { $0.value }
+					.joined(separator: " | ")
+				tagsLabel.text = tags
+			}
+		}
+	}
 	var isLastCell: Bool = false {
 		didSet {
 			bottomLine.isHidden = isLastCell

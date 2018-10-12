@@ -71,19 +71,21 @@ extension ItemViewController {
 		let fixedTimelineCellNib = UINib(nibName: "FixedTimelineCell", bundle: nil)
 		let normalTimelineCellNib = UINib(nibName: "NormalTimelineCell", bundle: nil)
 		let dayInfoTimelineCellNib = UINib(nibName: "DayInfoTimelineCell", bundle: nil)
+		let headerTimelineCellNib = UINib(nibName: "HeaderTimelineCell", bundle: nil)
 		
 		tableView.register(fixedTimelineCellNib, forCellReuseIdentifier: "fixedItemTimeLineCell")
 		tableView.register(normalTimelineCellNib, forCellReuseIdentifier: "normalTimelineCell")
 		tableView.register(dayInfoTimelineCellNib, forCellReuseIdentifier: "dayInfoTimelineCell")
+		tableView.register(headerTimelineCellNib, forCellReuseIdentifier: "headerTimelineCell")
 	}
 	
 	override func numberOfSections(in tableView: UITableView) -> Int {
 		return itemViewModel.getNumberOfPeriodsToDisplay()
 	}
 	
-	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-		return itemViewModel.getKeysOfTimelineItems()[section].description
-	}
+//	override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+//		return itemViewModel.getKeysOfTimelineItems()[section].description
+//	}
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 		let period = itemViewModel.getPeriod(at: section)
@@ -101,18 +103,21 @@ extension ItemViewController {
 				fatalError("dequeueReusableCell as DayInfoTimelineCell is nil")
 			}
 			cell.dayInfo = timelineCellItem.dayInfo
+			cell.isFirstCell = timelineCellItem.isFirst
 			return cell
 		case .normal:
-			guard let cell = tableView.dequeueReusableCell(withIdentifier: "fixedItemTimeLineCell") as? FixedTimelineCell else {
-				fatalError("dequeueReusableCell as FixedTimelineCell is nil")
-			}
-			cell.item = timelineCellItem.item
-			return cell
-		case .fixed:
 			guard let cell = tableView.dequeueReusableCell(withIdentifier: "normalTimelineCell") as? NormalTimelineCell else {
 				fatalError("dequeueReusableCell as NormalTimelineCell is nil")
 			}
 			cell.item = timelineCellItem.item
+			cell.isLastCell = timelineCellItem.isLast
+			return cell
+		case .fixed:
+			guard let cell = tableView.dequeueReusableCell(withIdentifier: "fixedItemTimeLineCell") as? FixedTimelineCell else {
+				fatalError("dequeueReusableCell as FixedTimelineCell is nil")
+			}
+			cell.item = timelineCellItem.item
+			cell.isLastCell = timelineCellItem.isLast
 			return cell
 		}
 //		let item = itemViewModel.getItemAtPeriodAndIndex(period: period, index: index)
@@ -170,6 +175,18 @@ extension ItemViewController {
 //			cell.detailLabel.text = ""
 //		}
 		
+	}
+	
+	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+		if let cell = tableView.dequeueReusableCell(withIdentifier: "headerTimelineCell") as? HeaderTimelineCell {
+			cell.title.text = itemViewModel.getKeysOfTimelineItems()[section].description
+			return cell
+		}
+		return nil
+	}
+	
+	override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+		return 44
 	}
 	
 	override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
