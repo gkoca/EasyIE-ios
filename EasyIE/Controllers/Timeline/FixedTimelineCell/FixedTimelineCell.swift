@@ -19,8 +19,7 @@ class FixedTimelineCell: UITableViewCell {
 					.map { $0.value }
 					.joined(separator: " | ")
 				tagsLabel.text = tags
-//				confirmButton.setImage(item.isVerified ? #imageLiteral(resourceName: "verified") : #imageLiteral(resourceName: "unverified"), for: .normal)
-				configureConfirmButton(for: item)
+				confirmButton.setImage(item.isVerified ? #imageLiteral(resourceName: "verified circle") : #imageLiteral(resourceName: "unverified circle"), for: .normal)
 				setCycleDescription(of: item)
 			}
 			
@@ -45,19 +44,7 @@ class FixedTimelineCell: UITableViewCell {
 		
 	}
 	
-	//	MARK: - Private
-	//	TODO: REMOVE
-	private func configureConfirmButton(for item: Item) {
-		confirmButton.setImage(item.isVerified ? #imageLiteral(resourceName: "verified") : #imageLiteral(resourceName: "unverified"), for: .normal)
-		confirmButton.backgroundColor = UIColor(red: 171, green: 178, blue: 186, alpha: 1.0)
-		// Shadow and Radius
-		confirmButton.layer.shadowColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.25).cgColor
-		confirmButton.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-		confirmButton.layer.shadowOpacity = 1.0
-		confirmButton.layer.shadowRadius = 0.0
-		confirmButton.layer.masksToBounds = false
-		confirmButton.layer.cornerRadius = 1.0
-	}
+	// MARK: - Private
 	private func setCycleDescription(of item: Item) {
 		if let type = DateCycleType(rawValue: item.cycleType) {
 			switch type {

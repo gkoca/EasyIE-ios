@@ -49,7 +49,7 @@
                             <constraint firstAttribute="width" secondItem="v1o-al-KFJ" secondAttribute="height" multiplier="1:1" id="vTO-04-DME"/>
                         </constraints>
                         <inset key="contentEdgeInsets" minX="4" minY="4" maxX="4" maxY="4"/>
-                        <state key="normal" image="unverified">
+                        <state key="normal" image="unverified circle">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
                         <state key="highlighted" image="empty">
@@ -121,6 +121,6 @@
     </objects>
     <resources>
         <image name="empty" width="46" height="46"/>
-        <image name="unverified" width="46" height="46"/>
+        <image name="unverified circle" width="46" height="46"/>
     </resources>
 </document>
