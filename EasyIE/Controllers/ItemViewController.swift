@@ -22,6 +22,7 @@ class ItemViewController: UITableViewController {
 	
 	override func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+		NotificationCenter.default.addObserver(self, selector: #selector(anItemDidUpdate(_:)), name: .didVerifiedItem, object: nil)
 	}
 	
 	override func viewDidAppear(_ animated: Bool) {
@@ -62,6 +63,10 @@ class ItemViewController: UITableViewController {
 			}
 			sender.endRefreshing()
 		}
+	}
+	
+	@objc func anItemDidUpdate(_ notification: Notification) {
+		tableView.reloadData()
 	}
 }
 
@@ -120,61 +125,6 @@ extension ItemViewController {
 			cell.isLastCell = timelineCellItem.isLast
 			return cell
 		}
-//		let item = itemViewModel.getItemAtPeriodAndIndex(period: period, index: index)
-//		let amount = item.amount
-//		let itemIsFixed = item.isFixed
-//		let itemIsConfirmed = item.isVerified
-//		let cycleType = DateCycleType(rawValue: item.cycleType)!
-//		let cycleValue = item.cycleValue
-//		let tags = item.tags
-//			.map { $0.value }
-//			.joined(separator: " | ")
-		
-//		let cell = TimelineCell(style: .default, reuseIdentifier: "timeLineCell")
-//		let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) //as! ItemTableViewCell
-//		cell.item = item
-
-//		cell.amountLabel.text = amount > 0 ? "+" + String(amount) : String(amount)
-//		cell.amountLabel.textColor = amount > 0 ? UIColor.AppColor.colorIncome : UIColor.AppColor.colorExpense
-//		cell.tagsLabel.text = tags
-//		cell.dateLabel.text = item.date.string(withFormat: "dd MMMM yyyy")
-//		//TODO: Localization
-//		if itemIsFixed {
-//			cell.pinImageView.isHidden = false
-//			cell.confirmButton.isHidden = false
-//			cell.confirmButton.setImage(itemIsConfirmed ? #imageLiteral(resourceName: "verified") : #imageLiteral(resourceName: "unverified"), for: .normal)
-//			switch cycleType {
-//			case .undefined:
-//				fatalError("wrong data, inspect it.")
-//				break
-//			case .firstDayOfMonth:
-//				cell.detailLabel.text = "Every first day of month"
-//				break
-//			case .lastDayOfMonth:
-//				cell.detailLabel.text = "Every last day of month"
-//				break
-//			case .firstWorkDayOfMonth:
-//				cell.detailLabel.text = "Every first work Day Of month"
-//				break
-//			case .lastWorkDayOfMonth:
-//				cell.detailLabel.text = "Every last work day of month"
-//				break
-//			case .fixedDayOfMonth:
-//				let numberFormatter = NumberFormatter()
-//				numberFormatter.numberStyle = .ordinal
-//				let ordinal = numberFormatter.string(from: NSNumber(value: cycleValue))
-//				cell.detailLabel.text = "Every \(ordinal ?? "??") day of month"
-//				break
-//			case .fixedDayOfWeek:
-//				cell.detailLabel.text = "Every \(Constants.namesOfDays[cycleValue])"
-//				break
-//			}
-//		} else {
-//			cell.pinImageView.isHidden = true
-//			cell.confirmButton.isHidden = true
-//			cell.detailLabel.text = ""
-//		}
-		
 	}
 	
 	override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

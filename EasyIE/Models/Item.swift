@@ -156,6 +156,7 @@ extension Item {
 	func verify() {
 		RealmHelper.helper.update {
 			self.isVerified = !self.isVerified
+			NotificationCenter.default.post(name: .didVerifiedItem, object: self)
 		}
 	}
 }

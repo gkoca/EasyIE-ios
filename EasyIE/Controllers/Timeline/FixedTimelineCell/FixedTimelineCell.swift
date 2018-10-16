@@ -20,9 +20,9 @@ class FixedTimelineCell: UITableViewCell {
 					.joined(separator: " | ")
 				tagsLabel.text = tags
 				confirmButton.setImage(item.isVerified ? #imageLiteral(resourceName: "verified circle") : #imageLiteral(resourceName: "unverified circle"), for: .normal)
+				confirmButton.tintColor = item.isVerified ? UIColor.black : Constants.tintColor
 				setCycleDescription(of: item)
 			}
-			
 		}
 	}
 	var isLastCell: Bool = false {
@@ -41,7 +41,23 @@ class FixedTimelineCell: UITableViewCell {
 	}
 	
 	@IBAction func onConfirmButton(_ sender: UIButton) {
-		
+		if let item = item {
+			// TODO: Localization
+			let itemType = item.amount < 0 ? "expense" : "income"
+			let verificationMessage =  item.isVerified ? "Do you want to remove verification from this \(itemType)?" : "Do you verify this \(itemType)?"
+			let verificationWillRemove = "Verification will remove"
+			if item.isVerified {
+				GlobalAlertController.showTwoActionAlert(title: "Verification", message: verificationMessage, preferredStyle: .alert, positiveActionTitle: "Yes", positiveAction: { (_) in
+					GlobalAlertController.showTwoActionAlert(title: "Verification", message: verificationWillRemove, preferredStyle: .alert, positiveActionTitle: "OK", positiveAction: { (_) in
+						item.verify()
+					}, negativeActionTitle: "Cancel", negativeActionStyle: .cancel)
+				}, negativeActionTitle: "No", negativeActionStyle: .cancel)
+			} else {
+				GlobalAlertController.showTwoActionAlert(title: "Verification", message: verificationMessage, preferredStyle: .alert, positiveActionTitle: "Yes", positiveAction: { (_) in
+					item.verify()
+				}, negativeActionTitle: "No", negativeActionStyle: .cancel)
+			}
+		}
 	}
 	
 	// MARK: - Private

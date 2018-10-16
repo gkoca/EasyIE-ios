@@ -9,10 +9,15 @@
 import Foundation
 import UIKit
 
+extension Notification.Name {
+	static let didVerifiedItem = Notification.Name("itemVerified")
+}
+
 class Constants {
 	//TODO: Localization
 	static let namesOfDays: [String] = ["Undefined", "Monday", "Thuesday", "Wednesday",
 										"Thursday", "Friday", "Saturday", "Sunday"]
+	static let tintColor: UIColor = UIColor(netHex: 0x3478F6)
 }
 
 class GlobalAlertController {
