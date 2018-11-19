@@ -17,22 +17,26 @@ class ItemViewModel: NSObject {
 			for item in items {
 				day = Day(day: item.date.day, month: item.date.month, year: item.date.year)
 				period = Period(month: item.date.month, year: item.date.year)
-				if allTimelineItems[period] != nil {
-					if allTimelineItems[period]![day] != nil {
-						allTimelineItems[period]![day]?.append(item)
+				if allPeriodicItems[period] != nil {
+					if allPeriodicItems[period]![day] != nil {
+						allPeriodicItems[period]![day]?.append(item)
 					} else {
-						allTimelineItems[period]![day] = [item]
+						allPeriodicItems[period]![day] = [item]
 					}
 				} else {
-					allTimelineItems[period] = [day: [item]]
+					allPeriodicItems[period] = [day: [item]]
 				}
 			}
 		}
 	}
 	
-	private var allTimelineItems = [Period: [Day: Items]]() //TODO: make it local variable
-	private var filteredTimelineItems = [Period: [Day: Items]]()
+	private var allPeriodicItems = [Period: [Day: Items]]()
+	private var filteredPeriodicItems = [Period: [Day: Items]]()
+	
+	// TODO: - Move to TimelineViewModel
+	private var filteredTimelineItems = [Period: TimelineItems]()
 	private var timelineCellItems = [Period: TimelineItems]()
+	// MARK: -
 	
 	var itemViewNeedsUpdate = false
 	
@@ -51,10 +55,10 @@ class ItemViewModel: NSObject {
 		if items.isEmpty {
 			loadDummyEntries {
 				print("\(self.items.count) items loaded from json")
-				self.setFilteredTimelineItemsForFirst()
+				self.setFilteredPeriodicItemsForFirst()
 			}
 		} else {
-			setFilteredTimelineItemsForFirst()
+			setFilteredPeriodicItemsForFirst()
 		}
 		itemViewNeedsUpdate = true
 	}
@@ -70,13 +74,13 @@ class ItemViewModel: NSObject {
 // MARK: Timeline
 extension ItemViewModel {
 	
-	private func sortTimelineItems() {
-		let allItems = allTimelineItems
-		for (period, itemsOfDay) in allItems {
+	private func sortAllPeriodicItems() {
+		let periodicItems = allPeriodicItems
+		for (period, itemsOfDay) in periodicItems {
 			let allItemsOfDay = itemsOfDay
 			for (day, items) in allItemsOfDay {
-				if allTimelineItems[period] != nil {
-					allTimelineItems[period]![day] = items.sorted(by: { $0.date < $1.date })
+				if allPeriodicItems[period] != nil {
+					allPeriodicItems[period]![day] = items.sorted(by: { $0.date < $1.date })
 				} else {
 					print("⚠️ investigate allPeriodDayItems[\(period.description)]")
 				}
@@ -85,7 +89,7 @@ extension ItemViewModel {
 	}
 	
 	private func getCurrentNearestYear() -> Year {
-		var allYears = allTimelineItems.map { $0.key.year }
+		var allYears = allPeriodicItems.map { $0.key.year }
 		allYears.removeDuplicates()
 		let currentYear = Date().year
 		var nearestYear = allYears[0]
@@ -106,7 +110,7 @@ extension ItemViewModel {
 	
 	private func getCurrentNearestMonth(of year: Year) -> Month {
 		let currentMonth = Date().month
-		var allMonthsOfNearestYear = allTimelineItems.filter { $0.key.year == year }.map { $0.key.month }
+		var allMonthsOfNearestYear = allPeriodicItems.filter { $0.key.year == year }.map { $0.key.month }
 		var distanceOfMonth = abs(allMonthsOfNearestYear[0] - currentMonth)
 		var indexOfMonth = 0
 		for i in 1...allMonthsOfNearestYear.count - 1 {
@@ -119,9 +123,9 @@ extension ItemViewModel {
 		return allMonthsOfNearestYear[indexOfMonth]
 	}
 	
-	private func setFilteredTimelineItemsForFirst() {
-		sortTimelineItems()
-		filteredTimelineItems.removeAll()
+	private func setFilteredPeriodicItemsForFirst() {
+		sortAllPeriodicItems()
+		filteredPeriodicItems.removeAll()
 		
 		let nearestYear = getCurrentNearestYear()
 		let nearestMonth = getCurrentNearestMonth(of: nearestYear)
@@ -131,9 +135,9 @@ extension ItemViewModel {
 		currentOrNearestPeriod.year = nearestYear
 		currentOrNearestPeriod.month = nearestMonth
 		
-		filteredTimelineItems[currentOrNearestPeriod] = allTimelineItems[currentOrNearestPeriod]
+		filteredPeriodicItems[currentOrNearestPeriod] = allPeriodicItems[currentOrNearestPeriod]
 		
-		let allPeriods = allTimelineItems.map { $0.key }.sorted(by: <)
+		let allPeriods = allPeriodicItems.map { $0.key }.sorted(by: <)
 		var nextPeriod: Period?
 		var previousPeriod: Period?
 		if let indexOfCurrentOrNearestPeriod = allPeriods.index(of: currentOrNearestPeriod) {
@@ -146,18 +150,18 @@ extension ItemViewModel {
 		}
 		
 		if let nextPeriod = nextPeriod {
-			filteredTimelineItems[nextPeriod] = allTimelineItems[nextPeriod]
+			filteredPeriodicItems[nextPeriod] = allPeriodicItems[nextPeriod]
 		}
 		
 		if let previousPeriod = previousPeriod {
-			filteredTimelineItems[previousPeriod] = allTimelineItems[previousPeriod]
+			filteredPeriodicItems[previousPeriod] = allPeriodicItems[previousPeriod]
 		}
 		setTimelineCellItems()
 	}
 	
 	func setTimelineCellItems() {
 		
-		for (period, itemsOfDay) in filteredTimelineItems {
+		for (period, itemsOfDay) in filteredPeriodicItems {
 			let allItemsOfDay = itemsOfDay
 			
 			var j = 0
@@ -192,7 +196,7 @@ extension ItemViewModel {
 	}
 	
 	func getKeysOfTimelineItems() -> [Period] {
-		return filteredTimelineItems.map { $0.key }.sorted(by: <)
+		return filteredPeriodicItems.map { $0.key }.sorted(by: <)
 	}
 	
 	func getPeriod(at section: Int) -> Period {
@@ -200,7 +204,7 @@ extension ItemViewModel {
 	}
 	
 	func getNumberOfPeriodsToDisplay() -> Int {
-		return filteredTimelineItems.count
+		return filteredPeriodicItems.count
 	}
 	
 	func getNumberOfItems(in period: Period) -> Int {
@@ -216,7 +220,7 @@ extension ItemViewModel {
 	}
 	
 	func canGetOnePast(of period: Period) -> Bool {
-		let allKeys = allTimelineItems.map { $0.key }.sorted(by: <)
+		let allKeys = allPeriodicItems.map { $0.key }.sorted(by: <)
 		var targetPeriod: Period?
 		var isSuccess = false
 		if var index = allKeys.index(of: period), index > 0 {
@@ -224,12 +228,16 @@ extension ItemViewModel {
 			targetPeriod = allKeys[index]
 		}
 		if let thePeriod = targetPeriod {
-			filteredTimelineItems[thePeriod] = allTimelineItems[thePeriod]
+			filteredPeriodicItems[thePeriod] = allPeriodicItems[thePeriod]
+			addTimelineCellItems(of: thePeriod)
 			isSuccess = true
 		}
 		return isSuccess
 	}
 	
+	private func addTimelineCellItems(of period: Period) {
+		
+	}
 }
 
 /*
